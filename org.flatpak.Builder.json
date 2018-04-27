@@ -1,0 +1,218 @@
+{
+    "app-id" : "org.flatpak.Builder",
+    "runtime" : "org.freedesktop.Sdk",
+    "runtime-version" : "1.6",
+    "sdk" : "org.freedesktop.Sdk",
+    "command" : "flatpak-builder-wrapper",
+    "separate-locales": false,
+    "finish-args" : [
+        "--require-version=0.10.0",
+        "--allow=devel",
+        "--talk-name=org.freedesktop.Flatpak",
+        "--share=ipc",
+        "--filesystem=host",
+        "--share=network",
+        "--filesystem=~/.local/share/flatpak",
+        "--filesystem=/var/lib/flatpak"
+    ],
+    "build-options" : {
+        "cflags" : "-O2 -g",
+        "cxxflags" : "-O2 -g",
+        "env" : {
+            "BASH_COMPLETIONSDIR" : "/app/share/bash-completion/completions",
+            "MOUNT_FUSE_PATH" : "../tmp/",
+            "V" : "1"
+        }
+    },
+    "cleanup" : [
+        "*.la",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name" : "libfuse",
+            "config-opts" : [
+                "UDEV_RULES_PATH=/app/etc/udev/rules.d",
+                "INIT_D_PATH=/app/etc/init.d"
+            ],
+            "post-install": [
+                "install -m a+rx fusermount-wrapper.sh /app/bin/fusermount"
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.7/fuse-2.9.7.tar.gz",
+                    "sha256" : "832432d1ad4f833c20e13b57cf40ce5277a9d33e483205fc63c78111b3358874"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "fuse-2.9.2-namespace-conflict-fix.patch"
+                },
+                {
+                    "type" : "patch",
+                    "path" : "fuse-disable-sys-mount-under-flatpak.patch"
+                },
+                {
+                    "type" : "file",
+                    "path" : "fusermount-wrapper.sh"
+                }
+            ]
+        },
+        {
+            "name": "flatpak-xdg-utils",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
+                    "branch": "c2266e2bce9d8f72e3f705e04719c7d9a924fd87"
+                }
+            ]
+        },
+        {
+            "name" : "ostree",
+            "config-opts" : [
+                "--disable-man"
+            ],
+            "cleanup" : [
+                "/etc/grub.d",
+                "/etc/ostree",
+                "/share/ostree",
+                "/libexec"
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2018.4/libostree-2018.4.tar.xz",
+                    "sha256" : "f5b1e083ed630fd32a263731fe9595ecdd07cfd5cba3e354931f481c4181de1c"
+                }
+            ]
+        },
+        {
+            "name" : "flatpak",
+            "config-opts" : [
+                "--disable-documentation",
+                "--disable-seccomp",
+                "--disable-sandboxed-triggers",
+                "--disable-system-helper",
+                "--with-system-install-dir=/var/lib/flatpak"
+            ],
+            "cleanup" : [
+                "/etc/profile.d",
+                "/libexec",
+                "/lib/systemd",
+                "/share/dbus-1/interfaces/org.freedesktop.*",
+                "/share/dbus-1/services/org.freedesktop.*",
+                "/share/gdm"
+            ],
+            "post-install" : [
+                "cp /usr/bin/update-mime-database /app/bin",
+                "cp /usr/bin/update-desktop-database /app/bin"
+            ],
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/flatpak/flatpak/releases/download/0.11.4/flatpak-0.11.4.tar.xz",
+                    "sha256" : "28c68aaf4812ec8b350f4a9ae25006a7c9550d117b7dd6463f3b3168a6e7e9e4"
+                }
+            ]
+        },
+        {
+            "name" : "flatpak-builder",
+            "sources" : [
+                {
+                    "type" : "archive",
+                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/0.10.10/flatpak-builder-0.10.10.tar.xz",
+                    "sha256" : "c299985b230cdb052c6b8f8e912fc7e735b1a3868b2e008c49456ee16a160c2c"
+                }
+            ]
+        },
+        {
+            "name": "wrapper",
+            "buildsystem": "simple",
+            "build-commands": [
+                "ls -l",
+                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper"
+            ],
+            "sources": [
+                {
+                    "type": "script",
+                    "dest-filename": "flatpak-builder-wrapper.sh",
+                    "commands": [
+                        "export FLATPAK_USER_DIR=$HOME/.local/share/flatpak",
+                        "flatpak-builder \"$@\""
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "svn",
+            "modules": [
+                {
+                    "name": "apr",
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net//apr/apr-1.6.3.tar.bz2",
+                            "sha256": "131f06d16d7aabd097fa992a33eec2b6af3962f93e6d570a9bd4d85e95993172"
+                        }
+                    ]
+                },
+                {
+                    "name": "apr-util",
+                    "config-opts" : [
+                        "--with-apr=/app"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net//apr/apr-util-1.6.1.tar.bz2",
+                            "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
+                        }
+                    ]
+                },
+                {
+                    "name": "utf8proc",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "make prefix=/app",
+                        "make prefix=/app install"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/JuliaLang/utf8proc/archive/v2.1.1.tar.gz",
+                            "sha256": "27702f369f3545144470b277cd8369a7997ba4292a48a28be154c3aff28bd7b2"
+                        }
+                    ]
+                },
+                {
+                    "name": "subversion",
+                    "config-opts" : [
+                        "--with-lz4=internal"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net/subversion/subversion-1.10.0.tar.bz2",
+                            "sha256": "2cf23f3abb837dea0585a6b0ebd70e80e01f95bddef7c1aa097c18e3eaa6b584"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "bzr",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python setup.py install --prefix=/app"
+            ],
+            "sources" : [
+                {
+                    "type": "archive",
+                    "url": "https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz",
+                    "sha256": "0d451227b705a0dd21d8408353fe7e44d3a5069e6c4c26e5f146f1314b8fdab3"
+                }
+            ]
+        }
+    ]
+}
