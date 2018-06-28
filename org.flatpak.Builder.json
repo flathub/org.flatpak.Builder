@@ -64,7 +64,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
-                    "branch": "c2266e2bce9d8f72e3f705e04719c7d9a924fd87"
+                    "branch": "a9afa997da8217bd03ece72fd04221d1597acdb3"
                 }
             ]
         },
@@ -82,8 +82,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2018.4/libostree-2018.4.tar.xz",
-                    "sha256" : "f5b1e083ed630fd32a263731fe9595ecdd07cfd5cba3e354931f481c4181de1c"
+                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2018.6/libostree-2018.6.tar.xz",
+                    "sha256" : "8dd49a1ab94924e351ff9cfd8ea2bf725770400900f4875ad2cc95712c6cc905"
                 }
             ]
         },
@@ -111,8 +111,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak/releases/download/0.11.7/flatpak-0.11.7.tar.xz",
-                    "sha256" : "1099f3115972f40940ac02af5981bc56931fba662b6875b776e45264f69104ef"
+                    "url" : "https://github.com/flatpak/flatpak/releases/download/0.99.2/flatpak-0.99.2.tar.xz",
+                    "sha256" : "dcdff70f996fbc056b6e8e590203f970c2b138a5f0863625251524d1ba1588b1"
                 }
             ]
         },
@@ -121,8 +121,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/0.10.10/flatpak-builder-0.10.10.tar.xz",
-                    "sha256" : "c299985b230cdb052c6b8f8e912fc7e735b1a3868b2e008c49456ee16a160c2c"
+                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/0.99.2/flatpak-builder-0.99.2.tar.xz",
+                    "sha256" : "1559475ff9340b448b2db4b4b7a951d2e72bc83634096f8654104c8b15f56e56"
                 }
             ]
         },
