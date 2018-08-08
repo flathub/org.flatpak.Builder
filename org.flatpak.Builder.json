@@ -230,7 +230,7 @@
                     "dest-filename": "flatpak-builder-wrapper.sh",
                     "commands": [
                         "export FLATPAK_USER_DIR=$HOME/.local/share/flatpak",
-                        "flatpak-builder \"$@\""
+                        "exec flatpak-builder \"$@\""
                     ]
                 }
             ]
