@@ -30,6 +30,97 @@
     ],
     "modules" : [
         {
+            "name": "svn",
+            "modules": [
+                {
+                    "name": "apr",
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net//apr/apr-1.6.3.tar.bz2",
+                            "sha256": "131f06d16d7aabd097fa992a33eec2b6af3962f93e6d570a9bd4d85e95993172"
+                        }
+                    ]
+                },
+                {
+                    "name": "apr-util",
+                    "config-opts" : [
+                        "--with-apr=/app"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net//apr/apr-util-1.6.1.tar.bz2",
+                            "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
+                        }
+                    ]
+                },
+                {
+                    "name": "utf8proc",
+                    "buildsystem": "simple",
+                    "build-commands": [
+                        "make prefix=/app",
+                        "make prefix=/app install"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/JuliaLang/utf8proc/archive/v2.1.1.tar.gz",
+                            "sha256": "27702f369f3545144470b277cd8369a7997ba4292a48a28be154c3aff28bd7b2"
+                        }
+                    ]
+                },
+                {
+                    "name": "subversion",
+                    "config-opts" : [
+                        "--with-lz4=internal"
+                    ],
+                    "sources" : [
+                        {
+                            "type": "archive",
+                            "url": "http://apache.mirrors.spacedump.net/subversion/subversion-1.10.0.tar.bz2",
+                            "sha256": "2cf23f3abb837dea0585a6b0ebd70e80e01f95bddef7c1aa097c18e3eaa6b584"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "bzr",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python setup.py install --prefix=/app"
+            ],
+            "sources" : [
+                {
+                    "type": "archive",
+                    "url": "https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz",
+                    "sha256": "0d451227b705a0dd21d8408353fe7e44d3a5069e6c4c26e5f146f1314b8fdab3"
+                }
+            ]
+        },
+        /* Diffstat and wget are needed by yocto, so we can rebuild the freedesktop sdk base */
+        {
+            "name": "diffstat",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://invisible-island.net/datafiles/release/diffstat.tar.gz",
+                    "sha256": "25359e0c27183f997b36c9202583b5dc2df390c20e22a92606af4bf7856a55ee"
+                }
+            ]
+        },
+        {
+            "name": "wget",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.18.tar.xz",
+                    "sha256": "b5b55b75726c04c06fe253daec9329a6f1a3c0c1878e3ea76ebfebc139ea9cc1"
+                }
+            ]
+        },
+        {
             "name" : "libfuse",
             "config-opts" : [
                 "UDEV_RULES_PATH=/app/etc/udev/rules.d",
@@ -141,97 +232,6 @@
                         "export FLATPAK_USER_DIR=$HOME/.local/share/flatpak",
                         "flatpak-builder \"$@\""
                     ]
-                }
-            ]
-        },
-        {
-            "name": "svn",
-            "modules": [
-                {
-                    "name": "apr",
-                    "sources" : [
-                        {
-                            "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net//apr/apr-1.6.3.tar.bz2",
-                            "sha256": "131f06d16d7aabd097fa992a33eec2b6af3962f93e6d570a9bd4d85e95993172"
-                        }
-                    ]
-                },
-                {
-                    "name": "apr-util",
-                    "config-opts" : [
-                        "--with-apr=/app"
-                    ],
-                    "sources" : [
-                        {
-                            "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net//apr/apr-util-1.6.1.tar.bz2",
-                            "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
-                        }
-                    ]
-                },
-                {
-                    "name": "utf8proc",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "make prefix=/app",
-                        "make prefix=/app install"
-                    ],
-                    "sources" : [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/JuliaLang/utf8proc/archive/v2.1.1.tar.gz",
-                            "sha256": "27702f369f3545144470b277cd8369a7997ba4292a48a28be154c3aff28bd7b2"
-                        }
-                    ]
-                },
-                {
-                    "name": "subversion",
-                    "config-opts" : [
-                        "--with-lz4=internal"
-                    ],
-                    "sources" : [
-                        {
-                            "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net/subversion/subversion-1.10.0.tar.bz2",
-                            "sha256": "2cf23f3abb837dea0585a6b0ebd70e80e01f95bddef7c1aa097c18e3eaa6b584"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "bzr",
-            "buildsystem": "simple",
-            "build-commands": [
-                "python setup.py install --prefix=/app"
-            ],
-            "sources" : [
-                {
-                    "type": "archive",
-                    "url": "https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz",
-                    "sha256": "0d451227b705a0dd21d8408353fe7e44d3a5069e6c4c26e5f146f1314b8fdab3"
-                }
-            ]
-        },
-        /* Diffstat and wget are needed by yocto, so we can rebuild the freedesktop sdk base */
-        {
-            "name": "diffstat",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://invisible-island.net/datafiles/release/diffstat.tar.gz",
-                    "sha256": "25359e0c27183f997b36c9202583b5dc2df390c20e22a92606af4bf7856a55ee"
-                }
-            ]
-        },
-        {
-            "name": "wget",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.18.tar.xz",
-                    "sha256": "b5b55b75726c04c06fe253daec9329a6f1a3c0c1878e3ea76ebfebc139ea9cc1"
                 }
             ]
         }
