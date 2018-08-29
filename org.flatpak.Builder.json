@@ -105,8 +105,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://invisible-island.net/datafiles/release/diffstat.tar.gz",
-                    "sha256": "25359e0c27183f997b36c9202583b5dc2df390c20e22a92606af4bf7856a55ee"
+                    "url": "https://invisible-island.net/datafiles/release/diffstat.tar.gz",
+                    "sha256": "7f09183644ed77a156b15346bbad4e89c93543e140add9dab18747e30522591f"
                 }
             ]
         },
