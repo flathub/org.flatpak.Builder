@@ -78,8 +78,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net/subversion/subversion-1.10.2.tar.bz2",
-                            "sha256": "5b35e3a858d948de9e8892bf494893c9f7886782f6abbe166c0487c19cf6ed88"
+                            "url": "http://apache.mirrors.ionfish.org/subversion/subversion-1.10.4.tar.bz2",
+                            "sha512": "c44a4a4a9533cd4f4cb6ddbc3ce98585a96da6c8e75497d087034b52f899797bb0972dfc0e79db99e81149e59e7fa765398c6ad35eba64f11f4ae9c3b3537434"
                         }
                     ]
                 }
