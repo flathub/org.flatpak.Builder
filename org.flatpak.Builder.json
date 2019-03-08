@@ -63,8 +63,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "https://github.com/JuliaLang/utf8proc/archive/v2.1.1.tar.gz",
-                            "sha256": "27702f369f3545144470b277cd8369a7997ba4292a48a28be154c3aff28bd7b2"
+                            "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.2.0.tar.gz",
+                            "sha256": "3f8fd1dbdb057ee5ba584a539d5cd1b3952141c0338557cb0bdf8cb9cfed5dbf"
                         }
                     ]
                 },
@@ -113,8 +113,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.18.tar.xz",
-                    "sha256": "b5b55b75726c04c06fe253daec9329a6f1a3c0c1878e3ea76ebfebc139ea9cc1"
+                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.20.1.tar.gz",
+                    "sha256": "b783b390cb571c837b392857945f5a1f00ec6b043177cc42abb8ee1b542ee1b3"
                 }
             ]
         },
@@ -130,8 +130,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.7/fuse-2.9.7.tar.gz",
-                    "sha256" : "832432d1ad4f833c20e13b57cf40ce5277a9d33e483205fc63c78111b3358874"
+                    "url" : "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz",
+                    "sha256" : "d0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5"
                 },
                 {
                     "type" : "patch",
@@ -149,18 +149,21 @@
         },
         {
             "name": "flatpak-xdg-utils",
+            "buildsystem": "meson",
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
-                    "branch": "c2266e2bce9d8f72e3f705e04719c7d9a924fd87"
+                    "branch": "ac0e5f6109c669b68aa37f9a98fdb2297422461d"
                 }
             ]
         },
         {
             "name" : "ostree",
             "config-opts" : [
-                "--disable-man"
+                "--disable-man",
+                "--with-systemdsystemgeneratordir=/app/lib/systemd/system-generators",
+                "--without-systemdsystemunitdir"
             ],
             "cleanup" : [
                 "/etc/grub.d",
@@ -171,8 +174,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2018.7/libostree-2018.7.tar.xz",
-                    "sha256" : "483e359fd934f3fb1abde2cd8ff9c5bccb97e2a37d52ed8bedfa9ab1290883d9"
+                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2019.1/libostree-2019.1.tar.xz",
+                    "sha256" : "15f734e7c65875f62c967b9937894704354a11927e92a91cb5ad8041bbb6c723"
                 }
             ]
         },
