@@ -148,17 +148,6 @@
             ]
         },
         {
-            "name": "flatpak-xdg-utils",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
-                    "branch": "ac0e5f6109c669b68aa37f9a98fdb2297422461d"
-                }
-            ]
-        },
-        {
             "name" : "ostree",
             "config-opts" : [
                 "--disable-man",
