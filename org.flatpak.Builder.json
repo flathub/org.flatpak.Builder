@@ -1,12 +1,12 @@
 {
     "app-id" : "org.flatpak.Builder",
     "runtime" : "org.freedesktop.Sdk",
-    "runtime-version" : "1.6",
+    "runtime-version" : "18.08",
     "sdk" : "org.freedesktop.Sdk",
     "command" : "flatpak-builder-wrapper",
     "separate-locales": false,
     "finish-args" : [
-        "--require-version=0.10.0",
+        "--require-version=0.99.1",
         "--allow=devel",
         "--talk-name=org.freedesktop.Flatpak",
         "--share=ipc",
@@ -16,8 +16,6 @@
         "--filesystem=/var/lib/flatpak"
     ],
     "build-options" : {
-        "cflags" : "-O2 -g",
-        "cxxflags" : "-O2 -g",
         "env" : {
             "BASH_COMPLETIONSDIR" : "/app/share/bash-completion/completions",
             "MOUNT_FUSE_PATH" : "../tmp/",
@@ -37,8 +35,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net//apr/apr-1.6.3.tar.bz2",
-                            "sha256": "131f06d16d7aabd097fa992a33eec2b6af3962f93e6d570a9bd4d85e95993172"
+                            "url": "http://ftp.wayne.edu/apache//apr/apr-1.6.5.tar.bz2",
+                            "sha256": "a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105"
                         }
                     ]
                 },
@@ -65,8 +63,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "https://github.com/JuliaLang/utf8proc/archive/v2.1.1.tar.gz",
-                            "sha256": "27702f369f3545144470b277cd8369a7997ba4292a48a28be154c3aff28bd7b2"
+                            "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.2.0.tar.gz",
+                            "sha256": "3f8fd1dbdb057ee5ba584a539d5cd1b3952141c0338557cb0bdf8cb9cfed5dbf"
                         }
                     ]
                 },
@@ -78,8 +76,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net/subversion/subversion-1.10.2.tar.bz2",
-                            "sha256": "5b35e3a858d948de9e8892bf494893c9f7886782f6abbe166c0487c19cf6ed88"
+                            "url": "http://apache.mirrors.ionfish.org/subversion/subversion-1.10.4.tar.bz2",
+                            "sha512": "c44a4a4a9533cd4f4cb6ddbc3ce98585a96da6c8e75497d087034b52f899797bb0972dfc0e79db99e81149e59e7fa765398c6ad35eba64f11f4ae9c3b3537434"
                         }
                     ]
                 }
@@ -115,8 +113,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.18.tar.xz",
-                    "sha256": "b5b55b75726c04c06fe253daec9329a6f1a3c0c1878e3ea76ebfebc139ea9cc1"
+                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.20.1.tar.gz",
+                    "sha256": "b783b390cb571c837b392857945f5a1f00ec6b043177cc42abb8ee1b542ee1b3"
                 }
             ]
         },
@@ -132,8 +130,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.7/fuse-2.9.7.tar.gz",
-                    "sha256" : "832432d1ad4f833c20e13b57cf40ce5277a9d33e483205fc63c78111b3358874"
+                    "url" : "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz",
+                    "sha256" : "d0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5"
                 },
                 {
                     "type" : "patch",
@@ -150,19 +148,11 @@
             ]
         },
         {
-            "name": "flatpak-xdg-utils",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/flatpak-xdg-utils.git",
-                    "branch": "c2266e2bce9d8f72e3f705e04719c7d9a924fd87"
-                }
-            ]
-        },
-        {
             "name" : "ostree",
             "config-opts" : [
-                "--disable-man"
+                "--disable-man",
+                "--with-systemdsystemgeneratordir=/app/lib/systemd/system-generators",
+                "--without-systemdsystemunitdir"
             ],
             "cleanup" : [
                 "/etc/grub.d",
@@ -173,8 +163,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2018.7/libostree-2018.7.tar.xz",
-                    "sha256" : "483e359fd934f3fb1abde2cd8ff9c5bccb97e2a37d52ed8bedfa9ab1290883d9"
+                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2019.1/libostree-2019.1.tar.xz",
+                    "sha256" : "15f734e7c65875f62c967b9937894704354a11927e92a91cb5ad8041bbb6c723"
                 }
             ]
         },
@@ -202,8 +192,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.0.1/flatpak-1.0.1.tar.xz",
-                    "sha256" : "c464efc3aeccd9a97e42fa3c2fda13fde59aca1aadb08ce7a9e27d9e9a7a5e24"
+                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.0.8/flatpak-1.0.8.tar.xz",
+                    "sha256" : "1b1b419e3b2e8e75b18eb6442f0eb585fe402cea529729c15bbaf2622d746c3c"
                 }
             ]
         },
@@ -212,8 +202,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.0/flatpak-builder-1.0.0.tar.xz",
-                    "sha256" : "858a5b2204f569e47fb6cb57f28f7a0dab9d6f7a5a73a7c2688e23c61bf8567b"
+                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.6/flatpak-builder-1.0.6.tar.xz",
+                    "sha256" : "3b572ad7b7cce9ca6a8632ca69a49a47b20e99066fe064b7b56e7896dca789bb"
                 }
             ]
         },
