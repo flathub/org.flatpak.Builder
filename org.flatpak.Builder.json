@@ -6,7 +6,7 @@
     "command" : "flatpak-builder-wrapper",
     "separate-locales": false,
     "finish-args" : [
-        "--require-version=0.10.0",
+        "--require-version=0.99.1",
         "--allow=devel",
         "--talk-name=org.freedesktop.Flatpak",
         "--share=ipc",
