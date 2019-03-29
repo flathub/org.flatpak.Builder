@@ -192,8 +192,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.0.8/flatpak-1.0.8.tar.xz",
-                    "sha256" : "1b1b419e3b2e8e75b18eb6442f0eb585fe402cea529729c15bbaf2622d746c3c"
+                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.2.4/flatpak-1.2.4.tar.xz",
+                    "sha256" : "1b6539d94d31e571661a2545cfcece7ec9267b4e2552e3cc0f617f4790f6c3e1"
                 }
             ]
         },
