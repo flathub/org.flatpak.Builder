@@ -35,8 +35,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "http://ftp.wayne.edu/apache//apr/apr-1.6.5.tar.bz2",
-                            "sha256": "a67ca9fcf9c4ff59bce7f428a323c8b5e18667fdea7b0ebad47d194371b0a105"
+                            "url": "http://ftp.wayne.edu/apache//apr/apr-1.7.0.tar.bz2",
+                            "sha256": "e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea"
                         }
                     ]
                 },
@@ -63,8 +63,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.2.0.tar.gz",
-                            "sha256": "3f8fd1dbdb057ee5ba584a539d5cd1b3952141c0338557cb0bdf8cb9cfed5dbf"
+                            "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.4.0.tar.gz",
+                            "sha256": "b2e5d547c1d94762a6d03a7e05cea46092aab68636460ff8648f1295e2cdfbd7"
                         }
                     ]
                 },
@@ -98,8 +98,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "http://apache.mirrors.ionfish.org/subversion/subversion-1.10.4.tar.bz2",
-                            "sha512": "c44a4a4a9533cd4f4cb6ddbc3ce98585a96da6c8e75497d087034b52f899797bb0972dfc0e79db99e81149e59e7fa765398c6ad35eba64f11f4ae9c3b3537434"
+                            "url": "https://www.apache.org/dist/subversion/subversion-1.13.0.tar.bz2",
+                            "sha512": "36f390b412bf772bf894efc2aadc247f12ca30ac407e04f664c14411c3519e1bb242d1239f2f44cbcb86eafc7c413efc8eadbfe1d1e75118235a7b7adc6c85b2"
                         }
                     ]
                 }
@@ -116,27 +116,6 @@
                     "type": "archive",
                     "url": "https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz",
                     "sha256": "0d451227b705a0dd21d8408353fe7e44d3a5069e6c4c26e5f146f1314b8fdab3"
-                }
-            ]
-        },
-        /* Diffstat and wget are needed by yocto, so we can rebuild the freedesktop sdk base */
-        {
-            "name": "diffstat",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://invisible-island.net/datafiles/release/diffstat.tar.gz",
-                    "sha256": "7f09183644ed77a156b15346bbad4e89c93543e140add9dab18747e30522591f"
-                }
-            ]
-        },
-        {
-            "name": "wget",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ftp.gnu.org/gnu/wget/wget-1.20.1.tar.gz",
-                    "sha256": "b783b390cb571c837b392857945f5a1f00ec6b043177cc42abb8ee1b542ee1b3"
                 }
             ]
         },
@@ -185,8 +164,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2019.1/libostree-2019.1.tar.xz",
-                    "sha256" : "15f734e7c65875f62c967b9937894704354a11927e92a91cb5ad8041bbb6c723"
+                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2019.6/libostree-2019.6.tar.xz",
+                    "sha256" : "5482b8fc179c6d2861acb176a1c379e4d02f709bffa92e63f5360f65e57219ae"
                 }
             ]
         },
@@ -201,7 +180,6 @@
             ],
             "cleanup" : [
                 "/etc/profile.d",
-                "/libexec",
                 "/lib/systemd",
                 "/share/dbus-1/interfaces/org.freedesktop.*",
                 "/share/dbus-1/services/org.freedesktop.*",
@@ -214,8 +192,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.2.4/flatpak-1.2.4.tar.xz",
-                    "sha256" : "1b6539d94d31e571661a2545cfcece7ec9267b4e2552e3cc0f617f4790f6c3e1"
+                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.6.1/flatpak-1.6.1.tar.xz",
+                    "sha256" : "fc38a3a24d249c07c2a45c58fab95d8e5b060bc1b8204da00d5843adba807ff4"
                 }
             ]
         },
@@ -224,8 +202,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.6/flatpak-builder-1.0.6.tar.xz",
-                    "sha256" : "3b572ad7b7cce9ca6a8632ca69a49a47b20e99066fe064b7b56e7896dca789bb"
+                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.9/flatpak-builder-1.0.9.tar.xz",
+                    "sha256" : "d6ef390a1cd927db1cfb12b6d2e340227a69de3fd64308316a3e6a89c1390d03"
                 }
             ]
         },
