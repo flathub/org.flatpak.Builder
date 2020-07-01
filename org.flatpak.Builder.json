@@ -99,8 +99,8 @@
                     "sources" : [
                         {
                             "type": "archive",
-                            "url": "https://www.apache.org/dist/subversion/subversion-1.13.0.tar.bz2",
-                            "sha512": "36f390b412bf772bf894efc2aadc247f12ca30ac407e04f664c14411c3519e1bb242d1239f2f44cbcb86eafc7c413efc8eadbfe1d1e75118235a7b7adc6c85b2"
+                            "url": "https://www.apache.org/dist/subversion/subversion-1.14.0.tar.bz2",
+                            "sha512": "af6b706fdc91f7ab292fce9d9de582da306fd11e92767dc852687e71a6a8b65bb867fa70d5afd7f76a46005acb1b3c2d3193e690def48cd26875b3a7851cd13b"
                         }
                     ]
                 }
@@ -165,8 +165,23 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2019.6/libostree-2019.6.tar.xz",
-                    "sha256" : "5482b8fc179c6d2861acb176a1c379e4d02f709bffa92e63f5360f65e57219ae"
+                    "url" : "https://github.com/ostreedev/ostree/releases/download/v2020.3/libostree-2020.3.tar.xz",
+                    "sha256" : "5877396ea092f5b6701c17bd20280746cad20f55a94c760dbeba0fa115818c05"
+                }
+            ]
+        },
+        {
+            "name": "python3-pyparsing",
+            "cleanup": [ "*" ],
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app pyparsing-2.4.7-py2.py3-none-any.whl"
+            ],
+            "sources" : [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl",
+                    "sha256": "ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
                 }
             ]
         },
@@ -193,8 +208,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.6.1/flatpak-1.6.1.tar.xz",
-                    "sha256" : "fc38a3a24d249c07c2a45c58fab95d8e5b060bc1b8204da00d5843adba807ff4"
+                    "url" : "https://github.com/flatpak/flatpak/releases/download/1.8.0/flatpak-1.8.0.tar.xz",
+                    "sha256" : "4364bce42994f2e8e8a44dfa068bafa1a77f542b8138fb04cbc064937e3a9d34"
                 }
             ]
         },
@@ -203,8 +218,8 @@
             "sources" : [
                 {
                     "type" : "archive",
-                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.9/flatpak-builder-1.0.9.tar.xz",
-                    "sha256" : "d6ef390a1cd927db1cfb12b6d2e340227a69de3fd64308316a3e6a89c1390d03"
+                    "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.10/flatpak-builder-1.0.10.tar.xz",
+                    "sha256" : "8918e2149bdcbed4487862003ba1f7b40f2e9dbb1255fc64687e8c16280bc6ba"
                 }
             ],
             "modules" : [
