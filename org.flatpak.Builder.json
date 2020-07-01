@@ -187,7 +187,8 @@
             ],
             "post-install" : [
                 "cp /usr/bin/update-mime-database /app/bin",
-                "cp /usr/bin/update-desktop-database /app/bin"
+                "cp /usr/bin/update-desktop-database /app/bin",
+                "cp /usr/libexec/flatpak-validate-icon /app/libexec"
             ],
             "sources" : [
                 {
