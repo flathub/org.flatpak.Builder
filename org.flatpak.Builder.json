@@ -206,6 +206,18 @@
                     "url" : "https://github.com/flatpak/flatpak-builder/releases/download/1.0.9/flatpak-builder-1.0.9.tar.xz",
                     "sha256" : "d6ef390a1cd927db1cfb12b6d2e340227a69de3fd64308316a3e6a89c1390d03"
                 }
+            ],
+            "modules" : [
+                {
+                    "name" : "libyaml",
+                    "sources" : [
+                        {
+                            "type" : "archive",
+                            "url" : "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
+                            "sha256" : "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
+                        }
+                    ]
+                }
             ]
         },
         {
