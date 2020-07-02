@@ -105,16 +105,6 @@ modules:
       - type: archive
         url: https://github.com/ostreedev/ostree/releases/download/v2020.3/libostree-2020.3.tar.xz
         sha256: 5877396ea092f5b6701c17bd20280746cad20f55a94c760dbeba0fa115818c05
-  - name: python3-pyparsing
-    cleanup:
-      - '*'
-    buildsystem: simple
-    build-commands:
-      - pip3 install --prefix=/app pyparsing-2.4.7-py2.py3-none-any.whl
-    sources:
-      - type: file
-        url: https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl
-        sha256: ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b
   - name: flatpak
     config-opts:
       - '--disable-documentation'
@@ -135,6 +125,17 @@ modules:
       - type: archive
         url: https://github.com/flatpak/flatpak/releases/download/1.8.0/flatpak-1.8.0.tar.xz
         sha256: 4364bce42994f2e8e8a44dfa068bafa1a77f542b8138fb04cbc064937e3a9d34
+    modules:
+      - name: python3-pyparsing
+        cleanup:
+          - '*'
+        buildsystem: simple
+        build-commands:
+          - pip3 install --prefix=/app pyparsing-2.4.7-py2.py3-none-any.whl
+        sources:
+          - type: file
+            url: https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl
+            sha256: ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b
   - name: flatpak-builder
     sources:
       - type: archive
