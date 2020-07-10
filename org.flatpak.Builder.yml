@@ -5,7 +5,7 @@ sdk: org.freedesktop.Sdk
 command: flatpak-builder-wrapper
 separate-locales: false
 finish-args:
-  - '--require-version=0.99.1'
+  - '--require-version=1.0.0'
   - '--allow=devel'
   - '--talk-name=org.freedesktop.Flatpak'
   - '--share=ipc'
