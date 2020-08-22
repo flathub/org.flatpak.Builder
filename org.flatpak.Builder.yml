@@ -22,7 +22,6 @@ cleanup:
   - '*.la'
   - '*.a'
 modules:
-  - shared-modules/python2.7/python-2.7.json
   - name: svn
     modules:
       - name: apr
@@ -49,13 +48,13 @@ modules:
       - name: serf
         buildsystem: simple
         build-commands:
-          - tar -xf scons-local-2.3.0.tar.gz
-          - python2 scons.py APR=/app/bin/apr-1-config APU=/app/bin/apu-1-config PREFIX=/app
-          - python2 scons.py install
+          - tar -xf scons-local-3.1.2.tar.gz
+          - python3 scons.py APR=/app/bin/apr-1-config APU=/app/bin/apu-1-config PREFIX=/app
+          - python3 scons.py install
         sources:
           - type: file
-            url: http://prdownloads.sourceforge.net/scons/scons-local-2.3.0.tar.gz
-            sha256: 24c83b6067ce2b994a08d613add791633982e6198151ec8508829ae26293bff0
+            url: http://prdownloads.sourceforge.net/scons/scons-local-3.1.2.tar.gz
+            sha256: 642e90860b746fa18fac08c7a22de6bfa86110ae7c56d7f136f7e5fb0d8f4f44
           - type: archive
             url: https://www.apache.org/dist/serf/serf-1.3.9.tar.bz2
             sha256: 549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc
