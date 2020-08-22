@@ -68,14 +68,7 @@ modules:
           - type: archive
             url: https://www.apache.org/dist/subversion/subversion-1.14.0.tar.bz2
             sha512: af6b706fdc91f7ab292fce9d9de582da306fd11e92767dc852687e71a6a8b65bb867fa70d5afd7f76a46005acb1b3c2d3193e690def48cd26875b3a7851cd13b
-  - name: bzr
-    buildsystem: simple
-    build-commands:
-      - python setup.py install --prefix=/app
-    sources:
-      - type: archive
-        url: https://launchpad.net/bzr/2.7/2.7.0/+download/bzr-2.7.0.tar.gz
-        sha256: 0d451227b705a0dd21d8408353fe7e44d3a5069e6c4c26e5f146f1314b8fdab3
+  - "breezy.json"
   - name: libfuse
     config-opts:
       - UDEV_RULES_PATH=/app/etc/udev/rules.d
