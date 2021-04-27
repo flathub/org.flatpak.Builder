@@ -119,6 +119,11 @@ modules:
       - type: archive
         url: https://github.com/flatpak/flatpak/releases/download/1.8.0/flatpak-1.8.0.tar.xz
         sha256: 4364bce42994f2e8e8a44dfa068bafa1a77f542b8138fb04cbc064937e3a9d34
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/flatpak/flatpak/releases?per_page=1
+          version-query: "first | .tag_name"
+          url-query: 'first | .assets | first | .browser_download_url'
     modules:
       - name: python3-pyparsing
         cleanup:
