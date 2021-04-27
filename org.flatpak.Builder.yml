@@ -5,18 +5,18 @@ sdk: org.freedesktop.Sdk
 command: flatpak-builder-wrapper
 separate-locales: false
 finish-args:
-  - '--require-version=1.0.0'
-  - '--allow=devel'
-  - '--talk-name=org.freedesktop.Flatpak'
-  - '--share=ipc'
-  - '--filesystem=host'
-  - '--share=network'
-  - '--filesystem=~/.local/share/flatpak'
-  - '--filesystem=/var/lib/flatpak'
+  - --require-version=1.0.0
+  - --allow=devel
+  - --talk-name=org.freedesktop.Flatpak
+  - --share=ipc
+  - --filesystem=host
+  - --share=network
+  - --filesystem=~/.local/share/flatpak
+  - --filesystem=/var/lib/flatpak
 build-options:
   env:
-    BASH_COMPLETIONSDIR: '/app/share/bash-completion/completions'
-    MOUNT_FUSE_PATH: '../tmp/'
+    BASH_COMPLETIONSDIR: /app/share/bash-completion/completions
+    MOUNT_FUSE_PATH: ../tmp/
     V: '1'
 cleanup:
   - '*.la'
@@ -31,7 +31,7 @@ modules:
             sha256: e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea
       - name: apr-util
         config-opts:
-          - '--with-apr=/app'
+          - --with-apr=/app
         sources:
           - type: archive
             url: http://apache.mirrors.spacedump.net//apr/apr-util-1.6.1.tar.bz2
@@ -62,13 +62,14 @@ modules:
             path: patches/scons-python3.patch
       - name: subversion
         config-opts:
-          - '--with-lz4=internal'
-          - '--with-serf'
+          - --with-lz4=internal
+          - --with-serf
         sources:
           - type: archive
             url: https://www.apache.org/dist/subversion/subversion-1.14.0.tar.bz2
             sha512: af6b706fdc91f7ab292fce9d9de582da306fd11e92767dc852687e71a6a8b65bb867fa70d5afd7f76a46005acb1b3c2d3193e690def48cd26875b3a7851cd13b
-  - "breezy.json"
+            sha256: 6ba8e218f9f97a83a799e58a3c6da1221d034b18d9d8cbbcb6ec52ab11722102
+  - breezy.json
   - name: libfuse
     config-opts:
       - UDEV_RULES_PATH=/app/etc/udev/rules.d
@@ -87,43 +88,43 @@ modules:
         path: fusermount-wrapper.sh
   - name: ostree
     config-opts:
-      - '--disable-man'
-      - '--with-systemdsystemgeneratordir=/app/lib/systemd/system-generators'
-      - '--without-systemdsystemunitdir'
+      - --disable-man
+      - --with-systemdsystemgeneratordir=/app/lib/systemd/system-generators
+      - --without-systemdsystemunitdir
     cleanup:
-      - '/etc/grub.d'
-      - '/etc/ostree'
-      - '/share/ostree'
-      - '/libexec'
+      - /etc/grub.d
+      - /etc/ostree
+      - /share/ostree
+      - /libexec
     sources:
       - type: archive
         url: https://github.com/ostreedev/ostree/releases/download/v2020.3/libostree-2020.3.tar.xz
         sha256: 5877396ea092f5b6701c17bd20280746cad20f55a94c760dbeba0fa115818c05
   - name: flatpak
     config-opts:
-      - '--disable-documentation'
-      - '--disable-seccomp'
-      - '--disable-sandboxed-triggers'
-      - '--disable-system-helper'
-      - '--with-system-install-dir=/var/lib/flatpak'
+      - --disable-documentation
+      - --disable-seccomp
+      - --disable-sandboxed-triggers
+      - --disable-system-helper
+      - --with-system-install-dir=/var/lib/flatpak
     cleanup:
-      - '/etc/profile.d'
-      - '/lib/systemd'
-      - '/share/dbus-1/interfaces/org.freedesktop.*'
-      - '/share/dbus-1/services/org.freedesktop.*'
-      - '/share/gdm'
+      - /etc/profile.d
+      - /lib/systemd
+      - /share/dbus-1/interfaces/org.freedesktop.*
+      - /share/dbus-1/services/org.freedesktop.*
+      - /share/gdm
     post-install:
       - cp /usr/bin/update-mime-database /app/bin
       - cp /usr/bin/update-desktop-database /app/bin
     sources:
       - type: archive
-        url: https://github.com/flatpak/flatpak/releases/download/1.8.0/flatpak-1.8.0.tar.xz
-        sha256: 4364bce42994f2e8e8a44dfa068bafa1a77f542b8138fb04cbc064937e3a9d34
+        url: https://github.com/flatpak/flatpak/releases/download/1.11.1/flatpak-1.11.1.tar.xz
+        sha256: a21ce530496a394227719dfbe4340c64b6ccc09e193c9a63d2856c83bbccbce5
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/flatpak/releases?per_page=1
-          version-query: "first | .tag_name"
-          url-query: 'first | .assets | first | .browser_download_url'
+          version-query: first | .tag_name
+          url-query: first | .assets | first | .browser_download_url
     modules:
       - name: python3-pyparsing
         cleanup:
