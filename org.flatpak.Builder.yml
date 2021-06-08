@@ -143,8 +143,8 @@ modules:
   - name: flatpak-builder
     sources:
       - type: archive
-        url: https://github.com/flatpak/flatpak-builder/releases/download/1.0.12/flatpak-builder-1.0.12.tar.xz
-        sha256: 4780c1b8e0838ffb64e9639bd7801417964fd818c7c6d5e9afca4d5511ded2c8
+        url: https://github.com/flatpak/flatpak-builder/releases/download/1.0.13/flatpak-builder-1.0.13.tar.xz
+        sha256: a4a51a6e8d5cedcf43067ab491d7b9437f5ee05b8df3e103be6e426c91993891
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/flatpak-builder/releases/latest
