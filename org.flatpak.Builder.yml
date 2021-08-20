@@ -145,15 +145,17 @@ modules:
             url: https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl
             sha256: ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b
   - name: flatpak-builder
+    config-opts:
+      - --with-system-debugedit
     sources:
       - type: archive
-        url: https://github.com/flatpak/flatpak-builder/releases/download/1.0.14/flatpak-builder-1.0.14.tar.xz
-        sha256: 69b65af4f63804127518c545184f9dfc9a9358cdedaabef2b1e50623ae2b8d8b
+        url: https://github.com/flatpak/flatpak-builder/releases/download/1.1.1/flatpak-builder-1.1.1.tar.xz
+        sha256: 13c5ccc8765f4724ad286a8eff8aad191a417b73a03eab7c3ae53a2e9eb22140
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/flatpak/flatpak-builder/releases/latest
-          version-query: .tag_name
-          url-query: .assets | first | .browser_download_url
+          url: https://api.github.com/repos/flatpak/flatpak-builder/releases?per_page=1
+          version-query: first | .tag_name
+          url-query: first | .assets | first | .browser_download_url
     modules:
       - name: libyaml
         sources:
