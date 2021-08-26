@@ -133,6 +133,8 @@ modules:
           url: https://api.github.com/repos/flatpak/flatpak/releases?per_page=1
           version-query: first | .tag_name
           url-query: first | .assets | first | .browser_download_url
+      - type: patch
+        path: dynamic-flatpak-path.patch
     modules:
       - name: python3-pyparsing
         cleanup:
@@ -171,5 +173,8 @@ modules:
       - type: script
         dest-filename: flatpak-builder-wrapper.sh
         commands:
-          - export FLATPAK_USER_DIR=$HOME/.local/share/flatpak
-          - exec flatpak-builder "$@"
+          - |
+            FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)
+            export FLATPAK_BINARY
+            export FLATPAK_USER_DIR=$HOME/.local/share/flatpak
+            exec flatpak-builder "$@"
