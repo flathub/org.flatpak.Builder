@@ -126,8 +126,8 @@ modules:
       - cp /usr/bin/update-desktop-database /app/bin
     sources:
       - type: archive
-        url: https://github.com/flatpak/flatpak/releases/download/1.11.3/flatpak-1.11.3.tar.xz
-        sha256: 1284ead93b42acaec511a1649cd64d0df3da851bab2e65cf004bc90828d16b6c
+        url: https://github.com/flatpak/flatpak/releases/download/1.10.3/flatpak-1.10.3.tar.xz
+        sha256: 12723ad250997b5a28bef92ae632b097f50b0819feeb25ef8887fe8ec9b63b46
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/flatpak/releases?per_page=1
