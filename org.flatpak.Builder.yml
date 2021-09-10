@@ -130,9 +130,9 @@ modules:
         sha256: 1284ead93b42acaec511a1649cd64d0df3da851bab2e65cf004bc90828d16b6c
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/flatpak/flatpak/releases?per_page=1
-          version-query: first | .tag_name
-          url-query: first | .assets | first | .browser_download_url
+          url: https://api.github.com/repos/flatpak/flatpak/releases
+          version-query: sort_by(.tag_name | sub("^v"; "") | split(".") | map(tonumber)) | last | .tag_name
+          url-query: '"https://github.com/flatpak/flatpak/releases/download/\($version)/flatpak-\($version).tar.xz"'
       - type: patch
         path: dynamic-flatpak-path.patch
     modules:
