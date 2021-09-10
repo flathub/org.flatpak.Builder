@@ -101,8 +101,8 @@ modules:
       - /libexec
     sources:
       - type: archive
-        url: https://github.com/ostreedev/ostree/releases/download/v2021.3/libostree-2021.3.tar.xz
-        sha256: 0fa5a39f0c3e58c2040133e4229cb28660c61b978cd4a2a3d2f6e97ef4c8d0b3
+        url: https://github.com/ostreedev/ostree/releases/download/v2021.4/libostree-2021.4.tar.xz
+        sha256: db5ce01a1606af3466ec77236700f53a63ce20e4984a549d0eaba3f66a3d9361
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ostreedev/ostree/releases/latest
@@ -131,7 +131,8 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/flatpak/releases
-          version-query: sort_by(.tag_name | sub("^v"; "") | split(".") | map(tonumber)) | last | .tag_name
+          version-query: sort_by(.tag_name | sub("^v"; "") | split(".") | map(tonumber))
+            | last | .tag_name
           url-query: '"https://github.com/flatpak/flatpak/releases/download/\($version)/flatpak-\($version).tar.xz"'
       - type: patch
         path: dynamic-flatpak-path.patch
