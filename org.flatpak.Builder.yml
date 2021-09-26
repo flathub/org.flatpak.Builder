@@ -132,7 +132,8 @@ modules:
           type: json
           url: https://api.github.com/repos/flatpak/flatpak/releases
           version-query: >-
-            sort_by(.tag_name | sub("^v"; "") | split(".") | map(tonumber)) | last | .tag_name
+            sort_by(.tag_name | sub("^v"; "") | split(".") | map(tonumber)) | last
+            | .tag_name
           url-query: '"https://github.com/flatpak/flatpak/releases/download/\($version)/flatpak-\($version).tar.xz"'
       - type: patch
         path: dynamic-flatpak-path.patch
@@ -152,8 +153,8 @@ modules:
       - --with-system-debugedit
     sources:
       - type: archive
-        url: https://github.com/flatpak/flatpak-builder/releases/download/1.1.1/flatpak-builder-1.1.1.tar.xz
-        sha256: 13c5ccc8765f4724ad286a8eff8aad191a417b73a03eab7c3ae53a2e9eb22140
+        url: https://github.com/flatpak/flatpak-builder/releases/download/1.1.2/flatpak-builder-1.1.2.tar.xz
+        sha256: f5d8e954daba2a406341cfcfb32a28ddaa503b2cd936dc7b1871187221f7510d
         x-checker-data:
           type: json
           url: https://api.github.com/repos/flatpak/flatpak-builder/releases?per_page=1
