@@ -135,8 +135,6 @@ modules:
             sort_by(.tag_name | sub("^v"; "") | split(".") | map(tonumber)) | last
             | .tag_name
           url-query: '"https://github.com/flatpak/flatpak/releases/download/\($version)/flatpak-\($version).tar.xz"'
-      - type: patch
-        path: dynamic-flatpak-path.patch
     modules:
       - name: python3-pyparsing
         cleanup:
