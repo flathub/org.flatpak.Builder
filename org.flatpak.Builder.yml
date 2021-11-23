@@ -101,8 +101,8 @@ modules:
       - /libexec
     sources:
       - type: archive
-        url: https://github.com/ostreedev/ostree/releases/download/v2021.5/libostree-2021.5.tar.xz
-        sha256: b45a32ded72c9fb6d2ab508adeae0306e4e2bb348db152f3d1b3708375829e1f
+        url: https://github.com/ostreedev/ostree/releases/download/v2021.6/libostree-2021.6.tar.xz
+        sha256: e80631cb1363d4734fe9d0c91f69a68be3848166d6e0481db19ce44a9cb4f531
         x-checker-data:
           type: json
           url: https://api.github.com/repos/ostreedev/ostree/releases/latest
