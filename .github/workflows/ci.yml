@@ -13,9 +13,9 @@ jobs:
 
     - name: Install latest flatpak and flatpak-builder
       run: |
-        add-apt-repository ppa:flatpak/stable
-        apt-get update
-        apt-get install -y flatpak flatpak-builder
+        sudo add-apt-repository ppa:flatpak/stable
+        sudo apt-get update
+        sudo apt-get install -y flatpak flatpak-builder
 
     - name: Set up flathub remote
       run: |
