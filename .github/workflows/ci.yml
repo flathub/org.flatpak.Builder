@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  pull_request_target:
+    types: [synchronize, opened, reopened]
+  push:
+
+jobs:
+  smoketests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/cache@v2
+      with:
+        path: .flatpak-builder
+        key: ${{ runner.os }}-flatpak-builder
+
+    - name: Install latest flatpak and flatpak-builder
+      run: |
+        sudo add-apt-repository ppa:flatpak/stable
+        sudo apt-get update
+        sudo apt-get install -y flatpak flatpak-builder
+
+    - name: Set up flathub remote
+      run: |
+        flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+    - name: Build org.flatpak.Builder
+      run: |
+        flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
+          --install-deps-from=flathub --default-branch=localtest --ccache \
+          --install builddir org.flatpak.Builder.yml
+
+    - name: Check if org.flatpak.Builder launches
+      run: |
+        flatpak run org.flatpak.Builder//localtest --version
+
+    - name: Build org.freedesktop.appstream-glib with org.flatpak.Builder
+      run: |
+        git clone --depth=1 --branch master --single-branch https://github.com/flathub/org.freedesktop.appstream-glib
+        cd org.freedesktop.appstream-glib
+        dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
+          --force-clean --install-deps-from=flathub --default-branch=localtest \
+          --state-dir=../.flatpak-builder --ccache \
+          --install builddir org.freedesktop.appstream-glib.json
+
+    - name: Check if org.freedesktop.appstream-glib launches
+      run: |
+        flatpak run org.freedesktop.appstream-glib//localtest vercmp 2 1
