@@ -47,4 +47,4 @@ jobs:
 
     - name: Check if org.freedesktop.appstream-glib launches
       run: |
-        flatpak run org.freedesktop.appstream-glib//localtest --version
+        flatpak run org.freedesktop.appstream-glib//localtest vercmp 2 1
