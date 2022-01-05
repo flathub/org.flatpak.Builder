@@ -30,7 +30,7 @@ jobs:
       run: |
         flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
           --install-deps-from=flathub --default-branch=localtest --ccache \
-          --install builddir org.flatpak.Builder.yml
+          --install builddir org.flatpak.Builder.json
 
     - name: Check if org.flatpak.Builder launches
       run: |
