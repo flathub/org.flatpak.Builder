@@ -42,7 +42,7 @@ jobs:
         cd org.freedesktop.appstream-glib
         dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
           --force-clean --install-deps-from=flathub --default-branch=localtest \
-          --state-dir=../.flatpak-builder --ccache \
+          --state-dir=../.flatpak-builder --ccache --disable-cache \
           --install builddir org.freedesktop.appstream-glib.json
 
     - name: Check if org.freedesktop.appstream-glib launches
