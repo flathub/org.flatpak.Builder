@@ -184,8 +184,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.1/libostree-2022.1.tar.xz",
-                    "sha256": "43a00e7856842b8a34f6616fc2ce1ce238ef43210cca41f70e6b4b0d2a9fcad5",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2021.6/libostree-2021.6.tar.xz",
+                    "sha256": "e80631cb1363d4734fe9d0c91f69a68be3848166d6e0481db19ce44a9cb4f531",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
