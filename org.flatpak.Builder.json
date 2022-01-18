@@ -218,8 +218,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.12.3/flatpak-1.12.3.tar.xz",
-                    "sha256": "d715f23347d7eb859301c8f0c778a899bb7c9e26dac6ae2a2a4b9fc21cf77b69",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.12.4/flatpak-1.12.4.tar.xz",
+                    "sha256": "792e6265f7f6d71b2a087028472a048287bed2587e43d2eec2c31d360c16211c",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases",
@@ -256,8 +256,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak-builder/releases/download/1.2.1/flatpak-builder-1.2.1.tar.xz",
-                    "sha256": "f4bc0c7dbff4b536545c17bd36e71b5e93c75f48d6bd95f662f22f90a2d2920b",
+                    "url": "https://github.com/flatpak/flatpak-builder/releases/download/1.2.2/flatpak-builder-1.2.2.tar.xz",
+                    "sha256": "89fda68e537c1e9de02352690bd89c3217a729164558d35f35b08f79ad84e03e",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak-builder/releases?per_page=1",
