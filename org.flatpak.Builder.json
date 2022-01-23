@@ -3,6 +3,9 @@
     "runtime": "org.freedesktop.Sdk",
     "runtime-version": "21.08",
     "sdk": "org.freedesktop.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.golang"
+    ],
     "command": "flatpak-builder-wrapper",
     "separate-locales": false,
     "finish-args": [
@@ -16,6 +19,7 @@
         "--filesystem=/var/lib/flatpak"
     ],
     "build-options": {
+        "append-path": "/usr/lib/sdk/golang/bin",
         "env": {
             "BASH_COMPLETIONSDIR": "/app/share/bash-completion/completions",
             "MOUNT_FUSE_PATH": "../tmp/",
@@ -115,6 +119,33 @@
             ]
         },
         "breezy.json",
+        {
+            "name": "git-lfs",
+            "build-options": {
+                "env": {
+                    "GO111MODULE": "on",
+                    "GOFLAGS": "-mod=vendor"
+                }
+            },
+            "buildsystem": "simple",
+            "build-commands": [
+                "go build -v -o ./bin/git-lfs ./git-lfs.go",
+                "install -Dm755 -t ${FLATPAK_DEST}/bin/ ./bin/git-lfs"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.0.2/git-lfs-v3.0.2.tar.gz",
+                    "sha256": "7179a357a0d0e7beaba217489f7f784ca8717035a5e3f1ee91ca7193ba3a35f3",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/git-lfs/git-lfs/releases/latest",
+                        "version-query": ".tag_name | sub(\"^[vV]\";\"\")",
+                        "url-query": ".assets[] | select(.label==\"Source\") | .browser_download_url"
+                    }
+                }
+            ]
+        },
         {
             "name": "p7zip",
             "no-autogen": true,
