@@ -48,3 +48,12 @@ jobs:
     - name: Check if org.freedesktop.appstream-glib launches
       run: |
         flatpak run org.freedesktop.appstream-glib//localtest vercmp 2 1
+
+    - name: Build com.jetbrains.GoLand with org.flatpak.Builder
+      run: |
+        git clone --depth=1 --branch master --single-branch https://github.com/flathub/com.jetbrains.GoLand
+        cd com.jetbrains.GoLand
+        dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
+          --force-clean --install-deps-from=flathub --default-branch=localtest \
+          --state-dir=../.flatpak-builder --ccache --disable-cache --mirror-screenshots-url=https://domain.tld \
+          --install builddir com.jetbrains.GoLand.json
