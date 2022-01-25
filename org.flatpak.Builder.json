@@ -6,7 +6,8 @@
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.golang"
     ],
-    "base": "org.freedesktop.appstream-glib//stable",
+    "base": "org.freedesktop.appstream-glib",
+    "base-version": "stable",
     "command": "flatpak-builder-wrapper",
     "separate-locales": false,
     "finish-args": [
