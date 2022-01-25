@@ -1,0 +1,42 @@
+From 8e26769c4b6a266a704c6c9c16f79dced0540ebc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
+Date: Tue, 25 Jan 2022 15:02:48 +0100
+Subject: [PATCH] Execute appstream-util on the host
+
+This should fix problems caused by the combination of flatpaked
+flatpak-builder and applications with session-bus permissions.
+---
+ src/builder-main.c | 10 +---------
+ 1 file changed, 1 insertion(+), 9 deletions(-)
+
+diff --git a/src/builder-main.c b/src/builder-main.c
+index fb0c85ea..e874a66a 100644
+--- a/src/builder-main.c
++++ b/src/builder-main.c
+@@ -940,14 +940,6 @@ main (int    argc,
+       g_autofree char *fs_app_dir = g_strdup_printf ("--filesystem=%s", flatpak_file_get_path_cached (app_dir));
+       g_autofree char *fs_cache = g_strdup_printf ("--filesystem=%s", flatpak_file_get_path_cached (cache));
+       const char *argv[] = {
+-        "flatpak",
+-        "build",
+-        "--die-with-parent",
+-        "--nofilesystem=host:reset",
+-        fs_app_dir,
+-        fs_cache,
+-        "--share=network",
+-        flatpak_file_get_path_cached (app_dir),
+         "appstream-util",
+         "mirror-screenshots",
+         flatpak_file_get_path_cached (xml),
+@@ -978,7 +970,7 @@ main (int    argc,
+               g_printerr ("Error mirroring screenshots: %s\n", error->message);
+               return 1;
+             }
+-          if (!builder_maybe_host_spawnv (NULL,
++          if (!flatpak_spawnv (NULL,
+                                           NULL,
+                                           0,
+                                           &error,
+-- 
+2.34.1
+

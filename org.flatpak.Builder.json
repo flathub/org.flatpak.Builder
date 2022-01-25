@@ -6,6 +6,7 @@
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.golang"
     ],
+    "base": "org.freedesktop.appstream-glib//stable",
     "command": "flatpak-builder-wrapper",
     "separate-locales": false,
     "finish-args": [
@@ -295,6 +296,12 @@
                         "version-query": "first | .tag_name",
                         "url-query": "first | .assets | first | .browser_download_url"
                     }
+                },
+                {
+                    "type": "patch",
+                    "paths": [
+                        "0001-Execute-appstream-util-on-the-host.patch"
+                    ]
                 }
             ],
             "modules": [
