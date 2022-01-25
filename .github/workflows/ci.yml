@@ -56,4 +56,4 @@ jobs:
         dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
           --force-clean --install-deps-from=flathub --default-branch=localtest \
           --state-dir=../.flatpak-builder --ccache --disable-cache --mirror-screenshots-url=https://domain.tld \
-          --install builddir com.jetbrains.GoLand.json
+          --install builddir com.jetbrains.GoLand.yaml
