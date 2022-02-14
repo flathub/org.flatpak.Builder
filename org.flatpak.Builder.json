@@ -39,7 +39,7 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "http://ftp.wayne.edu/apache//apr/apr-1.7.0.tar.bz2",
+                            "url": "https://dlcdn.apache.org//apr/apr-1.7.0.tar.bz2",
                             "sha256": "e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea"
                         }
                     ]
@@ -52,7 +52,7 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "http://apache.mirrors.spacedump.net//apr/apr-util-1.6.1.tar.bz2",
+                            "url": "https://dlcdn.apache.org//apr/apr-util-1.6.1.tar.bz2",
                             "sha256": "d3e12f7b6ad12687572a3a39475545a072608f4ba03a6ce8a3778f607dd0035b"
                         }
                     ]
