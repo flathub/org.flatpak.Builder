@@ -135,8 +135,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.1.1/git-lfs-v3.1.1.tar.gz",
-                    "sha256": "668147fabf314d32b86ff1fe921155cd899621b24eed212bf4a3a80e440eb8db",
+                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.1.2/git-lfs-v3.1.2.tar.gz",
+                    "sha256": "5c9bc449068d0104ea124c25f596af16da85e7b5bf256bc544d8ce5f4fe231f2",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/git-lfs/git-lfs/releases/latest",
@@ -249,8 +249,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.12.5/flatpak-1.12.5.tar.xz",
-                    "sha256": "1cb4a0b0b0c1bdffe644011ee8d17e437b4917c21d4384ec111b3f328206166c",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.12.6/flatpak-1.12.6.tar.xz",
+                    "sha256": "ef02cb505b91cce5173099b5485768eef1899ebcf39edf827c4254163a811627",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases",
