@@ -317,6 +317,11 @@
                 {
                     "name": "appstream",
                     "buildsystem": "meson",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 10385,
+                        "url-template": "https://www.freedesktop.org/software/appstream/releases/AppStream-$version.tar.xz"
+                    },
                     "sources": [
                         {
                             "type": "archive",
