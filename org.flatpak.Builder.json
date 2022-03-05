@@ -276,6 +276,22 @@
                             "sha256": "ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
                         }
                     ]
+                },
+                {
+                    "name": "appstream",
+                    "buildsystem": "meson",
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://www.freedesktop.org/software/appstream/releases/AppStream-0.15.2.tar.xz",
+                            "sha256": "8f6c1cd288c7c59f5bf21746a6cfd1424cd9d7cbeb0b7920dbcdf9ef10e9c74a",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 10385,
+                                "url-template": "https://www.freedesktop.org/software/appstream/releases/AppStream-$version.tar.xz"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -311,22 +327,6 @@
                             "type": "archive",
                             "url": "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
                             "sha256": "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
-                        }
-                    ]
-                },
-                {
-                    "name": "appstream",
-                    "buildsystem": "meson",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 10385,
-                        "url-template": "https://www.freedesktop.org/software/appstream/releases/AppStream-$version.tar.xz"
-                    },
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://www.freedesktop.org/software/appstream/releases/AppStream-0.15.2.tar.xz",
-                            "sha256": "8f6c1cd288c7c59f5bf21746a6cfd1424cd9d7cbeb0b7920dbcdf9ef10e9c74a"
                         }
                     ]
                 }
