@@ -278,18 +278,66 @@
                     ]
                 },
                 {
-                    "name": "appstream",
-                    "buildsystem": "meson",
+                    "name": "libyaml",
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://www.freedesktop.org/software/appstream/releases/AppStream-0.15.2.tar.xz",
-                            "sha256": "8f6c1cd288c7c59f5bf21746a6cfd1424cd9d7cbeb0b7920dbcdf9ef10e9c74a",
+                            "url": "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
+                            "sha256": "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
+                        }
+                    ]
+                },
+                {
+                    "name": "appstream",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Dcompose=true"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.2.tar.gz",
+                            "sha256": "70c95545ac2cde87c9ba4a292648ed64ed1211fb24d792b5b9e84f870a83fe9d",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
-                                "url-template": "https://www.freedesktop.org/software/appstream/releases/AppStream-$version.tar.xz"
+                                "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
                             }
+                        }
+                    ],
+                    "modules": [
+                        {
+                            "name": "libxmlb",
+                            "buildsystem": "meson",
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "https://github.com/hughsie/libxmlb/archive/refs/tags/0.3.7.tar.gz",
+                                    "sha256": "fc00cdb2af69eb4a53bf6a48874c9004ee5373579eafa1dc4e53dace8b9d1251"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "stemmer",
+                            "buildsystem": "simple",
+                            "build-commands": [
+                                "make libstemmer.so -j$FLATPAK_BUILDER_N_JOBS",
+                                "install -Dm644 include/libstemmer.h /app/include/libstemmer.h",
+                                "install -Dm644 libstemmer.so.0.0.0 /app/lib/libstemmer.so.0.0.0",
+                                "ln -s libstemmer.so.0.0.0 /app/lib/libstemmer.so.0",
+                                "ln -s libstemmer.so.0 /app/lib/libstemmer.so"
+                            ],
+                            "sources": [
+                                {
+                                    "type": "git",
+                                    "url": "https://github.com/snowballstem/snowball",
+                                    "commit": "d29510ae32702a81cdc29177a133e894df854550"
+                                },
+                                {
+                                    "type": "patch",
+                                    "path": "stemmer-dynlib.patch"
+                                }
+                            ]
                         }
                     ]
                 }
@@ -316,18 +364,6 @@
                     "type": "patch",
                     "paths": [
                         "0001-Execute-appstream-util-on-the-host.patch"
-                    ]
-                }
-            ],
-            "modules": [
-                {
-                    "name": "libyaml",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
-                            "sha256": "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
-                        }
                     ]
                 }
             ]
