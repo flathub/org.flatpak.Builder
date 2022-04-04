@@ -363,7 +363,8 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "0001-Execute-appstream-util-on-the-host.patch"
+                        "0001-Execute-appstream-util-on-the-host.patch",
+                        "0002-Do-not-fetch-LFS-objects-for-submodules.patch"
                     ]
                 }
             ]
@@ -372,7 +373,6 @@
             "name": "wrapper",
             "buildsystem": "simple",
             "build-commands": [
-                "ls -l",
                 "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper"
             ],
             "sources": [

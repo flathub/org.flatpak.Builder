@@ -1,0 +1,38 @@
+From 9ddb286253f82cef12e726d1554f9f735d3e6367 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
+Date: Mon, 4 Apr 2022 13:38:18 +0200
+Subject: [PATCH] Do not fetch LFS objects for submodules
+
+---
+ src/builder-git.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/builder-git.c b/src/builder-git.c
+index 19a008f6..78b3236b 100644
+--- a/src/builder-git.c
++++ b/src/builder-git.c
+@@ -817,6 +817,14 @@ git_extract_submodule (const char     *repo_location,
+                     "submodule", "update", "--init", path, NULL))
+             return FALSE;
+ 
++          if (!git (checkout_dir, NULL, 0, error,
++                    "config", "filter.lfs.smudge", "git-lfs smudge --skip -- %f", NULL))
++            return FALSE;
++
++          if (!git (checkout_dir, NULL, 0, error,
++                    "config", "filter.lfs.process", "git-lfs filter-process --skip", NULL))
++            return FALSE;
++
+           child_dir = g_file_resolve_relative_path (checkout_dir, path);
+ 
+           if (!git_extract_submodule (absolute_url, child_dir, words[2], context, error))
+@@ -897,4 +905,4 @@ builder_git_get_default_branch (const char *repo_location)
+ 
+   g_debug ("Failed to auto-detect default branch from git output");
+   return g_strdup ("master");
+-}
+\ No newline at end of file
++}
+-- 
+2.35.1
+
