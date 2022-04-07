@@ -32,6 +32,94 @@
     ],
     "modules": [
         {
+            "name": "libyaml",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
+                    "sha256": "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
+                }
+            ]
+        },
+        {
+            "name": "stemmer",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make libstemmer.so -j$FLATPAK_BUILDER_N_JOBS",
+                "install -Dm644 include/libstemmer.h /app/include/libstemmer.h",
+                "install -Dm644 libstemmer.so.0.0.0 /app/lib/libstemmer.so.0.0.0",
+                "ln -s libstemmer.so.0.0.0 /app/lib/libstemmer.so.0",
+                "ln -s libstemmer.so.0 /app/lib/libstemmer.so"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/snowballstem/snowball",
+                    "commit": "d29510ae32702a81cdc29177a133e894df854550"
+                },
+                {
+                    "type": "patch",
+                    "path": "stemmer-dynlib.patch"
+                }
+            ]
+        },
+        {
+            "name": "popt",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.rpm.org/popt/releases/popt-1.x/popt-1.18.tar.gz",
+                    "sha256": "5159bc03a20b28ce363aa96765f37df99ea4d8850b1ece17d1e6ad5c24fdc5d1"
+                }
+            ]
+        },        {
+        "name": "rpm",
+        "config-opts": [
+            "--disable-bdb",
+            "--without-lua"
+        ],
+        "cleanup": [
+            "/bin/rpm*",
+            "/lib/rpm",
+            "/lib/librpm.so*",
+            "/lib/librpmbuild.so*",
+            "/lib/librpmsign.so*"
+        ],
+        "sources": [
+            {
+                "type": "archive",
+                "url": "http://ftp.rpm.org/releases/rpm-4.16.x/rpm-4.16.1.3.tar.bz2",
+                "sha256": "513dc7f972b6e7ccfc9fc7f9c01d5310cc56ee853892e4314fa2cad71478e21d"
+            }
+        ]
+        },
+        {
+            "name": "appstream-glib",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dgtk-doc=false",
+                "-Drpm=true"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/hughsie/appstream-glib",
+                    "commit": "2e23a7780ea9c01be337d9bf05c7fdfbcd7d6ecc"
+                },
+                {
+                    "type": "patch",
+                    "paths": [
+                        "appstream-glib-0001-Do-not-require-paragraph-length-unless-strict.patch",
+                        "appstream-glib-0002-Move-padding-and-size-checks-to-validate-strict.patch",
+                        "appstream-glib-0003-Allow-release-descriptions-without-paragraphs.patch",
+                        "appstream-glib-0004-Relax-validation-requirements-for-captions.patch",
+                        "appstream-glib-0005-Change-min.-paragraph-length-to-5-and-max.-number-of.patch",
+                        "appstream-glib-0006-Allow-hyperlinks-in-list-elements-and-paragraphs.patch"
+                    ]
+                }
+            ]
+        },
+        {
             "name": "svn",
             "modules": [
                 {
@@ -278,16 +366,6 @@
                     ]
                 },
                 {
-                    "name": "libyaml",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
-                            "sha256": "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
-                        }
-                    ]
-                },
-                {
                     "name": "appstream",
                     "buildsystem": "meson",
                     "config-opts": [
@@ -314,28 +392,6 @@
                                     "type": "archive",
                                     "url": "https://github.com/hughsie/libxmlb/archive/refs/tags/0.3.7.tar.gz",
                                     "sha256": "fc00cdb2af69eb4a53bf6a48874c9004ee5373579eafa1dc4e53dace8b9d1251"
-                                }
-                            ]
-                        },
-                        {
-                            "name": "stemmer",
-                            "buildsystem": "simple",
-                            "build-commands": [
-                                "make libstemmer.so -j$FLATPAK_BUILDER_N_JOBS",
-                                "install -Dm644 include/libstemmer.h /app/include/libstemmer.h",
-                                "install -Dm644 libstemmer.so.0.0.0 /app/lib/libstemmer.so.0.0.0",
-                                "ln -s libstemmer.so.0.0.0 /app/lib/libstemmer.so.0",
-                                "ln -s libstemmer.so.0 /app/lib/libstemmer.so"
-                            ],
-                            "sources": [
-                                {
-                                    "type": "git",
-                                    "url": "https://github.com/snowballstem/snowball",
-                                    "commit": "d29510ae32702a81cdc29177a133e894df854550"
-                                },
-                                {
-                                    "type": "patch",
-                                    "path": "stemmer-dynlib.patch"
                                 }
                             ]
                         }

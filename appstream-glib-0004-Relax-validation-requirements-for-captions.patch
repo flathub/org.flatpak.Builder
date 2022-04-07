@@ -1,0 +1,25 @@
+From c5b1918ef9ec9be67bd89bceec4681c24dd80575 Mon Sep 17 00:00:00 2001
+From: Unrud <unrud@outlook.com>
+Date: Tue, 21 May 2019 13:05:37 +0200
+Subject: [PATCH 4/8] Relax validation requirements for captions
+
+---
+ libappstream-glib/as-app-validate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
+index f373cc1..47b90d1 100644
+--- a/libappstream-glib/as-app-validate.c
++++ b/libappstream-glib/as-app-validate.c
+@@ -650,7 +650,7 @@ as_app_validate_screenshot (AsScreenshot *ss, AsAppValidateHelper *helper)
+ 	guint str_len;
+ 
+ 	/* relax the requirements a bit */
+-	if ((helper->flags & AS_APP_VALIDATE_FLAG_RELAX) > 0) {
++	if ((helper->flags & AS_APP_VALIDATE_FLAG_STRICT) == 0) {
+ 		length_caption_max = 100;
+ 		length_caption_min = 5;
+ 		require_sentence_case = FALSE;
+-- 
+2.23.0
+
