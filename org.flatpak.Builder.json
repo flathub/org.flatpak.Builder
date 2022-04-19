@@ -304,8 +304,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.2/libostree-2022.2.tar.xz",
-                    "sha256": "76e2f5b5784d8cb686e90be32fcecbb56c6c6a824e0374a1a6820b577103676b",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.1/libostree-2022.1.tar.xz",
+                    "sha256": "43a00e7856842b8a34f6616fc2ce1ce238ef43210cca41f70e6b4b0d2a9fcad5",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
@@ -375,8 +375,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.2.tar.gz",
-                            "sha256": "70c95545ac2cde87c9ba4a292648ed64ed1211fb24d792b5b9e84f870a83fe9d",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.3.tar.gz",
+                            "sha256": "349b4753c5e6d8118c8ea3883547b1fde11a8217ffd61248a181f18bdfc1670c",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
