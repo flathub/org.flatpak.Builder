@@ -310,6 +310,12 @@
                         "project-id": 10385,
                         "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
                     }
+                },
+                {
+                    "type": "patch",
+                    "paths": [
+                        "appstream-compose-sanitize-prefix.patch"
+                    ]
                 }
             ],
             "modules": [
