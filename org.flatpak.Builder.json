@@ -224,8 +224,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.1.4/git-lfs-v3.1.4.tar.gz",
-                    "sha256": "d7bfeb6f4c219c44773da4f93da28eb1e2e654efa4cd23294d9039247d8cde64",
+                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.2.0/git-lfs-v3.2.0.tar.gz",
+                    "sha256": "f8e6bbe043b97db8a5c16da7289e149a3fed9f4d4f11cffcc6e517c7870cd9e5",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/git-lfs/git-lfs/releases/latest",
@@ -304,8 +304,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.3/libostree-2022.3.tar.xz",
-                    "sha256": "b823fd9dcd5503c5caf9febde24b0ed63ff46ca95188032ac567a2a95624f612",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.4/libostree-2022.4.tar.xz",
+                    "sha256": "14bbd351a95066f68c3b283e0bd0ddd03562e862af66f6f6d894c6c328d7eb81",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
@@ -375,8 +375,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.2.tar.gz",
-                            "sha256": "70c95545ac2cde87c9ba4a292648ed64ed1211fb24d792b5b9e84f870a83fe9d",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.4.tar.gz",
+                            "sha256": "9325c707ea4b5db580fcfc75fb632047a63e3196a547793ab21cdddf79497efb",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
