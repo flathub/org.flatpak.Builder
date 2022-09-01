@@ -338,8 +338,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.13.3/flatpak-1.13.3.tar.xz",
-                    "sha256": "f696a4f6587f72a03c2770352f610938d073798a9e3fc6df6aff463509dbf804",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.0/flatpak-1.14.0.tar.xz",
+                    "sha256": "8e276973770ea24ddf2597ad4aecd36b98393e6bde91e48e1743aaca67f27815",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases",
@@ -375,8 +375,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.2.tar.gz",
-                            "sha256": "70c95545ac2cde87c9ba4a292648ed64ed1211fb24d792b5b9e84f870a83fe9d",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.5.tar.gz",
+                            "sha256": "829b8e62a4c857ff37948b089ee1524a86e9ae8cf963d2204cca0b204deb2060",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
