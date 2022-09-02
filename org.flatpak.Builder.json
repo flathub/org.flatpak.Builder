@@ -59,7 +59,7 @@
                 },
                 {
                     "type": "patch",
-                    "path": "stemmer-dynlib.patch"
+                    "path": "patches/stemmer-dynlib.patch"
                 }
             ]
         },
@@ -110,12 +110,12 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "appstream-glib-0001-Do-not-require-paragraph-length-unless-strict.patch",
-                        "appstream-glib-0002-Move-padding-and-size-checks-to-validate-strict.patch",
-                        "appstream-glib-0003-Allow-release-descriptions-without-paragraphs.patch",
-                        "appstream-glib-0004-Relax-validation-requirements-for-captions.patch",
-                        "appstream-glib-0005-Change-min.-paragraph-length-to-5-and-max.-number-of.patch",
-                        "appstream-glib-0006-Allow-hyperlinks-in-list-elements-and-paragraphs.patch"
+                        "patches/appstream-glib-0001-Do-not-require-paragraph-length-unless-strict.patch",
+                        "patches/appstream-glib-0002-Move-padding-and-size-checks-to-validate-strict.patch",
+                        "patches/appstream-glib-0003-Allow-release-descriptions-without-paragraphs.patch",
+                        "patches/appstream-glib-0004-Relax-validation-requirements-for-captions.patch",
+                        "patches/appstream-glib-0005-Change-min.-paragraph-length-to-5-and-max.-number-of.patch",
+                        "patches/appstream-glib-0006-Allow-hyperlinks-in-list-elements-and-paragraphs.patch"
                     ]
                 }
             ]
@@ -182,7 +182,9 @@
                         },
                         {
                             "type": "patch",
-                            "path": "patches/scons-python3.patch"
+                            "paths": [
+                                "patches/scons-python3.patch"
+                            ]
                         }
                     ]
                 },
@@ -276,11 +278,11 @@
                 },
                 {
                     "type": "patch",
-                    "path": "fuse-2.9.2-namespace-conflict-fix.patch"
+                    "path": "patches/fuse-2.9.2-namespace-conflict-fix.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "fuse-disable-sys-mount-under-flatpak.patch"
+                    "path": "patches/fuse-disable-sys-mount-under-flatpak.patch"
                 },
                 {
                     "type": "file",
@@ -421,7 +423,7 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "0001-Execute-appstream-util-on-the-host.patch"
+                        "patches/flatpak-builder-Execute-appstream-util-on-the-host.patch"
                     ]
                 }
             ]
