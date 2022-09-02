@@ -1,7 +1,7 @@
-From 159ea2aa74f5ec6044cae612feb78cf2909f926c Mon Sep 17 00:00:00 2001
+From b90dd38a65986f5c5b952cbc8791ef47f6bf1b6b Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
-Date: Fri, 11 Oct 2019 09:48:45 +0200
-Subject: [PATCH 5/8] Change min. paragraph length to 5 and max. number of
+Date: Fri, 2 Sep 2022 10:33:33 +0200
+Subject: [PATCH 5/6] Change min. paragraph length to 5 and max. number of
  paragraphs to 15
 
 ---
@@ -9,7 +9,7 @@ Subject: [PATCH 5/8] Change min. paragraph length to 5 and max. number of
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
-index 47b90d1..30caf6f 100644
+index 88ee7c1..4fe744d 100644
 --- a/libappstream-glib/as-app-validate.c
 +++ b/libappstream-glib/as-app-validate.c
 @@ -209,7 +209,7 @@ as_app_validate_description_para (const gchar *text, AsAppValidateHelper *helper
@@ -21,7 +21,7 @@ index 47b90d1..30caf6f 100644
  	guint str_len;
  
  	/* empty */
-@@ -848,7 +848,7 @@ as_app_validate_release (AsApp *app,
+@@ -858,7 +858,7 @@ as_app_validate_release (AsApp *app,
  {
  	const gchar *tmp;
  	guint64 timestamp;
@@ -29,7 +29,7 @@ index 47b90d1..30caf6f 100644
 +	guint number_para_max = 15;
  	guint number_para_min = 0;
  	gboolean required_timestamp = TRUE;
- 	const guint64 MAX_TZ_OFFSET = 14 * 60 * 60; /* UTC+14 is the biggest offset */
+ 	gboolean required_past_timestamp = TRUE;
 -- 
-2.23.0
+2.36.1
 
