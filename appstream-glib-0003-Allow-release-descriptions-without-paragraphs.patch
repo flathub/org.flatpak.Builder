@@ -1,17 +1,17 @@
-From d9c48400b0ae7ea9493f3d3899f39f9b197008a7 Mon Sep 17 00:00:00 2001
+From 1d667e16219160947d838f48a76531a5e85f4b08 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
-Date: Fri, 11 Oct 2019 09:47:19 +0200
-Subject: [PATCH 3/8] Allow release descriptions without paragraphs
+Date: Fri, 2 Sep 2022 10:31:40 +0200
+Subject: [PATCH 2/6] Allow release descriptions without paragraphs
 
 ---
- libappstream-glib/as-app-validate.c | 43 +++++++++++++++++------------
- 1 file changed, 25 insertions(+), 18 deletions(-)
+ libappstream-glib/as-app-validate.c | 54 +++++++++++++++++------------
+ 1 file changed, 31 insertions(+), 23 deletions(-)
 
 diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
-index b25a510..f373cc1 100644
+index 0fd4628..33258fc 100644
 --- a/libappstream-glib/as-app-validate.c
 +++ b/libappstream-glib/as-app-validate.c
-@@ -287,6 +287,7 @@ as_app_validate_description_para (const gchar *text, AsAppValidateHelper *helper
+@@ -287,30 +287,33 @@ as_app_validate_description_para (const gchar *text, AsAppValidateHelper *helper
  static void
  as_app_validate_description_list (const gchar *text,
  				  gboolean allow_short_para,
@@ -19,9 +19,16 @@ index b25a510..f373cc1 100644
  				  AsAppValidateHelper *helper)
  {
  	guint length_para_before_list = 20;
-@@ -296,21 +297,23 @@ as_app_validate_description_list (const gchar *text,
- 		length_para_before_list = 100;
- 	}
+ 
+-	/* relax the requirements a bit */
+-	if ((helper->flags & AS_APP_VALIDATE_FLAG_RELAX) > 0) {
+-		length_para_before_list = 100;
+-	}
++	if (!allow_no_para) {
++		/* relax the requirements a bit */
++		if ((helper->flags & AS_APP_VALIDATE_FLAG_RELAX) > 0) {
++			length_para_before_list = 100;
++		}
  
 -	/* ul without a leading para */
 -	if (helper->number_paragraphs < 1) {
@@ -38,7 +45,6 @@ index b25a510..f373cc1 100644
 -				     "Content before <ul> is too short [%u], at least %u characters required",
 -				     helper->para_chars_before_list,
 -				     length_para_before_list);
-+	if (!allow_no_para) {
 +		/* ul without a leading para */
 +		if (helper->number_paragraphs < 1) {
 +			ai_app_validate_add (helper,
@@ -74,16 +80,16 @@ index b25a510..f373cc1 100644
  							  helper);
  			for (l2 = l->children; l2 != NULL; l2 = l2->next) {
  				if (g_strcmp0 (as_node_get_name (l2), "li") == 0) {
-@@ -844,7 +849,7 @@ as_app_validate_release (AsApp *app,
+@@ -855,7 +860,7 @@ as_app_validate_release (AsApp *app,
  	const gchar *tmp;
  	guint64 timestamp;
  	guint number_para_max = 10;
 -	guint number_para_min = 1;
 +	guint number_para_min = 0;
  	gboolean required_timestamp = TRUE;
+ 	gboolean required_past_timestamp = TRUE;
  	const guint64 MAX_TZ_OFFSET = 14 * 60 * 60; /* UTC+14 is the biggest offset */
- 
-@@ -910,6 +915,7 @@ as_app_validate_release (AsApp *app,
+@@ -923,6 +928,7 @@ as_app_validate_release (AsApp *app,
  						  number_para_min,
  						  number_para_max,
  						  TRUE,
@@ -91,7 +97,7 @@ index b25a510..f373cc1 100644
  						  error))
  			return FALSE;
  	}
-@@ -1235,7 +1241,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
+@@ -1266,7 +1272,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
  	guint length_summary_max = 200;
  	guint length_summary_min = 8;
  	guint number_para_max = 10;
@@ -100,7 +106,7 @@ index b25a510..f373cc1 100644
  	guint str_len;
  	g_autoptr(GList) keys = NULL;
  	g_autoptr(AsAppValidateHelper) helper = g_new0 (AsAppValidateHelper, 1);
-@@ -1265,7 +1271,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
+@@ -1296,7 +1302,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
  		validate_license = FALSE;
  		require_url = FALSE;
  		number_para_max = 20;
@@ -109,7 +115,22 @@ index b25a510..f373cc1 100644
  		require_sentence_case = FALSE;
  		require_content_rating = FALSE;
  		switch (as_format_get_kind (format)) {
-@@ -1708,6 +1714,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
+@@ -1329,7 +1335,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
+ 	switch (as_format_get_kind (format)) {
+ 	case AS_FORMAT_KIND_METAINFO:
+ 	case AS_FORMAT_KIND_APPDATA:
+-		number_para_min = 1;
++		number_para_min = 0;
+ 		break;
+ 	default:
+ 		break;
+@@ -1748,11 +1754,13 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
+ 					     "<description> required");
+ 		}
+ 	} else {
++
+ 		ret = as_app_validate_description (description,
+ 						   helper,
  						   number_para_min,
  						   number_para_max,
  						   FALSE,
@@ -118,5 +139,5 @@ index b25a510..f373cc1 100644
  		if (!ret) {
  			ai_app_validate_add (helper,
 -- 
-2.23.0
+2.36.1
 

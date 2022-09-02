@@ -1,14 +1,14 @@
-From ca7f40687baf9b5de811c152977292072e436e3c Mon Sep 17 00:00:00 2001
+From 48d460c41b1bb2ebafc35d2fb90ad0b41efe81d6 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
 Date: Fri, 11 Oct 2019 09:33:22 +0200
-Subject: [PATCH 1/8] Do not require paragraph length unless strict
+Subject: [PATCH 1/6] Do not require paragraph length unless strict
 
 ---
  libappstream-glib/as-app-validate.c | 10 ++++++----
  1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
-index c1103ac..450239b 100644
+index 85f4e45..551dade 100644
 --- a/libappstream-glib/as-app-validate.c
 +++ b/libappstream-glib/as-app-validate.c
 @@ -232,10 +232,12 @@ as_app_validate_description_para (const gchar *text, AsAppValidateHelper *helper
@@ -29,5 +29,5 @@ index c1103ac..450239b 100644
  	helper->previous_para_was_short = FALSE;
  
 -- 
-2.23.0
+2.36.1
 

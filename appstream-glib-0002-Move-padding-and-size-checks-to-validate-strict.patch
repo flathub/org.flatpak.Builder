@@ -1,20 +1,20 @@
-From 0b7276422713248cfe04d906ea44fab376161b27 Mon Sep 17 00:00:00 2001
+From 737e38d1a7cb808e5ac1a80dacb1f2002fe16c84 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
-Date: Fri, 11 Oct 2019 09:40:09 +0200
-Subject: [PATCH 2/8] Move padding and size checks to validate-strict
+Date: Fri, 2 Sep 2022 09:56:29 +0200
+Subject: [PATCH 2/6] Move padding and size checks to validate-strict
 
 ---
- libappstream-glib/as-app-validate.c | 84 ++++++++++++++++-------------
- 1 file changed, 46 insertions(+), 38 deletions(-)
+ libappstream-glib/as-app-validate.c | 120 +++++++++++++++-------------
+ 1 file changed, 64 insertions(+), 56 deletions(-)
 
 diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
-index 450239b..b25a510 100644
+index 551dade..0fd4628 100644
 --- a/libappstream-glib/as-app-validate.c
 +++ b/libappstream-glib/as-app-validate.c
-@@ -434,10 +434,14 @@ ai_app_validate_image_check (AsImage *im, AsAppValidateHelper *helper)
+@@ -445,10 +445,14 @@ ai_app_validate_image_check (AsImage *im, AsAppValidateHelper *helper)
+ 	g_autoptr(GByteArray) buf = g_byte_array_new();
+ 	g_autoptr(GError) error_proxy = NULL;
  	g_autoptr(GInputStream) stream = NULL;
- 	g_autoptr(SoupMessage) msg = NULL;
- 	g_autoptr(SoupURI) base_uri = NULL;
 +	gboolean require_size = FALSE;
 +	gboolean check_padding = FALSE;
  
@@ -26,10 +26,48 @@ index 450239b..b25a510 100644
  	}
  
  	/* relax the requirements a bit */
-@@ -536,47 +540,51 @@ ai_app_validate_image_check (AsImage *im, AsAppValidateHelper *helper)
+@@ -527,67 +531,71 @@ ai_app_validate_image_check (AsImage *im, AsAppValidateHelper *helper)
  	}
  
- 	/* check size is reasonable */
+ 	/* check width matches */
+-	screenshot_width = (guint) gdk_pixbuf_get_width (pixbuf);
+-	screenshot_height = (guint) gdk_pixbuf_get_height (pixbuf);
+-	if (as_image_get_width (im) != 0 &&
+-	    as_image_get_width (im) != screenshot_width) {
+-		ai_app_validate_add (helper,
+-				     AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
+-				     "<screenshot> width (%u) did not match specified (%u) [%s]",
+-				     as_image_get_width (im), screenshot_width, url);
+-	}
++	if (require_size) {
++		screenshot_width = (guint) gdk_pixbuf_get_width (pixbuf);
++		screenshot_height = (guint) gdk_pixbuf_get_height (pixbuf);
++		if (as_image_get_width (im) != 0 &&
++		as_image_get_width (im) != screenshot_width) {
++			ai_app_validate_add (helper,
++					AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
++					"<screenshot> width (%u) did not match specified (%u) [%s]",
++					as_image_get_width (im), screenshot_width, url);
++		}
+ 
+-	/* check height matches */
+-	if (as_image_get_height (im) != 0 &&
+-	    as_image_get_height (im) != screenshot_height) {
+-		ai_app_validate_add (helper,
+-				     AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
+-				     "<screenshot> height (%u) did not match specified (%u) [%s]",
+-				     as_image_get_height (im), screenshot_height, url);
+-	}
++		/* check height matches */
++		if (as_image_get_height (im) != 0 &&
++		as_image_get_height (im) != screenshot_height) {
++			ai_app_validate_add (helper,
++					AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
++					"<screenshot> height (%u) did not match specified (%u) [%s]",
++					as_image_get_height (im), screenshot_height, url);
++		}
+ 
+-	/* check size is reasonable */
 -	if (screenshot_width < ss_size_width_min) {
 -		ai_app_validate_add (helper,
 -				     AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
@@ -53,7 +91,7 @@ index 450239b..b25a510 100644
 -				     AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
 -				     "<screenshot> height too large [%s] maximum is %upx",
 -				     url, ss_size_height_max);
-+	if (require_size) {
++		/* check size is reasonable */
 +		if (screenshot_width < ss_size_width_min) {
 +			ai_app_validate_add (helper,
 +					AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
@@ -117,5 +155,5 @@ index 450239b..b25a510 100644
  
  	/* check aspect ratio */
 -- 
-2.23.0
+2.36.1
 
