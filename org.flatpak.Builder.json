@@ -183,7 +183,8 @@
                         {
                             "type": "patch",
                             "paths": [
-                                "patches/scons-python3.patch"
+                                "patches/scons-python3.patch",
+                                "patches/serf-errgetfunc.patch"
                             ]
                         }
                     ]
