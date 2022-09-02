@@ -403,7 +403,8 @@
         {
             "name": "flatpak-builder",
             "config-opts": [
-                "--with-system-debugedit"
+                "--with-system-debugedit",
+                "--with-fuse=2"
             ],
             "sources": [
                 {
