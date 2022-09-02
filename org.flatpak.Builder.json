@@ -279,11 +279,11 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/fuse-2.9.2-namespace-conflict-fix.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/fuse-disable-sys-mount-under-flatpak.patch"
+                    "paths": [
+                        "patches/fuse-disable-sys-mount-under-flatpak.patch",
+                        "patches/fuse-2.9.2-namespace-conflict-fix.patch",
+                        "patches/fuse-closefrom.patch"
+                    ]
                 },
                 {
                     "type": "file",
