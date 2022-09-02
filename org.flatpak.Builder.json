@@ -319,8 +319,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.4/libostree-2022.4.tar.xz",
-                    "sha256": "14bbd351a95066f68c3b283e0bd0ddd03562e862af66f6f6d894c6c328d7eb81",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2022.5/libostree-2022.5.tar.xz",
+                    "sha256": "914c4d993bc111d7dd30ae9721b6ffe8ab56eb1fd6e81b097b09f400cc1b053f",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
@@ -353,8 +353,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.13.3/flatpak-1.13.3.tar.xz",
-                    "sha256": "f696a4f6587f72a03c2770352f610938d073798a9e3fc6df6aff463509dbf804",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.0/flatpak-1.14.0.tar.xz",
+                    "sha256": "8e276973770ea24ddf2597ad4aecd36b98393e6bde91e48e1743aaca67f27815",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases",
