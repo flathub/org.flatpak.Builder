@@ -292,11 +292,11 @@
             ]
         },
         {
-            "name" : "libsoup-2.4",
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "libsoup-2.4",
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "git",
+                    "type": "git",
                     "url": "https://gitlab.gnome.org/GNOME/libsoup",
                     "branch": "2add3502a7de754f4aed61571f6cb45094e8f443"
                 }
@@ -390,8 +390,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.4.tar.gz",
-                            "sha256": "9325c707ea4b5db580fcfc75fb632047a63e3196a547793ab21cdddf79497efb",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.5.tar.gz",
+                            "sha256": "829b8e62a4c857ff37948b089ee1524a86e9ae8cf963d2204cca0b204deb2060",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
@@ -420,7 +420,7 @@
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
             "build-commands": [
-               "pip3 install --prefix=/app . --no-build-isolation"
+                "pip3 install --prefix=/app . --no-build-isolation"
             ],
             "sources": [
                 {
