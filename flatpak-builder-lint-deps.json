@@ -1,8 +1,8 @@
 {
-    "name": "poetry-deps",
+    "name": "flatpak-builder-lint-deps",
     "buildsystem": "simple",
     "build-commands": [
-        "pip3 install --verbose --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} attrs certifi charset-normalizer idna jsonschema pyrsistent requests urllib3 --no-build-isolation"
+        "pip3 install --verbose --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} attrs certifi charset-normalizer idna jsonschema poetry-core pyrsistent requests urllib3 --no-build-isolation"
     ],
     "sources": [
         {
@@ -29,6 +29,11 @@
             "type": "file",
             "url": "https://files.pythonhosted.org/packages/d8/ad/b96e267a185d0050ac0f128827da6f16a7fd0fd5e045294771b3c265f2e9/jsonschema-4.16.0-py3-none-any.whl",
             "sha256": "9e74b8f9738d6a946d70705dc692b74b5429cd0960d58e79ffecfc43b2221eb9"
+        },
+        {
+            "type": "file",
+            "url": "https://files.pythonhosted.org/packages/28/60/6e60b418132aef03e4142064242c4d1e56e96c56979488ed4fc0ba7627c3/poetry_core-1.2.0-py3-none-any.whl",
+            "sha256": "e248d36c1314dd60fbc66390791923ad8b58c629d3e587080b7c1537a1c0d30f"
         },
         {
             "type": "file",

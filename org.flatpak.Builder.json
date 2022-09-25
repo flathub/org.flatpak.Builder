@@ -415,21 +415,7 @@
                 }
             ]
         },
-        "generated-poetry-sources.json",
-        {
-            "name": "python3-poetry-core",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"poetry-core\" --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/28/60/6e60b418132aef03e4142064242c4d1e56e96c56979488ed4fc0ba7627c3/poetry_core-1.2.0-py3-none-any.whl",
-                    "sha256": "e248d36c1314dd60fbc66390791923ad8b58c629d3e587080b7c1537a1c0d30f"
-                }
-            ]
-        },
+        "flatpak-builder-lint-deps.json",
         {
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
@@ -441,6 +427,21 @@
                     "type": "git",
                     "url": "https://github.com/barthalion/flatpak-builder-lint",
                     "commit": "89248950fc90c5ccc92c348628ab80c8410cdb4d"
+                }
+            ]
+        },
+        "flat-manager-client-deps.json",
+        {
+            "name": "flat-manager-client",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 flat-manager-client /app/bin/flat-manager-client"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flat-manager",
+                    "commit": "acfbe62b3590119abde0f38fee5f60457896e065"
                 }
             ]
         },
