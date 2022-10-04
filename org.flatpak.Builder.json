@@ -425,8 +425,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/barthalion/flatpak-builder-lint",
-                    "commit": "89248950fc90c5ccc92c348628ab80c8410cdb4d"
+                    "url": "https://github.com/flathub/flatpak-builder-lint",
+                    "commit": "50f0ac63c397bdcc91d1c4720d683b9755aaccbc"
                 }
             ]
         },
