@@ -307,8 +307,7 @@
             "config-opts": [
                 "--disable-man",
                 "--with-systemdsystemgeneratordir=/app/lib/systemd/system-generators",
-                "--without-systemdsystemunitdir",
-                "--with-curl"
+                "--without-systemdsystemunitdir"
             ],
             "cleanup": [
                 "/etc/grub.d",
