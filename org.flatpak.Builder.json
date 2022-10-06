@@ -95,6 +95,17 @@
             ]
         },
         {
+            "name": "libsoup-2.4",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
+                    "commit": "2add3502a7de754f4aed61571f6cb45094e8f443"
+                }
+            ]
+        },
+        {
             "name": "appstream-glib",
             "buildsystem": "meson",
             "config-opts": [
@@ -288,17 +299,6 @@
                 {
                     "type": "file",
                     "path": "fusermount-wrapper.sh"
-                }
-            ]
-        },
-        {
-            "name": "libsoup-2.4",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
-                    "commit": "2add3502a7de754f4aed61571f6cb45094e8f443"
                 }
             ]
         },
