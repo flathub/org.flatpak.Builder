@@ -1,7 +1,7 @@
 {
     "app-id": "org.flatpak.Builder",
     "runtime": "org.freedesktop.Sdk",
-    "runtime-version": "22.08",
+    "runtime-version": "21.08",
     "sdk": "org.freedesktop.Sdk",
     "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.golang"
@@ -288,17 +288,6 @@
                 {
                     "type": "file",
                     "path": "fusermount-wrapper.sh"
-                }
-            ]
-        },
-        {
-            "name": "libsoup-2.4",
-            "buildsystem": "meson",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.gnome.org/GNOME/libsoup",
-                    "commit": "2add3502a7de754f4aed61571f6cb45094e8f443"
                 }
             ]
         },
