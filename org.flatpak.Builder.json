@@ -355,8 +355,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.0/flatpak-1.14.0.tar.xz",
-                    "sha256": "8e276973770ea24ddf2597ad4aecd36b98393e6bde91e48e1743aaca67f27815",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.15.0/flatpak-1.15.0.tar.xz",
+                    "sha256": "1b953f5f2684136de4e7930d77c240f04dedd4a114e57bac0a46f5681a0a3fa8",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases",
