@@ -359,8 +359,8 @@
                     "sha256": "8e276973770ea24ddf2597ad4aecd36b98393e6bde91e48e1743aaca67f27815",
                     "x-checker-data": {
                         "type": "json",
-                        "url": "https://api.github.com/repos/flatpak/flatpak/releases",
-                        "version-query": "sort_by(.tag_name | sub(\"^v\"; \"\") | split(\".\") | map(tonumber)) | last | .tag_name",
+                        "url": "https://api.github.com/repos/flatpak/flatpak/releases/latest",
+                        "version-query": ".tag_name",
                         "url-query": "\"https://github.com/flatpak/flatpak/releases/download/\\($version)/flatpak-\\($version).tar.xz\""
                     }
                 }
