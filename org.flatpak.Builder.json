@@ -468,7 +468,8 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "patches/flatpak-builder-Execute-appstream-util-on-the-host.patch"
+                        "patches/flatpak-builder-Execute-appstream-util-on-the-host.patch",
+                        "patches/flatpak-builder-Allow-use-file-protocol-when-update-submodule.patch"
                     ]
                 }
             ]
