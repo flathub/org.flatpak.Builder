@@ -1,0 +1,32 @@
+From b539ac812a32366725fb92fc440a0bbe3e46cffd Mon Sep 17 00:00:00 2001
+From: Weng Xuetian <wengxt@gmail.com>
+Date: Mon, 31 Oct 2022 16:00:02 -0700
+Subject: [PATCH] Allow use file protocol when update submodule.
+
+git 2.38.1 prevent file protocol to be used by default for security
+reasons. Such issue does not apply to flatpak-builder since the repos
+are overriden with local repo on purpose.
+
+Fixes #495
+
+Signed-off-by: Weng Xuetian <wengxt@gmail.com>
+---
+ src/builder-git.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/builder-git.c b/src/builder-git.c
+index 19a008f6..1bfda387 100644
+--- a/src/builder-git.c
++++ b/src/builder-git.c
+@@ -814,7 +814,7 @@ git_extract_submodule (const char     *repo_location,
+             return FALSE;
+ 
+           if (!git (checkout_dir, NULL, 0, error,
+-                    "submodule", "update", "--init", path, NULL))
++                    "-c", "protocol.file.allow=always", "submodule", "update", "--init", path, NULL))
+             return FALSE;
+ 
+           child_dir = g_file_resolve_relative_path (checkout_dir, path);
+-- 
+2.37.3
+
