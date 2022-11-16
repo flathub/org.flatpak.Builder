@@ -455,21 +455,15 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak-builder/releases/download/1.2.2/flatpak-builder-1.2.2.tar.xz",
-                    "sha256": "89fda68e537c1e9de02352690bd89c3217a729164558d35f35b08f79ad84e03e",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/flatpak/flatpak-builder/releases?per_page=1",
-                        "version-query": "first | .tag_name",
-                        "url-query": "first | .assets | first | .browser_download_url"
-                    }
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flatpak-builder",
+                    "commit": "b539ac812a32366725fb92fc440a0bbe3e46cffd"
                 },
                 {
                     "type": "patch",
                     "paths": [
                         "patches/flatpak-builder-Execute-appstream-util-on-the-host.patch",
-                        "patches/flatpak-builder-Allow-use-file-protocol-when-update-submodule.patch"
+                        "patches/flatpak-builder-lfs.patch"
                     ]
                 }
             ]
