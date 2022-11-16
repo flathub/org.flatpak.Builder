@@ -116,6 +116,7 @@
                         "patches/appstream-glib-0004-Relax-validation-requirements-for-captions.patch",
                         "patches/appstream-glib-0005-Change-min.-paragraph-length-to-5-and-max.-number-of.patch",
                         "patches/appstream-glib-0006-Allow-hyperlinks-in-list-elements-and-paragraphs.patch",
+                        "patches/appstream-glib-0001-trivial-Do-not-expect-screenshots-from-console-apps.patch",
                         "patches/appstream-glib-curl-redirect.patch",
                         "patches/appstream-glib-curl-validate-redirect.patch"
                     ]
@@ -428,7 +429,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "f04c0cef5db922fb872c915e28bfa58f5778f19f"
+                    "commit": "94ad91c24a4cdd7be96ede9b84bd3b0b696f1e3c"
                 }
             ]
         },
