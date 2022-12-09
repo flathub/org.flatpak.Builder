@@ -26,6 +26,11 @@ jobs:
       run: |
         flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+    # TODO: Remove this workaround once flatpak-builder v1.2.3 is available through the above PPA.
+    - name: Allow file:// clones with git>=2.38.1
+      run: |
+        git config --global protocol.file.allow always
+
     - name: Build org.flatpak.Builder
       run: |
         flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
