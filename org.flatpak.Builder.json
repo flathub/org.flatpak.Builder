@@ -393,8 +393,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.5.tar.gz",
-                            "sha256": "829b8e62a4c857ff37948b089ee1524a86e9ae8cf963d2204cca0b204deb2060",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.6.tar.gz",
+                            "sha256": "d46a6689f57aaefb587f01bf91071966b3e65de15b833d11e1911ce07a1350f2",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
