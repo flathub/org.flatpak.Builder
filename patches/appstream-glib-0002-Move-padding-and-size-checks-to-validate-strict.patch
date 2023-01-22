@@ -1,24 +1,14 @@
-From 44f03bf76d6c1186630e50c8a0777dfd96725c7c Mon Sep 17 00:00:00 2001
-From: =?UTF-8?q?Bart=C5=82omiej=20Piotrowski?= <b@bpiotrowski.pl>
-Date: Sun, 22 Jan 2023 19:45:48 +0100
-Subject: [PATCH] Drop screenshot size requirement
-
----
- client/as-util.c | 14 --------------
- 1 file changed, 14 deletions(-)
-
 diff --git a/client/as-util.c b/client/as-util.c
-index 0bb1ea9..2df65f7 100644
+index ce973ed..937440f 100644
 --- a/client/as-util.c
 +++ b/client/as-util.c
-@@ -3314,20 +3314,6 @@ as_util_mirror_screenshots_app_file (AsApp *app,
- 			 filename_no_path);
+@@ -3313,19 +3313,6 @@ as_util_mirror_screenshots_app_file (AsApp *app,
+ 		g_debug ("%s is not in 16:9 aspect ratio", filename_no_path);
  	}
  
 -	/* check screenshot is reasonable in size */
 -	if (as_image_get_width (im_src) * 2 < AS_IMAGE_NORMAL_WIDTH ||
 -	    as_image_get_height (im_src) * 2 < AS_IMAGE_NORMAL_HEIGHT) {
--		filename_no_path = g_path_get_basename (filename);
 -		g_set_error (error,
 -			     AS_APP_ERROR,
 -			     AS_APP_ERROR_FAILED,
@@ -32,6 +22,3 @@ index 0bb1ea9..2df65f7 100644
  	/* check the image is not padded */
  	alpha_flags = as_image_get_alpha_flags (im_src);
  	if ((alpha_flags & AS_IMAGE_ALPHA_FLAG_TOP) > 0||
--- 
-2.39.0
-
