@@ -230,8 +230,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.2.0/git-lfs-v3.2.0.tar.gz",
-                    "sha256": "f8e6bbe043b97db8a5c16da7289e149a3fed9f4d4f11cffcc6e517c7870cd9e5",
+                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.3.0/git-lfs-v3.3.0.tar.gz",
+                    "sha256": "964c200bb7dcd6da44cbf0cfa88575f7e48d26925f8ec86d634d3f83306a0920",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/git-lfs/git-lfs/releases/latest",
@@ -393,8 +393,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.5.tar.gz",
-                            "sha256": "829b8e62a4c857ff37948b089ee1524a86e9ae8cf963d2204cca0b204deb2060",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.0.tar.gz",
+                            "sha256": "b28e10b49e776dcc2019e72c828098e25290785a711ee2369b8eb283cd67d69a",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
