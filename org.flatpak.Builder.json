@@ -230,8 +230,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.2.0/git-lfs-v3.2.0.tar.gz",
-                    "sha256": "f8e6bbe043b97db8a5c16da7289e149a3fed9f4d4f11cffcc6e517c7870cd9e5",
+                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.3.0/git-lfs-v3.3.0.tar.gz",
+                    "sha256": "964c200bb7dcd6da44cbf0cfa88575f7e48d26925f8ec86d634d3f83306a0920",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/git-lfs/git-lfs/releases/latest",
@@ -356,8 +356,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.1/flatpak-1.14.1.tar.xz",
-                    "sha256": "0a3c823343018cc58986b6c82545609c8cdbf0fba5f01d88307bd14acb5dd39f",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.2/flatpak-1.14.2.tar.xz",
+                    "sha256": "c80711eacf42a99078f6396aa65555dd6bf73eec631776b79e9d7b7262b6f774",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases/latest",
@@ -393,8 +393,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.15.5.tar.gz",
-                            "sha256": "829b8e62a4c857ff37948b089ee1524a86e9ae8cf963d2204cca0b204deb2060",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.0.tar.gz",
+                            "sha256": "ffbd4af94aafd3edd8f965391b95a49b385918ed8633b96406e2c225baffec9b",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
