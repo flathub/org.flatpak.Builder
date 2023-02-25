@@ -131,8 +131,14 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://dlcdn.apache.org//apr/apr-1.7.2.tar.bz2",
-                            "sha256": "75e77cc86776c030c0a5c408dfbd0bf2a0b75eed5351e52d5439fa1e5509a43e"
+                            "url": "https://dlcdn.apache.org/apr/apr-1.7.2.tar.bz2",
+                            "sha256": "75e77cc86776c030c0a5c408dfbd0bf2a0b75eed5351e52d5439fa1e5509a43e",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 95,
+                                "stable-only": true,
+                                "url-template": "https://dlcdn.apache.org/apr/apr-$version.tar.bz2"
+                            }
                         }
                     ]
                 },
@@ -144,8 +150,14 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://dlcdn.apache.org//apr/apr-util-1.6.3.tar.bz2",
-                            "sha256": "a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5"
+                            "url": "https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.bz2",
+                            "sha256": "a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 96,
+                                "stable-only": true,
+                                "url-template": "https://dlcdn.apache.org//apr/apr-util-$version.tar.bz2"
+                            }
                         }
                     ]
                 },
