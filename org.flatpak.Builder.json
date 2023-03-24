@@ -150,7 +150,7 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.bz2",
+                            "url": "https://dlcdn.apache.org//apr/apr-util-1.6.3.tar.bz2",
                             "sha256": "a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5",
                             "x-checker-data": {
                                 "type": "anitya",
