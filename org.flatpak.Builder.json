@@ -131,8 +131,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://dlcdn.apache.org/apr/apr-1.7.2.tar.bz2",
-                            "sha256": "75e77cc86776c030c0a5c408dfbd0bf2a0b75eed5351e52d5439fa1e5509a43e",
+                            "url": "https://dlcdn.apache.org/apr/apr-1.7.4.tar.bz2",
+                            "sha256": "fc648de983f3a2a6c9e78dea1f180639bd2fad6c06d556d4367a701fe5c35577",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 95,
@@ -150,7 +150,7 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://dlcdn.apache.org/apr/apr-util-1.6.3.tar.bz2",
+                            "url": "https://dlcdn.apache.org//apr/apr-util-1.6.3.tar.bz2",
                             "sha256": "a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5",
                             "x-checker-data": {
                                 "type": "anitya",
@@ -242,8 +242,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.2.0/git-lfs-v3.2.0.tar.gz",
-                    "sha256": "f8e6bbe043b97db8a5c16da7289e149a3fed9f4d4f11cffcc6e517c7870cd9e5",
+                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.3.0/git-lfs-v3.3.0.tar.gz",
+                    "sha256": "964c200bb7dcd6da44cbf0cfa88575f7e48d26925f8ec86d634d3f83306a0920",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/git-lfs/git-lfs/releases/latest",
@@ -334,8 +334,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2023.1/libostree-2023.1.tar.xz",
-                    "sha256": "dd792b167693a1971c9f6e3168013d906ac035100ff6c719a3b322eb44b96f55",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2023.2/libostree-2023.2.tar.xz",
+                    "sha256": "ceb0788755a0bff5738d44543552fbf883cf71df481baa3ca7288da7a402bb85",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
@@ -368,8 +368,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.2/flatpak-1.14.2.tar.xz",
-                    "sha256": "c80711eacf42a99078f6396aa65555dd6bf73eec631776b79e9d7b7262b6f774",
+                    "url": "https://github.com/flatpak/flatpak/releases/download/1.14.4/flatpak-1.14.4.tar.xz",
+                    "sha256": "8a34dbd0b67c434e7598b98ec690953d046f0db26e480aeafb46d72aec716799",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/flatpak/flatpak/releases/latest",
@@ -405,8 +405,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.1.tar.gz",
-                            "sha256": "266c75a302064ad7e50905a365fa64537268c318cb1cf19dd003911a781d6797",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.2.tar.gz",
+                            "sha256": "9a2ebe660704878ab795470a72cd53049408ddd9da6e9cb45232cf0ed6505660",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
