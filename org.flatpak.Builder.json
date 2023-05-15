@@ -461,7 +461,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/Lunarequest/flatpak-builder",
-                    "commit": "6b40678b594a8a0d526288d04918882c9b10d1d1"
+                    "commit": "775a87d3f606f14886b89bac0a86317b9d0457a1"
                 },
                 {
                     "type": "patch",
