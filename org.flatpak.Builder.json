@@ -225,7 +225,6 @@
                 }
             ]
         },
-        "breezy.json",
         {
             "name": "git-lfs",
             "build-options": {
