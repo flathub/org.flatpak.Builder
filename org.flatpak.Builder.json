@@ -333,8 +333,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2023.1/libostree-2023.1.tar.xz",
-                    "sha256": "dd792b167693a1971c9f6e3168013d906ac035100ff6c719a3b322eb44b96f55",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2023.2/libostree-2023.2.tar.xz",
+                    "sha256": "ceb0788755a0bff5738d44543552fbf883cf71df481baa3ca7288da7a402bb85",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
