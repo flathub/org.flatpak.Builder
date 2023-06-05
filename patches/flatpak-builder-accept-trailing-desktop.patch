@@ -1,0 +1,13 @@
+diff --git a/src/builder-manifest.c b/src/builder-manifest.c
+index df1c0fd6..2b1294d4 100644
+--- a/src/builder-manifest.c
++++ b/src/builder-manifest.c
+@@ -2769,7 +2769,7 @@ builder_manifest_cleanup (BuilderManifest *self,
+         {
+           g_autofree char *origin = g_strdup_printf ("--origin=%s",
+                                                      builder_manifest_get_id (self));
+-          g_autofree char *components_arg = g_strdup_printf ("--components=%s",
++          g_autofree char *components_arg = g_strdup_printf ("--components=%s,%s.desktop",
+                                                              self->id);
+           const char *app_root_path = flatpak_file_get_path_cached (app_root);
+           g_autofree char *result_root_arg = g_strdup_printf ("--result-root=%s", app_root_path);

@@ -484,7 +484,8 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "patches/flatpak-builder-lfs.patch"
+                        "patches/flatpak-builder-lfs.patch",
+                        "patches/flatpak-builder-accept-trailing-desktop.patch"
                     ]
                 }
             ]
