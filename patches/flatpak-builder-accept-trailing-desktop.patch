@@ -1,5 +1,5 @@
 diff --git a/src/builder-manifest.c b/src/builder-manifest.c
-index df1c0fd6..3cbbdff2 100644
+index df1c0fd6..48cf00bd 100644
 --- a/src/builder-manifest.c
 +++ b/src/builder-manifest.c
 @@ -2769,8 +2769,8 @@ builder_manifest_cleanup (BuilderManifest *self,
@@ -13,3 +13,11 @@ index df1c0fd6..3cbbdff2 100644
            const char *app_root_path = flatpak_file_get_path_cached (app_root);
            g_autofree char *result_root_arg = g_strdup_printf ("--result-root=%s", app_root_path);
            g_autoptr(GFile) xml_dir = flatpak_build_file (app_root, "share/app-info/xmls", NULL);
+@@ -2810,6 +2810,7 @@ builder_manifest_cleanup (BuilderManifest *self,
+               g_print ("Running appstreamcli compose\n");
+               if (!appstreamcli_compose (error,
+                                          "--prefix=/",
++                                         "--verbose",
+                                          origin,
+                                          result_root_arg,
+                                          data_dir,
