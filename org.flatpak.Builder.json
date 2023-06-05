@@ -92,6 +92,20 @@
             ]
         },
         {
+            "name": "rpm2cpio",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 rpm2cio /app/bin/rpm2cpio"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://gitlab.archlinux.org/archlinux/packaging/packages/rpmextract/-/raw/main/rpm2cpio",
+                    "sha256": "5b9133774a969e9b2c4b18c77b340ed1e591e13ba1336fd4a4c15a96ad436dee"
+                }
+            ]
+        },
+        {
             "name": "appstream-glib",
             "buildsystem": "meson",
             "config-opts": [
