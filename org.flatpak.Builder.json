@@ -485,7 +485,8 @@
                     "type": "patch",
                     "paths": [
                         "patches/flatpak-builder-lfs.patch",
-                        "patches/flatpak-builder-accept-trailing-desktop.patch"
+                        "patches/flatpak-builder-accept-trailing-desktop.patch",
+                        "patches/0001-Don-t-specify-components-at-all.patch"
                     ]
                 }
             ]
