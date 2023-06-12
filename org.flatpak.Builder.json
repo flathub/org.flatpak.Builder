@@ -479,11 +479,12 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder",
-                    "commit": "e8c64620cc4c971c2cc896a037c73e613d449201"
+                    "commit": "b539ac812a32366725fb92fc440a0bbe3e46cffd"
                 },
                 {
                     "type": "patch",
                     "paths": [
+                        "patches/flatpak-builder-Execute-appstream-util-on-the-host.patch",
                         "patches/flatpak-builder-lfs.patch"
                     ]
                 }
