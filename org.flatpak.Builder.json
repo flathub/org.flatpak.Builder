@@ -95,7 +95,7 @@
             "name": "rpm2cpio",
             "buildsystem": "simple",
             "build-commands": [
-                "install -Dm755 rpm2cpio /app/bin/rpm2cpio"
+                "install -Dm755 rpm2cio /app/bin/rpm2cpio"
             ],
             "sources": [
                 {
