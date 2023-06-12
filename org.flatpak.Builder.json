@@ -485,8 +485,7 @@
                     "type": "patch",
                     "paths": [
                         "patches/flatpak-builder-lfs.patch",
-                        "patches/flatpak-builder-accept-trailing-desktop.patch",
-                        "patches/appstreamcli-verbose.patch"
+                        "patches/flatpak-builder-accept-trailing-desktop.patch"
                     ]
                 }
             ]
