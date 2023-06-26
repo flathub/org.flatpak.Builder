@@ -12,7 +12,6 @@ index 1bfda387..7c2aca5f 100644
 +            {
 +              git (mirror_dir, NULL, 0, error,
 +                   "lfs", "logs", "last", NULL);
-+              return FALSE;
 +            }
 +
 +
@@ -30,7 +29,6 @@ index 1bfda387..7c2aca5f 100644
 +            {
 +              git (mirror_dir, NULL, 0, error,
 +                   "lfs", "logs", "last", NULL);
-+              return FALSE;
 +            }
          }
  
