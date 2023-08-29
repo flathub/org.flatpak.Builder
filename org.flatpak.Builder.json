@@ -10,7 +10,12 @@
         "--allow=devel",
         "--talk-name=org.freedesktop.Flatpak",
         "--share=ipc",
-        "--filesystem=host",
+        "--filesystem=home",
+        "--filesystem=/media",
+        "--filesystem=/mnt",
+        "--filesystem=/run/media",
+        "--filesystem=/var/run/media",
+        "--filesystem=/var/mnt",
         "--share=network",
         "--filesystem=~/.local/share/flatpak",
         "--filesystem=/var/lib/flatpak"
