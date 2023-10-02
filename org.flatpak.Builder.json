@@ -452,7 +452,7 @@
                 {
                     "type": "file",
                     "only-arches": ["aarch64"],
-                    "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-$version-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl",
+                    "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-0.13.7-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl",
                     "sha256": "0b6ac1219a809155057fd1f358f7ece03c3abd2e2991832ce5146825a9fa4160"
                 }
             ]
