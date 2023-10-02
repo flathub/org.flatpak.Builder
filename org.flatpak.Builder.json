@@ -436,6 +436,27 @@
                 }
             ]
         },
+        {
+            "name": "maturin",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=file://${PWD} --prefix=${FLATPAK_DEST} maturin --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "only-arches": ["x86_64"],
+                    "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-0.13.7-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl",
+                    "sha256": "a96f1b3ede71c0f76b8c7cfac18a9eec90174bdf434fa9aeff491be9a7ca5179"
+                },
+                {
+                    "type": "file",
+                    "only-arches": ["aarch64"],
+                    "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-$version-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl",
+                    "sha256": "0b6ac1219a809155057fd1f358f7ece03c3abd2e2991832ce5146825a9fa4160"
+                }
+            ]
+        },
         "flatpak-builder-lint-deps.json",
         {
             "name": "flatpak-builder-lint",
