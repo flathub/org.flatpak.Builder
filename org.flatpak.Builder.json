@@ -344,8 +344,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2023.4/libostree-2023.4.tar.xz",
-                    "sha256": "7cee8ace6aae3c778527927a85abefbfbd491c021f52ae229c51ca3077f9c5d1",
+                    "url": "https://github.com/ostreedev/ostree/releases/download/v2023.6/libostree-2023.6.tar.xz",
+                    "sha256": "b43c4a373799681989bae12b3a1b94f453068dece6540b8e05a23b834c1037e2",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
@@ -415,8 +415,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.2.tar.gz",
-                            "sha256": "9a2ebe660704878ab795470a72cd53049408ddd9da6e9cb45232cf0ed6505660",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.3.tar.gz",
+                            "sha256": "4470a27474dc3cc4938552fbf0394b6a65d8a2055d4f4418df086d65d8f2ba29",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
@@ -449,13 +449,17 @@
             "sources": [
                 {
                     "type": "file",
-                    "only-arches": ["x86_64"],
+                    "only-arches": [
+                        "x86_64"
+                    ],
                     "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-0.13.7-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl",
                     "sha256": "a96f1b3ede71c0f76b8c7cfac18a9eec90174bdf434fa9aeff491be9a7ca5179"
                 },
                 {
                     "type": "file",
-                    "only-arches": ["aarch64"],
+                    "only-arches": [
+                        "aarch64"
+                    ],
                     "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-0.13.7-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl",
                     "sha256": "0b6ac1219a809155057fd1f358f7ece03c3abd2e2991832ce5146825a9fa4160"
                 }
