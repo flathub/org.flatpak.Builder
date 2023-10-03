@@ -478,6 +478,7 @@
             ]
         },
         "flatpak-builder-lint-deps.json",
+        "python3-poetry.json",
         {
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
