@@ -477,6 +477,7 @@
                 }
             ]
         },
+        "python3-lxml.json",
         "flatpak-builder-lint-deps.json",
         "python3-poetry.json",
         {
