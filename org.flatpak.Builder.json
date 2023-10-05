@@ -415,13 +415,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.2.tar.gz",
-                            "sha256": "9a2ebe660704878ab795470a72cd53049408ddd9da6e9cb45232cf0ed6505660",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": 10385,
-                                "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
-                            }
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.3.tar.gz",
+                            "sha256": "4470a27474dc3cc4938552fbf0394b6a65d8a2055d4f4418df086d65d8f2ba29"
                         }
                     ],
                     "modules": [
@@ -431,8 +426,8 @@
                             "sources": [
                                 {
                                     "type": "archive",
-                                    "url": "https://github.com/hughsie/libxmlb/archive/refs/tags/0.3.7.tar.gz",
-                                    "sha256": "fc00cdb2af69eb4a53bf6a48874c9004ee5373579eafa1dc4e53dace8b9d1251"
+                                    "url": "https://github.com/hughsie/libxmlb/releases/download/0.3.14/libxmlb-0.3.14.tar.xz",
+                                    "sha256": "a2f0056eed14ff791aee2b08b1514a0f1b6cf215f0579138a8cae8c45a0d3b0f"
                                 }
                             ]
                         }
