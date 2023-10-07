@@ -31,9 +31,6 @@
         "*.la",
         "*.a"
     ],
-    "x-flathub": {
-        "skip-appstream-check": true
-    },
     "modules": [
         {
             "name": "libyaml",
@@ -488,8 +485,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "tag": "v2.0.2",
-                    "commit": "b0758b58a8509dc057e1f4d61f5ba33e88da1907"
+                    "tag": "v2.0.3",
+                    "commit": "da33369c08876dacfd1b9c648d11e7ab87261634"
                 }
             ]
         },
@@ -533,8 +530,8 @@
             "name": "wrapper",
             "buildsystem": "simple",
             "build-commands": [
-                "ls -l",
-                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper"
+                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper",
+                "install -Dm644 flathub.json /app/flathub.json"
             ],
             "sources": [
                 {
@@ -543,6 +540,10 @@
                     "commands": [
                         "FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)\nexport FLATPAK_BINARY\nexport FLATPAK_USER_DIR=$HOME/.local/share/flatpak\nexec flatpak-builder \"$@\"\n"
                     ]
+                },
+                {
+                    "type": "file",
+                    "path": "flathub.json"
                 }
             ]
         }
