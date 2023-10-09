@@ -1,0 +1,23 @@
+From 6f2a64a0b25745418ad4df5997e47142540e77cc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Hubert=20Figui=C3=A8re?= <hub@figuiere.net>
+Date: Sat, 7 Oct 2023 12:14:11 -0400
+Subject: [PATCH] Remove args.json
+
+close #183
+---
+ flatpak_builder_lint/cli.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/flatpak_builder_lint/cli.py b/flatpak_builder_lint/cli.py
+index f60cb38..5398c29 100644
+--- a/flatpak_builder_lint/cli.py
++++ b/flatpak_builder_lint/cli.py
+@@ -145,7 +145,7 @@ def main() -> int:
+         output = json.dumps(results, indent=4)
+         print(output)
+ 
+-        if args.exceptions and not args.json:
++        if args.exceptions:
+             print()
+             print(
+                 "If you think problems listed above are a false positive, please report it here:"
