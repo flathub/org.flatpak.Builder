@@ -489,8 +489,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "tag": "v2.0.18",
-                    "commit": "ed5e2280e7a2b46f6667854254d47325126a952a"
+                    "tag": "v2.0.19",
+                    "commit": "655d3fbeb53f11dcd54472851aec70472fc19451"
                 }
             ]
         },
