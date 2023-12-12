@@ -32,6 +32,17 @@
         "*.a"
     ],
     "modules": [
+        "xvfb.json",
+        {
+            "name": "dbus",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.freedesktop.org/dbus/dbus.git",
+                    "commit": "fa05c11a0047f2927e76d08f9fcf6638ded7ff50"
+                }
+            ]
+        },
         {
             "name": "libyaml",
             "sources": [
