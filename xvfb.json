@@ -1,19 +1,13 @@
 {
   "name": "xvfb",
   "buildsystem": "meson",
-  "build-options": {
-    "prepend-path": "/app/build_staging/xvfb/bin",
-    "prepend-ld-library-path": "/app/build_staging/xvfb/lib",
-    "prepend-pkg-config-path": "/app/build_staging/xvfb/lib/pkgconfig",
-    "env": {
-      "LPATH": "/app/build_staging/xvfb/lib"
-    }
-  },
   "config-opts": [
-    "--prefix=/app/build_staging/xvfb",
     "-Dxorg=true",
     "-Dxvfb=true",
     "-Dhal=false"
+  ],
+  "build-commands": [
+    "install -Dm755 xvfb-run /app/bin/xvfb-run"
   ],
   "sources": [
     {
@@ -25,9 +19,6 @@
       "type": "file",
       "path": "xvfb-run"
     }
-  ],
-  "post-install": [
-    "install -c -m 755 ${FLATPAK_BUILDER_BUILDDIR}/xvfb-run /app/build_staging/xvfb/bin/xvfb-run"
   ],
   "modules": [
     {
@@ -42,13 +33,7 @@
       ]
     },
     {
-      "name": "xvfb-libXmu",
-      "buildsystem": "simple",
-      "build-commands": [
-        "./configure --prefix=/app/build_staging/xvfb --exec_prefix=/app/build_staging/xvfb",
-        "make",
-        "make install"
-      ],
+      "name": "libXmu",
       "sources": [
         {
           "type": "archive",
@@ -58,13 +43,7 @@
       ]
     },
     {
-      "name": "xvfb-libfontenc",
-      "buildsystem": "simple",
-      "build-commands": [
-        "./configure --prefix=/app/build_staging/xvfb --exec_prefix=/app/build_staging/xvfb",
-        "make",
-        "make install"
-      ],
+      "name": "libfontenc",
       "sources": [
         {
           "type": "archive",
@@ -74,13 +53,7 @@
       ]
     },
     {
-      "name": "xvfb-libtirpc",
-      "buildsystem": "simple",
-      "build-commands": [
-        "./configure --prefix=/app/build_staging/xvfb --exec_prefix=/app/build_staging/xvfb --disable-gssapi",
-        "make",
-        "make install"
-      ],
+      "name": "libtirpc",
       "sources": [
         {
           "type": "archive",
@@ -90,13 +63,7 @@
       ]
     },
     {
-      "name": "xvfb-font-util",
-      "buildsystem": "simple",
-      "build-commands": [
-        "./configure --prefix=/app/build_staging/xvfb --exec_prefix=/app/build_staging/xvfb",
-        "make",
-        "make install"
-      ],
+      "name": "font-util",
       "sources": [
         {
           "type": "archive",
@@ -106,18 +73,7 @@
       ]
     },
     {
-      "name": "xvfb-libXfont2",
-      "buildsystem": "simple",
-      "build-options": {
-        "prepend-path": "/app/build_staging/xvfb/bin",
-        "prepend-ld-library-path": "/app/build_staging/xvfb/lib",
-        "prepend-pkg-config-path": "/app/build_staging/xvfb/lib/pkgconfig"
-      },
-      "build-commands": [
-        "./configure --prefix=/app/build_staging/xvfb --exec_prefix=/app/build_staging/xvfb",
-        "make",
-        "make install"
-      ],
+      "name": "libXfont2",
       "sources": [
         {
           "type": "archive",
@@ -127,18 +83,7 @@
       ]
     },    
     {
-      "name": "xvfb-xauth",
-      "buildsystem": "simple",
-      "build-options": {
-        "prepend-path": "/app/build_staging/xvfb/bin",
-        "prepend-ld-library-path": "/app/build_staging/xvfb/lib",
-        "prepend-pkg-config-path": "/app/build_staging/xvfb/lib/pkgconfig"
-      },
-      "build-commands": [
-        "./autogen.sh --prefix=/app/build_staging/xvfb --exec_prefix=/app/build_staging/xvfb",
-        "make",
-        "make install"
-      ],
+      "name": "xauth",
       "sources": [
         {
           "type": "archive",
