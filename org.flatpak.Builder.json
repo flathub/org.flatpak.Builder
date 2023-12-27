@@ -387,13 +387,15 @@
                     "name": "appstream",
                     "buildsystem": "meson",
                     "config-opts": [
+                        "-Dapidocs=false",
+                        "-Dgir=false",
                         "-Dcompose=true"
                     ],
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v0.16.3.tar.gz",
-                            "sha256": "4470a27474dc3cc4938552fbf0394b6a65d8a2055d4f4418df086d65d8f2ba29"
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.1.tar.gz",
+                            "sha256": "3a6877c887627aed515e9802f63ac7bd83fffab4c2cad33c809c692c4bd8da48"
                         }
                     ],
                     "modules": [
@@ -501,7 +503,8 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "patches/flatpak-builder-lfs.patch"
+                        "patches/flatpak-builder-lfs.patch",
+                        "patches/flatpak-builder-appstream-cli-urls.patch"
                     ]
                 }
             ]
