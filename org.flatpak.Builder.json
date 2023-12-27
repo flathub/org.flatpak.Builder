@@ -28,6 +28,10 @@
         }
     },
     "cleanup": [
+        "/include",
+        "/share/man",
+        "/share/pkgconfig",
+        "/share/zsh",
         "*.la",
         "*.a"
     ],
