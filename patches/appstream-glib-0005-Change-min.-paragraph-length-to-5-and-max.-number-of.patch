@@ -5,11 +5,11 @@ Subject: [PATCH 5/6] Change min. paragraph length to 5 and max. number of
  paragraphs to 15
 
 ---
- libappstream-glib/as-app-validate.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ libappstream-glib/as-app-validate.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
-index 88ee7c1..4fe744d 100644
+index 2c67192..297e381 100644
 --- a/libappstream-glib/as-app-validate.c
 +++ b/libappstream-glib/as-app-validate.c
 @@ -209,7 +209,7 @@ as_app_validate_description_para (const gchar *text, AsAppValidateHelper *helper
@@ -21,7 +21,7 @@ index 88ee7c1..4fe744d 100644
  	guint str_len;
  
  	/* empty */
-@@ -858,7 +858,7 @@ as_app_validate_release (AsApp *app,
+@@ -859,7 +859,7 @@ as_app_validate_release (AsApp *app,
  {
  	const gchar *tmp;
  	guint64 timestamp;
@@ -30,6 +30,15 @@ index 88ee7c1..4fe744d 100644
  	guint number_para_min = 0;
  	gboolean required_timestamp = TRUE;
  	gboolean required_past_timestamp = TRUE;
+@@ -1271,7 +1271,7 @@ as_app_validate (AsApp *app, guint32 flags, GError **error)
+ 	guint length_name_min = 3;
+ 	guint length_summary_max = 200;
+ 	guint length_summary_min = 8;
+-	guint number_para_max = 10;
++	guint number_para_max = 15;
+ 	guint number_para_min = 0;
+ 	guint str_len;
+ 	g_autoptr(GList) keys = NULL;
 -- 
-2.36.1
+2.43.0
 
