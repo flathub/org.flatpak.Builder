@@ -497,8 +497,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder",
-                    "tag": "1.4.0",
-                    "commit": "7d621d6eec7fe523c68d46f3853cdc86561b5637"
+                    "tag": "1.4.1",
+                    "commit": "57f9ae9cc8327cc0c9eab289f02de3ffaccef94b"
                 },
                 {
                     "type": "patch",
