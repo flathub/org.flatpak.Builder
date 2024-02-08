@@ -1,0 +1,21 @@
+From 2e15fc955254c6da087c6d1644b1f239275eba99 Mon Sep 17 00:00:00 2001
+From: Ranieri Althoff <1993083+ranisalt@users.noreply.github.com>
+Date: Sun, 23 Jul 2023 15:11:40 +0200
+Subject: [PATCH] Enable compressed downloads
+
+
+diff --git a/src/builder-utils.c b/src/builder-utils.c
+index 556f16ba..bd43c88b 100644
+--- a/src/builder-utils.c
++++ b/src/builder-utils.c
+@@ -1106,6 +1106,7 @@ builder_download_uri_buffer (GUri           *uri,
+   g_autofree gchar *url = g_uri_to_string (uri);
+ 
+   curl_easy_setopt (session, CURLOPT_URL, url);
++  curl_easy_setopt (session, CURLOPT_ACCEPT_ENCODING, "");
+   curl_easy_setopt (session, CURLOPT_REFERER, http_referer);
+   curl_easy_setopt (session, CURLOPT_WRITEFUNCTION, builder_curl_write_cb);
+   curl_easy_setopt (session, CURLOPT_WRITEDATA, &write_data);
+-- 
+2.43.0.windows.1
+

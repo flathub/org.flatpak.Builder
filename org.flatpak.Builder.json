@@ -539,7 +539,8 @@
                     "type": "patch",
                     "paths": [
                         "patches/flatpak-builder-Execute-appstream-util-on-the-host.patch",
-                        "patches/flatpak-builder-lfs.patch"
+                        "patches/flatpak-builder-lfs.patch",
+                        "patches/0001-Enable-compressed-downloads.patch"
                     ]
                 }
             ]
