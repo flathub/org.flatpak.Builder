@@ -37,6 +37,7 @@
     ],
     "modules": [
         "xvfb.json",
+        "jq.json",
         {
             "name": "dbus",
             "sources": [
