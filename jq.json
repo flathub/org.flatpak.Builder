@@ -3,8 +3,8 @@
     "sources": [
         {
             "type": "archive",
-            "url": "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz",
-            "sha256": "5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72",
+            "url": "https://github.com/stedolan/jq/releases/download/jq-1.7.1/jq-1.7.1.tar.gz",
+            "sha256": "478c9ca129fd2e3443fe27314b455e211e0d8c60bc8ff7df703873deeee580c2",
             "x-checker-data": {
                 "type": "anitya",
                 "project-id": 13252,
@@ -18,24 +18,24 @@
         "/share/man"
     ],
     "modules": [
-      {
-          "name": "oniguruma",
-          "config-opts": [
-              "--enable-posix-api"
-          ],
-          "sources": [
-              {
-                  "type": "archive",
-                  "url": "https://github.com/kkos/oniguruma/releases/download/v6.9.8/onig-6.9.8.tar.gz",
-                  "sha256": "28cd62c1464623c7910565fb1ccaaa0104b2fe8b12bcd646e81f73b47535213e",
-                  "x-checker-data": {
-                      "type": "anitya",
-                      "project-id": 11184,
-                      "stable-only": true,
-                      "url-template": "https://github.com/kkos/oniguruma/releases/download/v$version/onig-$version.tar.gz"
-                  }
-              }
-          ]
-      }
+        {
+            "name": "oniguruma",
+            "config-opts": [
+                "--enable-posix-api"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/kkos/oniguruma/releases/download/v6.9.9/onig-6.9.9.tar.gz",
+                    "sha256": "60162bd3b9fc6f4886d4c7a07925ffd374167732f55dce8c491bfd9cd818a6cf",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 11184,
+                        "stable-only": true,
+                        "url-template": "https://github.com/kkos/oniguruma/releases/download/v$version/onig-$version.tar.gz"
+                    }
+                }
+            ]
+        }
     ]
 }
