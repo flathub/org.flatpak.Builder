@@ -510,7 +510,8 @@
                     "type": "patch",
                     "paths": [
                         "patches/flatpak-builder-lfs.patch",
-                        "patches/flatpak-builder-appstream-cli-urls.patch"
+                        "patches/flatpak-builder-appstream-cli-urls.patch",
+                        "patches/flatpak-builder-empty-id.patch"
                     ]
                 }
             ]
