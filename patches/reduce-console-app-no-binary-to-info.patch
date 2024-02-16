@@ -1,0 +1,26 @@
+From fd99ef60198e0349c1c033d4c31e39fe56a68722 Mon Sep 17 00:00:00 2001
+From: bbhtt <bbhtt.zn0i8@slmail.me>
+Date: Fri, 16 Feb 2024 07:22:15 +0530
+Subject: [PATCH] Reduce console-app-no-binary to INFO
+
+It can't be overriden using the command line switch
+---
+ src/as-validator-issue-tag.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/as-validator-issue-tag.h b/src/as-validator-issue-tag.h
+index 3c40c016..be269c2d 100644
+--- a/src/as-validator-issue-tag.h
++++ b/src/as-validator-issue-tag.h
+@@ -667,7 +667,7 @@ AsValidatorIssueTag as_validator_issue_tag_list[] =  {
+ 	},
+ 
+ 	{ "console-app-no-binary",
+-	  AS_ISSUE_SEVERITY_WARNING,
++	  AS_ISSUE_SEVERITY_INFO,
+ 	  /* TRANSLATORS: Please do not translate AppStream tag and property names (in backticks). */
+ 	  N_("Type `console-application` component, but no information about binaries in $PATH was provided via a `provides/binary` tag."),
+ 	},
+-- 
+2.43.1
+
