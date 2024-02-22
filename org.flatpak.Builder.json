@@ -400,7 +400,8 @@
                         {
                             "type": "patch",
                             "paths": [
-                                "patches/appstream-all-categories-invalid.patch"
+                                "patches/appstream-all-categories-invalid.patch",
+                                "patches/appstream-allow-demoting-description-has-plaintext-url.patch"
                             ]
                         }
                     ],
