@@ -15,7 +15,8 @@
         "--filesystem=host",
         "--share=network",
         "--filesystem=~/.local/share/flatpak",
-        "--filesystem=/var/lib/flatpak"
+        "--filesystem=/var/lib/flatpak",
+        "--filesystem=/tmp"
     ],
     "cleanup": [
         "/include",
