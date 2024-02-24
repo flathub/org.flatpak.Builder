@@ -3,6 +3,8 @@
     "runtime": "org.freedesktop.Sdk",
     "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
+    "base": "org.flatpak.Builder.BaseApp",
+    "base-version": "23.08",
     "command": "flatpak-builder-wrapper",
     "separate-locales": false,
     "finish-args": [
@@ -15,18 +17,6 @@
         "--filesystem=~/.local/share/flatpak",
         "--filesystem=/var/lib/flatpak"
     ],
-    "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.rust-stable",
-        "org.freedesktop.Sdk.Extension.llvm16"
-    ],
-    "build-options": {
-        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm16/bin",
-        "env": {
-            "BASH_COMPLETIONSDIR": "/app/share/bash-completion/completions",
-            "MOUNT_FUSE_PATH": "../tmp/",
-            "V": "1"
-        }
-    },
     "cleanup": [
         "/include",
         "/share/man",
@@ -36,302 +26,6 @@
         "*.a"
     ],
     "modules": [
-        "xvfb.json",
-        "jq.json",
-        "gh.json",
-        {
-            "name": "dbus",
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://gitlab.freedesktop.org/dbus/dbus.git",
-                    "commit": "fa05c11a0047f2927e76d08f9fcf6638ded7ff50"
-                }
-            ]
-        },
-        {
-            "name": "libyaml",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz",
-                    "sha256": "c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4"
-                }
-            ]
-        },
-        {
-            "name": "stemmer",
-            "buildsystem": "simple",
-            "build-commands": [
-                "make libstemmer.so -j$FLATPAK_BUILDER_N_JOBS",
-                "install -Dm644 include/libstemmer.h /app/include/libstemmer.h",
-                "install -Dm644 libstemmer.so.0.0.0 /app/lib/libstemmer.so.0.0.0",
-                "ln -s libstemmer.so.0.0.0 /app/lib/libstemmer.so.0",
-                "ln -s libstemmer.so.0 /app/lib/libstemmer.so"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/snowballstem/snowball",
-                    "commit": "d29510ae32702a81cdc29177a133e894df854550"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/stemmer-dynlib.patch"
-                }
-            ]
-        },
-        {
-            "name": "popt",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.rpm.org/popt/releases/popt-1.x/popt-1.18.tar.gz",
-                    "sha256": "5159bc03a20b28ce363aa96765f37df99ea4d8850b1ece17d1e6ad5c24fdc5d1"
-                }
-            ]
-        },
-        {
-            "name": "rpm",
-            "config-opts": [
-                "--disable-bdb",
-                "--without-lua"
-            ],
-            "cleanup": [
-                "/bin/rpm*",
-                "/lib/rpm",
-                "/lib/librpm.so*",
-                "/lib/librpmbuild.so*",
-                "/lib/librpmsign.so*"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://ftp.rpm.org/releases/rpm-4.16.x/rpm-4.16.1.3.tar.bz2",
-                    "sha256": "513dc7f972b6e7ccfc9fc7f9c01d5310cc56ee853892e4314fa2cad71478e21d"
-                }
-            ]
-        },
-        {
-            "name": "rpm2cpio",
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -Dm755 rpm2cpio /app/bin/rpm2cpio"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://gitlab.archlinux.org/archlinux/packaging/packages/rpmextract/-/raw/main/rpm2cpio",
-                    "sha256": "5b9133774a969e9b2c4b18c77b340ed1e591e13ba1336fd4a4c15a96ad436dee"
-                }
-            ]
-        },
-        {
-            "name": "svn",
-            "modules": [
-                {
-                    "name": "apr",
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://dlcdn.apache.org/apr/apr-1.7.4.tar.bz2",
-                            "sha256": "fc648de983f3a2a6c9e78dea1f180639bd2fad6c06d556d4367a701fe5c35577",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": 95,
-                                "stable-only": true,
-                                "url-template": "https://dlcdn.apache.org/apr/apr-$version.tar.bz2"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "apr-util",
-                    "config-opts": [
-                        "--with-apr=/app"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://dlcdn.apache.org//apr/apr-util-1.6.3.tar.bz2",
-                            "sha256": "a41076e3710746326c3945042994ad9a4fcac0ce0277dd8fea076fec3c9772b5",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": 96,
-                                "stable-only": true,
-                                "url-template": "https://dlcdn.apache.org//apr/apr-util-$version.tar.bz2"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "utf8proc",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "make prefix=/app",
-                        "make prefix=/app install"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.4.0.tar.gz",
-                            "sha256": "b2e5d547c1d94762a6d03a7e05cea46092aab68636460ff8648f1295e2cdfbd7"
-                        }
-                    ]
-                },
-                {
-                    "name": "serf",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "tar -xf scons-local-3.1.2.tar.gz",
-                        "python3 scons.py APR=/app/bin/apr-1-config APU=/app/bin/apu-1-config PREFIX=/app",
-                        "python3 scons.py install"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "http://prdownloads.sourceforge.net/scons/scons-local-3.1.2.tar.gz",
-                            "sha256": "642e90860b746fa18fac08c7a22de6bfa86110ae7c56d7f136f7e5fb0d8f4f44"
-                        },
-                        {
-                            "type": "archive",
-                            "url": "https://downloads.apache.org/serf/serf-1.3.10.tar.bz2",
-                            "sha256": "be81ef08baa2516ecda76a77adf7def7bc3227eeb578b9a33b45f7b41dc064e6",
-                            "x-checker-data": {
-                                "type": "html",
-                                "url": "https://downloads.apache.org/serf/",
-                                "pattern": "(serf-([\\d.]+).tar.bz2)"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "subversion",
-                    "config-opts": [
-                        "--with-lz4=internal",
-                        "--with-serf"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://downloads.apache.org/subversion/subversion-1.14.3.tar.bz2",
-                            "sha256": "949efd451a09435f7e8573574c71c7b71b194d844890fa49cd61d2262ea1a440",
-                            "x-checker-data": {
-                                "type": "html",
-                                "url": "https://downloads.apache.org/subversion/",
-                                "pattern": "(subversion-([\\d.]+).tar.bz2)"
-                            }
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "git-lfs",
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -Dm755 git-lfs /app/bin/git-lfs"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.3.0/git-lfs-linux-amd64-v3.3.0.tar.gz",
-                    "sha256": "6a4e6bd7d06d5c024bc70c8ee8c9da143ffc37d2646e252a17a6126d30cdebc1",
-                    "only-arches": [
-                        "x86_64"
-                    ]
-                },
-                {
-                    "type": "archive",
-                    "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.3.0/git-lfs-linux-arm64-v3.3.0.tar.gz",
-                    "sha256": "e97c477981a9b6a40026cadc1bf005541d973fc32df2de2f398643b15df6b5c6",
-                    "only-arches": [
-                        "aarch64"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "p7zip",
-            "no-autogen": true,
-            "make-args": [
-                "7z"
-            ],
-            "cleanup": [
-                "/man",
-                "/share"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/p7zip-project/p7zip/archive/v17.04.tar.gz",
-                    "sha256": "ea029a2e21d2d6ad0a156f6679bd66836204aa78148a4c5e498fe682e77127ef"
-                },
-                {
-                    "type": "shell",
-                    "commands": [
-                        "sed -i 's|/usr/local|/app|g' makefile.common"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "libfuse",
-            "config-opts": [
-                "UDEV_RULES_PATH=/app/etc/udev/rules.d",
-                "INIT_D_PATH=/app/etc/init.d"
-            ],
-            "post-install": [
-                "install -m a+rx fusermount-wrapper.sh /app/bin/fusermount"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/libfuse/libfuse/releases/download/fuse-2.9.9/fuse-2.9.9.tar.gz",
-                    "sha256": "d0e69d5d608cc22ff4843791ad097f554dd32540ddc9bed7638cc6fea7c1b4b5"
-                },
-                {
-                    "type": "patch",
-                    "paths": [
-                        "patches/fuse-disable-sys-mount-under-flatpak.patch",
-                        "patches/fuse-2.9.2-namespace-conflict-fix.patch",
-                        "patches/fuse-closefrom.patch"
-                    ]
-                },
-                {
-                    "type": "file",
-                    "path": "fusermount-wrapper.sh"
-                }
-            ]
-        },
-        {
-            "name": "ostree",
-            "config-opts": [
-                "--disable-man",
-                "--with-systemdsystemgeneratordir=/app/lib/systemd/system-generators",
-                "--without-systemdsystemunitdir",
-                "--with-curl"
-            ],
-            "cleanup": [
-                "/etc/grub.d",
-                "/etc/ostree",
-                "/share/ostree",
-                "/libexec"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://github.com/ostreedev/ostree/releases/download/v2024.3/libostree-2024.3.tar.xz",
-                    "sha256": "5e0daaaa70772bfa00bd3d0c25d11f7c1f6d41a996708fad8bf9941f0a36bc8d",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/ostreedev/ostree/releases/latest",
-                        "version-query": ".tag_name",
-                        "url-query": ".assets | first | .browser_download_url"
-                    }
-                }
-            ]
-        },
         {
             "name": "flatpak",
             "config-opts": [
@@ -367,23 +61,6 @@
             ],
             "modules": [
                 {
-                    "name": "python3-pyparsing",
-                    "cleanup": [
-                        "*"
-                    ],
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "pip3 install --prefix=/app pyparsing-2.4.7-py2.py3-none-any.whl"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/8a/bb/488841f56197b13700afd5658fc279a2025a39e22449b7cf29864669b15d/pyparsing-2.4.7-py2.py3-none-any.whl",
-                            "sha256": "ef9d7589ef3c200abe66653d3f1ab1033c3c419ae9b9bdb1240a85b024efc88b"
-                        }
-                    ]
-                },
-                {
                     "name": "appstream",
                     "buildsystem": "meson",
                     "config-opts": [
@@ -404,67 +81,10 @@
                                 "patches/appstream-allow-demoting-description-has-plaintext-url.patch"
                             ]
                         }
-                    ],
-                    "modules": [
-                        {
-                            "name": "libxmlb",
-                            "buildsystem": "meson",
-                            "sources": [
-                                {
-                                    "type": "archive",
-                                    "url": "https://github.com/hughsie/libxmlb/releases/download/0.3.14/libxmlb-0.3.14.tar.xz",
-                                    "sha256": "a2f0056eed14ff791aee2b08b1514a0f1b6cf215f0579138a8cae8c45a0d3b0f"
-                                }
-                            ]
-                        }
                     ]
                 }
             ]
         },
-        {
-            "name": "maturin",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=file://${PWD} --prefix=${FLATPAK_DEST} maturin --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "only-arches": [
-                        "x86_64"
-                    ],
-                    "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-0.13.7-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl",
-                    "sha256": "a96f1b3ede71c0f76b8c7cfac18a9eec90174bdf434fa9aeff491be9a7ca5179"
-                },
-                {
-                    "type": "file",
-                    "only-arches": [
-                        "aarch64"
-                    ],
-                    "url": "https://files.pythonhosted.org/packages/py3/m/maturin/maturin-0.13.7-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl",
-                    "sha256": "0b6ac1219a809155057fd1f358f7ece03c3abd2e2991832ce5146825a9fa4160"
-                }
-            ],
-            "modules": [
-                {
-                    "name": "python3-tomli",
-                    "buildsystem": "simple",
-                    "build-commands": [
-                        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"tomli\" --no-build-isolation"
-                    ],
-                    "sources": [
-                        {
-                            "type": "file",
-                            "url": "https://files.pythonhosted.org/packages/97/75/10a9ebee3fd790d20926a90a2547f0bf78f371b2f13aa822c759680ca7b9/tomli-2.0.1-py3-none-any.whl",
-                            "sha256": "939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"
-                        }
-                    ]
-                }
-            ]
-        },
-        "python3-lxml.json",
-        "flatpak-builder-lint-deps.json",
-        "python3-poetry.json",
         {
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
@@ -479,7 +99,6 @@
                 }
             ]
         },
-        "flat-manager-client-deps.json",
         {
             "name": "flat-manager-client",
             "buildsystem": "simple",
@@ -521,8 +140,7 @@
             "name": "wrapper",
             "buildsystem": "simple",
             "build-commands": [
-                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper",
-                "install -Dm644 flathub.json /app/flathub.json"
+                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper"
             ],
             "sources": [
                 {
@@ -531,10 +149,6 @@
                     "commands": [
                         "FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)\nexport FLATPAK_BINARY\nexport FLATPAK_USER_DIR=$HOME/.local/share/flatpak\nexec flatpak-builder \"$@\"\n"
                     ]
-                },
-                {
-                    "type": "file",
-                    "path": "flathub.json"
                 }
             ]
         }
