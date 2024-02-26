@@ -39,6 +39,24 @@ jobs:
       run: |
         flatpak run org.flatpak.Builder//localtest --version
 
+    - name: Check if appstreamcli launches
+      run: |
+        flatpak run --command=appstreamcli org.flatpak.Builder//localtest vercmp 1 2
+
+    - name: Check if desktop-file-validate launches
+      run: |
+        flatpak run --command=desktop-file-validate org.flatpak.Builder//localtest --version
+
+    - name: Check if ostree launches
+      run: |
+        flatpak run --command=ostree org.flatpak.Builder//localtest --version
+
+    - name: Sanity check the linter
+      run: |
+        flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
+        flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
+        flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
+
     - name: Build org.freedesktop.appstream-glib with org.flatpak.Builder
       run: |
         git clone --depth=1 --branch master --single-branch https://github.com/flathub/org.freedesktop.appstream-glib
@@ -47,10 +65,6 @@ jobs:
           --force-clean --install-deps-from=flathub --default-branch=localtest \
           --state-dir=../.flatpak-builder --ccache --disable-cache \
           --install builddir org.freedesktop.appstream-glib.json
-
-    - name: Check if org.freedesktop.appstream-glib launches
-      run: |
-        flatpak run org.freedesktop.appstream-glib//localtest vercmp 2 1
 
     - name: Build com.jetbrains.GoLand with org.flatpak.Builder
       run: |
