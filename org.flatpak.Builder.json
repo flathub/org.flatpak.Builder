@@ -86,20 +86,6 @@
             ]
         },
         {
-            "name": "flatpak-builder-lint",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --prefix=/app . --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "557cc708dd72e478fa5cb38442f8e7b0670f4dce"
-                }
-            ]
-        },
-        {
             "name": "flat-manager-client",
             "buildsystem": "simple",
             "build-commands": [
@@ -149,6 +135,20 @@
                     "commands": [
                         "FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)\nexport FLATPAK_BINARY\nexport FLATPAK_USER_DIR=$HOME/.local/share/flatpak\nexec flatpak-builder \"$@\"\n"
                     ]
+                }
+            ]
+        },
+        {
+            "name": "flatpak-builder-lint",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app . --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flathub/flatpak-builder-lint",
+                    "commit": "557cc708dd72e478fa5cb38442f8e7b0670f4dce"
                 }
             ]
         }
