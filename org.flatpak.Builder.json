@@ -78,7 +78,8 @@
                         {
                             "type": "patch",
                             "paths": [
-                                "patches/appstream-demotion-allowlist.patch"
+                                "patches/appstream-demotion-allowlist.patch",
+                                "patches/appstream-compose-default-propagate-custom.patch"
                             ]
                         }
                     ]
