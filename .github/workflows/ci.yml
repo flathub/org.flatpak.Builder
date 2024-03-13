@@ -18,7 +18,7 @@ jobs:
       run: |
         sudo add-apt-repository ppa:flatpak/stable
         sudo apt-get update
-        sudo apt-get install -y flatpak flatpak-builder
+        sudo apt-get install -y flatpak flatpak-builder jq
 
     - name: Set up flathub remote
       run: |
@@ -28,6 +28,14 @@ jobs:
     - name: Allow file:// clones with git>=2.38.1
       run: |
         git config --global protocol.file.allow always
+
+    - name: Build org.flatpak.Builder.BaseApp
+      run: |
+        git clone --depth=1 --branch branch/23.08 --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.BaseApp.git && cd org.flatpak.Builder.BaseApp
+        jq '."base-version" = "localtest"' org.flatpak.Builder.BaseApp.json >> org.flatpak.Builder.BaseApp-modified.json
+        flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
+          --install-deps-from=flathub --default-branch=localtest --ccache \
+          --install builddir org.flatpak.Builder.BaseApp-modified.json
 
     - name: Build org.flatpak.Builder
       run: |
