@@ -145,6 +145,7 @@
                 }
             ]
         },
+        "flatpak-builder-lint-deps.json",
         {
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
