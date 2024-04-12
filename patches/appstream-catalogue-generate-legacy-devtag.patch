@@ -1,0 +1,40 @@
+From 8418226449be8ca1c2c6006fc5e63d4800ec2c4f Mon Sep 17 00:00:00 2001
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Sun, 7 Apr 2024 01:41:52 +0200
+Subject: [PATCH] xml: Generate a developer_name compat tag for older 3rd-party
+ parsers
+
+Apparently there is still older parsers around that do not support the
+developer tag yet, so let's generate at least a basic developer_name tag
+for a while longer to increase compatibility of the generated data.
+
+CC: https://github.com/flathub-infra/documentation/pull/287
+---
+ src/as-component.c   | 12 +++++++++++-
+ 1 files changed, 12 insertions(+), 0 deletion(-)
+
+diff --git a/src/as-component.c b/src/as-component.c
+index d6d89324..e7b725bf 100644
+--- a/src/as-component.c
++++ b/src/as-component.c
+@@ -5033,9 +5033,19 @@ as_component_to_xml_node (AsComponent *cpt, AsContext *ctx, xmlNode *root)
+ 	as_xml_add_text_node (cnode, "project_group", priv->project_group);
+ 
+ 	/* developer */
+-	if (priv->developer != NULL)
++	if (priv->developer != NULL) {
+ 		as_developer_to_xml_node (priv->developer, ctx, cnode);
+ 
++		if (as_context_get_format_version (ctx) <= AS_FORMAT_VERSION_V1_0) {
++			/* Add the deprecated tag for now, for improved backwards compatibility */
++			as_xml_add_text_node (
++			    cnode,
++			    "developer_name",
++			    g_hash_table_lookup (as_developer_get_name_table (priv->developer),
++						 "C"));
++		}
++	}
++
+ 	/* extends nodes */
+ 	as_xml_add_node_list (cnode, NULL, "extends", priv->extends);
+ 
