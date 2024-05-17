@@ -86,7 +86,8 @@
                             "paths": [
                                 "patches/appstream-demotion-allowlist.patch",
                                 "patches/appstream-compose-default-propagate-custom.patch",
-                                "patches/asc-hint-tags-silence-some-vague-validation-errors.patch"
+                                "patches/asc-hint-tags-silence-some-vague-validation-errors.patch",
+                                "patches/compose-seperate-file-read-error.patch"
                             ]
                         }
                     ]
