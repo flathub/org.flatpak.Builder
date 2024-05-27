@@ -16,7 +16,8 @@
         "--share=network",
         "--filesystem=~/.local/share/flatpak",
         "--filesystem=/var/lib/flatpak",
-        "--filesystem=/tmp"
+        "--filesystem=/tmp",
+        "--env=GDK_PIXBUF_MODULE_FILE=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
     ],
     "cleanup": [
         "/include",
