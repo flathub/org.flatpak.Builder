@@ -159,7 +159,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "71da84906a4c5f6478aebf954f51dd53272d26ba"
+                    "commit": "f04118ee121febbae9fb63b6a8078735b6e09e2a"
                 }
             ]
         }
