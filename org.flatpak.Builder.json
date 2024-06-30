@@ -128,8 +128,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder",
-                    "tag": "1.4.1",
-                    "commit": "57f9ae9cc8327cc0c9eab289f02de3ffaccef94b",
+                    "tag": "1.4.3",
+                    "commit": "71495258a5df18367ac502b2a191f93cd7481f92",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
