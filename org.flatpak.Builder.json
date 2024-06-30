@@ -20,9 +20,13 @@
     ],
     "cleanup": [
         "/include",
+        "/etc",
         "/share/man",
         "/share/pkgconfig",
         "/share/zsh",
+        "/share/fish",
+        "/share/installed-tests",
+        "/share/metainfo",
         "*.la",
         "*.a"
     ],
@@ -79,7 +83,13 @@
                         {
                             "type": "archive",
                             "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.3.tar.gz",
-                            "sha256": "dd7222519b5d855124fa803ce82a7cbf090ac6b2e44a5bc515e729b1f20a63ae"
+                            "sha256": "dd7222519b5d855124fa803ce82a7cbf090ac6b2e44a5bc515e729b1f20a63ae",
+                            "x-checker-data": {
+                                "type": "anitya",
+                                "project-id": 10385,
+                                "stable-only": true,
+                                "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
+                            }
                         },
                         {
                             "type": "patch",
@@ -119,7 +129,11 @@
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder",
                     "tag": "1.4.1",
-                    "commit": "57f9ae9cc8327cc0c9eab289f02de3ffaccef94b"
+                    "commit": "57f9ae9cc8327cc0c9eab289f02de3ffaccef94b",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^([\\d.]+)$"
+                    }
                 },
                 {
                     "type": "patch",
@@ -145,6 +159,14 @@
                         "FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)\nexport FLATPAK_BINARY\nexport FLATPAK_USER_DIR=$HOME/.local/share/flatpak\nexec flatpak-builder \"$@\"\n"
                     ]
                 }
+            ]
+        },
+        {
+            "name": "cleanup-baseapp",
+            "buildsystem": "simple",
+            "build-commands": [
+                "rm -rvf /app/include",
+                "rm -rvf /app/etc"
             ]
         },
         "flatpak-builder-lint-deps.json",
