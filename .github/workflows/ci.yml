@@ -51,6 +51,24 @@ jobs:
       run: |
         flatpak run --command=ostree org.flatpak.Builder//localtest --version
 
+    - name: Check if 7z works
+      run: |
+        curl -sL https://github.com/ip7z/7zip/releases/download/24.07/7z2407-src.7z > 7z-src.7z
+        flatpak run --filesystem=$(pwd) --command=7z org.flatpak.Builder//localtest x -y 7z-src.7z
+
+    - name: Check if rpm2cpio works
+      run: |
+        curl -sL https://archives.fedoraproject.org/pub/archive/fedora/linux/core/1/x86_64/os/Fedora/RPMS/bash-2.05b-34.x86_64.rpm > bash.rpm
+        flatpak run --filesystem=$(pwd) --command=rpm2cpio org.flatpak.Builder//localtest bash.rpm|cpio -i -d
+
+    - name: Check if git-lfs works
+      run: |
+        flatpak run --filesystem=$(pwd) --command=git org.flatpak.Builder//localtest lfs env
+
+    - name: Check if svn works
+      run: |
+        flatpak run --command=svn org.flatpak.Builder//localtest info --depth empty --show-item revision https://svn.code.sf.net/p/freeimage/svn/
+
     - name: Sanity check the linter
       run: |
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
