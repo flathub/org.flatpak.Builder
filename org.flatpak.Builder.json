@@ -140,7 +140,8 @@
                     "paths": [
                         "patches/flatpak-builder-lfs.patch",
                         "patches/flatpak-builder-appstream-cli-urls.patch",
-                        "patches/flatpak-builder-builder-module-dont-set-libdir-for-autotools.patch"
+                        "patches/flatpak-builder-builder-module-dont-set-libdir-for-autotools.patch",
+                        "patches/flatpak-builder-CMAKE_INSTALL_LIBDIR-is-not-absolute-path.patch"
                     ]
                 }
             ]
