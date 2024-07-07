@@ -31,6 +31,9 @@ jobs:
 
     - name: Build org.flatpak.Builder
       run: |
+        git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
+        git submodule update --init --recursive
+        cd org.flatpak.Builder
         flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
           --install-deps-from=flathub --default-branch=localtest --ccache \
           --install builddir org.flatpak.Builder.json
@@ -69,26 +72,43 @@ jobs:
       run: |
         flatpak run --command=svn org.flatpak.Builder//localtest info --depth empty --show-item revision https://svn.code.sf.net/p/freeimage/svn/
 
+    # Needed by flatpak-github-actions
+    - name: Check if xvfb-run works
+      run: |
+        flatpak run --command=xvfb-run org.flatpak.Builder//localtest -a flatpak-builder --version
+
+    # Needed by OBS
+    - name: Check if gh works
+      run: |
+        flatpak run --command=gh org.flatpak.Builder//localtest --version
+
+    # Needed by OBS
+    - name: Check if jq works
+      run: |
+        flatpak run --command=jq org.flatpak.Builder//localtest --version
+
     - name: Sanity check the linter
       run: |
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
-    - name: Build org.freedesktop.appstream-glib with org.flatpak.Builder
+    - name: Build org.freedesktop.appstream.cli with org.flatpak.Builder
       run: |
-        git clone --depth=1 --branch master --single-branch https://github.com/flathub/org.freedesktop.appstream-glib
-        cd org.freedesktop.appstream-glib
+        git clone --depth=1 --branch master --single-branch https://github.com/flathub/org.freedesktop.appstream.cli.git
+        git submodule update --init --recursive
+        cd org.freedesktop.appstream.cli
         dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
           --force-clean --install-deps-from=flathub --default-branch=localtest \
           --state-dir=../.flatpak-builder --ccache --disable-cache \
-          --install builddir org.freedesktop.appstream-glib.json
+          --install builddir org.freedesktop.appstream.cli.yaml
 
-    - name: Build com.jetbrains.GoLand with org.flatpak.Builder
+    - name: Build io.neovim.nvim with org.flatpak.Builder
       run: |
-        git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/com.jetbrains.GoLand
-        cd com.jetbrains.GoLand
+        git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/io.neovim.nvim.git
+        git submodule update --init --recursive
+        cd io.neovim.nvim
         dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
           --force-clean --install-deps-from=flathub --default-branch=localtest \
           --state-dir=../.flatpak-builder --ccache --disable-cache --mirror-screenshots-url=https://domain.tld \
-          --install builddir com.jetbrains.GoLand.yaml
+          --install builddir io.neovim.nvim.yaml
