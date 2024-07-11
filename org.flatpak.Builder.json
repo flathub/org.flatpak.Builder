@@ -129,8 +129,8 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder",
-                    "tag": "1.4.3",
-                    "commit": "71495258a5df18367ac502b2a191f93cd7481f92",
+                    "tag": "1.4.4",
+                    "commit": "f996a7949076ef1dc85c602da85b981b0a173a23",
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
@@ -140,9 +140,7 @@
                     "type": "patch",
                     "paths": [
                         "patches/flatpak-builder-lfs.patch",
-                        "patches/flatpak-builder-appstream-cli-urls.patch",
-                        "patches/flatpak-builder-builder-module-dont-set-libdir-for-autotools.patch",
-                        "patches/flatpak-builder-CMAKE_INSTALL_LIBDIR-is-not-absolute-path.patch"
+                        "patches/flatpak-builder-appstream-cli-urls.patch"
                     ]
                 }
             ]
