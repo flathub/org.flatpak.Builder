@@ -114,7 +114,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flat-manager",
-                    "commit": "58206d075a969bb49d83a52dbc35b55d89fcd5e7"
+                    "commit": "aab9e754e8da2f06ae341f715407068a58da137c"
                 }
             ]
         },
