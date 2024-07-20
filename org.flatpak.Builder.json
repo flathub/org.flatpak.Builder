@@ -62,12 +62,6 @@
                         "version-query": ".tag_name",
                         "url-query": "\"https://github.com/flatpak/flatpak/releases/download/\\($version)/flatpak-\\($version).tar.xz\""
                     }
-                },
-                {
-                    "type": "patch",
-                    "paths": [
-                        "patches/flatpak-copy-icon-pass-appstream-cid.patch"
-                    ]
                 }
             ],
             "modules": [
