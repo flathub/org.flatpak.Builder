@@ -13,7 +13,7 @@
         "--talk-name=org.freedesktop.Flatpak",
         "--filesystem=host",
         "--share=network",
-        "--filesystem=~/.local/share/flatpak",
+        "--filesystem=xdg-data/flatpak",
         "--filesystem=/var/lib/flatpak",
         "--filesystem=/tmp",
         "--env=GDK_PIXBUF_MODULE_FILE=/app/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache"
