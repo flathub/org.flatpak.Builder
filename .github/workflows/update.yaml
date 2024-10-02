@@ -16,11 +16,11 @@ jobs:
           ref: ${{ matrix.branch }}
       - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
         env:
-          GIT_AUTHOR_NAME: Flatpak External Data Checker
-          GIT_COMMITTER_NAME: Flatpak External Data Checker
-          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: flathubbot
+          GIT_COMMITTER_NAME: flathubbot
+          GIT_AUTHOR_EMAIL: sysadmin@flathub.org
+          GIT_COMMITTER_EMAIL: sysadmin@flathub.org
+          EMAIL: sysadmin@flathub.org
+          GITHUB_TOKEN: ${{ secrets.FP_BUILDER_FLATHUBBOT_TOKEN }}
         with:
           args: --update --never-fork org.flatpak.Builder.json
