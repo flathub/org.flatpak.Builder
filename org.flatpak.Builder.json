@@ -168,13 +168,14 @@
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
             "build-commands": [
+                "poetry-dynamic-versioning",
                 "pip3 install --prefix=/app . --no-build-isolation"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "3bfee493cf5f1cb3f4d4f048c8aeac9773eec5b8"
+                    "commit": "d79635523352bcff85f5780c14ae19b08b3a60f6"
                 }
             ]
         }
