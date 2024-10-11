@@ -1,0 +1,37 @@
+name: Respond to linter trigger
+
+on:
+  repository_dispatch:
+    types: [trigger-workflow]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    if: github.repository == 'flathub/org.flatpak.Builder'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run update script
+        run: |
+          echo "LINTER_SHA=${{ github.event.client_payload.sha }}" >> $GITHUB_ENV
+          LINTER_SHA=${{ env.LINTER_SHA }} python3 .github/scripts/rewrite-manfiest.py
+
+      - name: Create pull request
+        if: ${{ success() }}
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.FP_BUILDER_FLATHUBBOT_TOKEN }}
+          branch-suffix: "random"
+          commit-message: |
+            (Automated) Bump linter
+
+            Bump linter to ${{ env.LINTER_SHA }}
+          title: "(Automated) Bump linter"
+          body: |
+            Bump linter to ${{ env.LINTER_SHA }}
+          delete-branch: true
