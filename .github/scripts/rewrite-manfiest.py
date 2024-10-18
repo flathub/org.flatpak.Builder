@@ -5,6 +5,8 @@ import os
 
 SHA = os.environ["LINTER_SHA"]
 
+print(SHA)
+
 if not (SHA and len(SHA) == 40):
     raise Exception("Invalid SHA")
 

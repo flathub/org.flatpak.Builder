@@ -18,8 +18,8 @@ jobs:
 
       - name: Run update script
         run: |
-          echo "LINTER_SHA=${{ github.event.client_payload.sha }}" >> $GITHUB_ENV
-          LINTER_SHA=${{ env.LINTER_SHA }} python3 .github/scripts/rewrite-manfiest.py
+          echo ${{ github.event.client_payload.sha }}
+          LINTER_SHA=${{ github.event.client_payload.sha }} python3 .github/scripts/rewrite-manfiest.py
 
       - name: Create pull request
         if: ${{ success() }}
@@ -30,8 +30,8 @@ jobs:
           commit-message: |
             (Automated) Bump linter
 
-            Bump linter to ${{ env.LINTER_SHA }}
+            Bump linter to ${{ github.event.client_payload.sha }}
           title: "(Automated) Bump linter"
           body: |
-            Bump linter to ${{ env.LINTER_SHA }}
+            Bump linter to ${{ github.event.client_payload.sha }}
           delete-branch: true
