@@ -22,6 +22,7 @@ for module in manifest["modules"]:
                 "type": "git",
                 "url": "https://github.com/flathub/flatpak-builder-lint",
                 "commit": SHA,
+                "disable-shallow-clone": True,
             }
         ]
         break
