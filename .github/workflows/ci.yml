@@ -79,6 +79,11 @@ jobs:
       run: |
         flatpak run --command=xvfb-run org.flatpak.Builder//localtest -a flatpak-builder --version
 
+    # Needed by flatpak-github-actions
+    - name: Check if dbus-daemon works
+      run: |
+        flatpak run --command=dbus-daemon org.flatpak.Builder//localtest --version
+
     # Needed by OBS
     - name: Check if gh works
       run: |
@@ -88,6 +93,10 @@ jobs:
     - name: Check if jq works
       run: |
         flatpak run --command=jq org.flatpak.Builder//localtest --version
+
+    - name: Check if xmlstarlet works
+      run: |
+        flatpak run --command=xmlstarlet org.flatpak.Builder//localtest --version
 
     - name: Sanity check the linter
       run: |
