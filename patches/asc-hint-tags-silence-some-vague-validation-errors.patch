@@ -1,6 +1,6 @@
-From cd5dd2c083e34456744d0fe7778efccadac67b18 Mon Sep 17 00:00:00 2001
+From d1e201a89f20ec4b96ff52600e85917987acd251 Mon Sep 17 00:00:00 2001
 From: bbhtt <bbhtt.zn0i8@slmail.me>
-Date: Sat, 20 Apr 2024 07:56:19 +0530
+Date: Mon, 9 Dec 2024 10:16:18 +0530
 Subject: [PATCH] asc-hint-tags: Silence some vague validation errors during
  compose
 
@@ -21,7 +21,7 @@ The following are lowered to INFO:
  1 file changed, 7 insertions(+), 7 deletions(-)
 
 diff --git a/compose/asc-hint-tags.c b/compose/asc-hint-tags.c
-index cf91318e..2dc0feef 100644
+index 7e816d48..2b029a87 100644
 --- a/compose/asc-hint-tags.c
 +++ b/compose/asc-hint-tags.c
 @@ -57,7 +57,7 @@ AscHintTagStatic asc_hint_tag_list[] =  {
@@ -31,7 +31,7 @@ index cf91318e..2dc0feef 100644
 -	  AS_ISSUE_SEVERITY_WARNING,
 +	  AS_ISSUE_SEVERITY_INFO,
  	  "The AppStream metadata should be updated to follow a more recent version of the specification.<br/>"
- 	  "Please consult <a href=\"http://freedesktop.org/software/appstream/docs/chap-Quickstart.html\">the XML quickstart guide</a> for "
+ 	  "Please consult the <a href=\"https://www.freedesktop.org/software/appstream/docs/chap-Quickstart.html\">MetaInfo quickstart guides</a> for "
  	  "more information."
 @@ -99,7 +99,7 @@ AscHintTagStatic asc_hint_tag_list[] =  {
  	},
@@ -84,9 +84,9 @@ index cf91318e..2dc0feef 100644
  	{ "no-metainfo",
 -	  AS_ISSUE_SEVERITY_WARNING,
 +	  AS_ISSUE_SEVERITY_INFO,
- 	  "This software component is missing a <a href=\"https://freedesktop.org/software/appstream/docs/chap-Metadata.html#sect-Metadata-GenericComponent\">MetaInfo file</a> "
+ 	  "This software component is missing a <a href=\"https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html#sect-Metadata-GenericComponent\">MetaInfo file</a> "
  	  "as metadata source.<br/>"
  	  "To synthesize suitable metadata anyway, we took some data from its desktop-entry file.<br/>"
 -- 
-2.44.0
+2.47.1
 
