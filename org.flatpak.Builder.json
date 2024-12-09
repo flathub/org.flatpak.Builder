@@ -75,8 +75,8 @@
                     "sources": [
                         {
                             "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.3.tar.gz",
-                            "sha256": "dd7222519b5d855124fa803ce82a7cbf090ac6b2e44a5bc515e729b1f20a63ae",
+                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.4.tar.gz",
+                            "sha256": "dff6efa67d9ea4797870d70e3370b9e3fa66ce3c749aba68e6b10222473463cf",
                             "x-checker-data": {
                                 "type": "anitya",
                                 "project-id": 10385,
@@ -90,8 +90,7 @@
                                 "patches/appstream-demotion-allowlist.patch",
                                 "patches/appstream-compose-default-propagate-custom.patch",
                                 "patches/asc-hint-tags-silence-some-vague-validation-errors.patch",
-                                "patches/compose-seperate-file-read-error.patch",
-                                "patches/appstream-compose-lang-symlinks.patch"
+                                "patches/compose-seperate-file-read-error.patch"
                             ]
                         }
                     ]
