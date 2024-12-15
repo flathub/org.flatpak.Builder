@@ -35,9 +35,6 @@ jobs:
 
     - name: Build org.flatpak.Builder
       run: |
-        git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/org.flatpak.Builder.git
-        git submodule update --init --recursive
-        cd org.flatpak.Builder
         flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
           --install-deps-from=flathub --default-branch=localtest --ccache \
           --install builddir org.flatpak.Builder.json
@@ -102,7 +99,6 @@ jobs:
 
     - name: Sanity check the linter
       run: |
-        cd org.flatpak.Builder
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
