@@ -7,6 +7,9 @@
     "base-version": "24.08",
     "command": "flatpak-builder-wrapper",
     "separate-locales": false,
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
     "finish-args": [
         "--require-version=1.0.0",
         "--allow=devel",
