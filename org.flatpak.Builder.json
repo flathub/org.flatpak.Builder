@@ -23,6 +23,7 @@
     "cleanup": [
         "/include",
         "/etc",
+        "/lib/pkgconfig",
         "/share/man",
         "/share/pkgconfig",
         "/share/zsh",
@@ -179,7 +180,8 @@
             "buildsystem": "simple",
             "build-commands": [
                 "rm -rvf /app/include",
-                "rm -rvf /app/etc"
+                "rm -rvf /app/etc",
+                "rm -rvf /app/lib/pkgconfig"
             ]
         },
         "flatpak-builder-lint-deps.json",
