@@ -73,7 +73,8 @@
                     "config-opts": [
                         "-Dapidocs=false",
                         "-Dgir=false",
-                        "-Dcompose=true"
+                        "-Dcompose=true",
+                        "-Dtests=false"
                     ],
                     "sources": [
                         {
@@ -93,7 +94,8 @@
                                 "patches/appstream-demotion-allowlist.patch",
                                 "patches/appstream-compose-default-propagate-custom.patch",
                                 "patches/asc-hint-tags-silence-some-vague-validation-errors.patch",
-                                "patches/compose-seperate-file-read-error.patch"
+                                "patches/compose-seperate-file-read-error.patch",
+                                "patches/appstream-no-tests.patch"
                             ]
                         }
                     ]
