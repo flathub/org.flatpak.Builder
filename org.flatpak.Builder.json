@@ -116,9 +116,12 @@
         },
         {
             "name": "flatpak-builder",
+            "buildsystem": "meson",
             "config-opts": [
-                "--with-system-debugedit",
-                "--with-fuse=2"
+                "-Ddocs=disabled",
+                "-Dtests=false",
+                "-Dinstalled_tests=false",
+                "-Dfuse=2"
             ],
             "sources": [
                 {
@@ -126,6 +129,7 @@
                     "url": "https://github.com/flatpak/flatpak-builder",
                     "tag": "1.4.4",
                     "commit": "f996a7949076ef1dc85c602da85b981b0a173a23",
+                    "disable-submodules": true,
                     "x-checker-data": {
                         "type": "git",
                         "tag-pattern": "^([\\d.]+)$"
