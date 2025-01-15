@@ -37,9 +37,13 @@
             "name": "flatpak",
             "config-opts": [
                 "--disable-documentation",
+                "--disable-docbook-docs",
                 "--disable-seccomp",
+                "--disable-selinux-module",
                 "--disable-sandboxed-triggers",
                 "--disable-system-helper",
+                "--with-system-bubblewrap",
+                "--with-system-dbus-proxy",
                 "--with-system-install-dir=/var/lib/flatpak"
             ],
             "cleanup": [
