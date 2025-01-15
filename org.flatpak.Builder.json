@@ -78,7 +78,8 @@
                         "-Dapidocs=false",
                         "-Dgir=false",
                         "-Dcompose=true",
-                        "-Dtests=false"
+                        "-Dtests=false",
+                        "-Dinstalled_tests=false"
                     ],
                     "sources": [
                         {
