@@ -64,10 +64,11 @@
                     "url": "https://github.com/flatpak/flatpak/releases/download/1.14.10/flatpak-1.14.10.tar.xz",
                     "sha256": "6bbdc7908127350ad85a4a47d70292ca2f4c46e977b32b1fd231c2a719d821cd",
                     "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/flatpak/flatpak/releases/latest",
-                        "version-query": ".tag_name",
-                        "url-query": "\"https://github.com/flatpak/flatpak/releases/download/\\($version)/flatpak-\\($version).tar.xz\""
+                        "type": "anitya",
+                        "project-id": 6377,
+                        "stable-only": true,
+                        "versions": {"<": "1.15.0"},
+                        "url-template": "https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
                     }
                 }
             ],
