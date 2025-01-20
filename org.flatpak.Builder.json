@@ -102,9 +102,6 @@
                         "type": "anitya",
                         "project-id": 6377,
                         "stable-only": true,
-                        "versions": {
-                            "<": "1.15.0"
-                        },
                         "url-template": "https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
                     }
                 }
