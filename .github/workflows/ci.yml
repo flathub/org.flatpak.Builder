@@ -13,6 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.flatpak-builder
+        key: ${{ runner.os }}-flatpak-builder
+
     - name: Install flatpak and flatpak-builder
       run: |
         sudo apt-get update
@@ -27,20 +32,11 @@ jobs:
       run: |
         git config --global protocol.file.allow always
 
-    - name: Prepare for hashing
-      run: |
-        flatpak-builder --show-manifest org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
-
-    - uses: actions/cache@v4
-      with:
-        path: ${{ github.workspace }}/cache/.flatpak-builder
-        key: ${{ runner.os }}-${{ hashFiles('org.flatpak.Builder-cache.json') }}
-
     - name: Build org.flatpak.Builder
       run: |
         flatpak-builder --verbose --user --sandbox --force-clean \
           --repo=repo \
-          --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
+          --state-dir="$GITHUB_WORKSPACE/.flatpak-builder" \
           --install-deps-from=flathub --default-branch=localtest \
           --ccache --keep-build-dirs --install builddir \
           org.flatpak.Builder.json
