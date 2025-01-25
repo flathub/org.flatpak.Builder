@@ -33,11 +33,23 @@ jobs:
       run: |
         git config --global protocol.file.allow always
 
+    - name: Prepare for hashing
+      run: |
+        flatpak-builder --show-manifest org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
+
+    - uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/cache/.flatpak-builder
+        key: ${{ runner.os }}-${{ hashFiles('org.flatpak.Builder-cache.json') }}
+
     - name: Build org.flatpak.Builder
       run: |
-        flatpak-builder --verbose --user --sandbox --force-clean --repo=repo \
-          --install-deps-from=flathub --default-branch=localtest --ccache \
-          --install builddir org.flatpak.Builder.json
+        flatpak-builder --verbose --user --sandbox --force-clean \
+          --repo=repo \
+          --state-dir="$GITHUB_WORKSPACE/cache/.flatpak-builder" \
+          --install-deps-from=flathub --default-branch=localtest \
+          --ccache --keep-build-dirs --install builddir \
+          org.flatpak.Builder.json
 
     - name: Check if org.flatpak.Builder launches
       run: |
@@ -105,20 +117,21 @@ jobs:
 
     - name: Build org.freedesktop.appstream.cli with org.flatpak.Builder
       run: |
-        git clone --depth=1 --branch master --single-branch https://github.com/flathub/org.freedesktop.appstream.cli.git
-        git submodule update --init --recursive
+        git clone --depth=1 --branch master --single-branch --recursive https://github.com/flathub/org.freedesktop.appstream.cli.git
         cd org.freedesktop.appstream.cli
-        dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
-          --force-clean --install-deps-from=flathub --default-branch=localtest \
-          --state-dir=../.flatpak-builder --ccache --disable-cache \
-          --install builddir org.freedesktop.appstream.cli.yaml
+        dbus-run-session flatpak run org.flatpak.Builder//localtest \
+          --verbose --user --sandbox --force-clean \
+          --install-deps-from=flathub --default-branch=localtest \
+          --ccache --disable-cache --install builddir \
+          org.freedesktop.appstream.cli.yaml
 
     - name: Build io.neovim.nvim with org.flatpak.Builder
       run: |
-        git clone --depth=1 --branch master --recursive --single-branch https://github.com/flathub/io.neovim.nvim.git
-        git submodule update --init --recursive
+        git clone --depth=1 --branch master --recursive --single-branch --recursive https://github.com/flathub/io.neovim.nvim.git
         cd io.neovim.nvim
-        dbus-run-session flatpak run org.flatpak.Builder//localtest --verbose --user --sandbox \
-          --force-clean --install-deps-from=flathub --default-branch=localtest \
-          --state-dir=../.flatpak-builder --ccache --disable-cache --mirror-screenshots-url=https://domain.tld \
+        dbus-run-session flatpak run org.flatpak.Builder//localtest \
+          --verbose --user --sandbox --force-clean \
+          --install-deps-from=flathub --default-branch=localtest \
+          --ccache --disable-cache \
+          --mirror-screenshots-url=https://domain.tld \
           --install builddir io.neovim.nvim.yaml
