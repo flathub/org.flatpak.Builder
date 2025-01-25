@@ -13,22 +13,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: actions/cache@v4
-      with:
-        path: .flatpak-builder
-        key: ${{ runner.os }}-flatpak-builder
-
-    - name: Install latest flatpak and flatpak-builder
+    - name: Install flatpak and flatpak-builder
       run: |
-        sudo add-apt-repository ppa:flatpak/stable
         sudo apt-get update
-        sudo apt-get install -y flatpak flatpak-builder
+        sudo apt-get install -y --no-install-recommends flatpak \
+            elfutils flatpak-builder dbus-daemon
 
     - name: Set up flathub remote
       run: |
         flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-    # TODO: Remove this workaround once flatpak-builder v1.2.3 is available through the above PPA.
     - name: Allow file:// clones with git>=2.38.1
       run: |
         git config --global protocol.file.allow always
