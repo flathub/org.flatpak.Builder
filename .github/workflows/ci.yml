@@ -20,6 +20,7 @@ jobs:
 
     - name: Install flatpak and flatpak-builder
       run: |
+        sudo add-apt-repository ppa:flatpak/stable
         sudo apt-get update
         sudo apt-get install -y --no-install-recommends flatpak \
             elfutils flatpak-builder dbus-daemon
