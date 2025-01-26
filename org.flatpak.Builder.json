@@ -35,6 +35,40 @@
     ],
     "modules": [
         {
+            "name": "appstream",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dapidocs=false",
+                "-Dgir=false",
+                "-Dcompose=true",
+                "-Dtests=false",
+                "-Dinstalled_tests=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.4.tar.gz",
+                    "sha256": "dff6efa67d9ea4797870d70e3370b9e3fa66ce3c749aba68e6b10222473463cf",
+                    "x-checker-data": {
+                        "type": "anitya",
+                        "project-id": 10385,
+                        "stable-only": true,
+                        "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
+                    }
+                },
+                {
+                    "type": "patch",
+                    "paths": [
+                        "patches/appstream-demotion-allowlist.patch",
+                        "patches/appstream-compose-default-propagate-custom.patch",
+                        "patches/asc-hint-tags-silence-some-vague-validation-errors.patch",
+                        "patches/compose-seperate-file-read-error.patch",
+                        "patches/appstream-no-tests.patch"
+                    ]
+                }
+            ]
+        },
+        {
             "name": "flatpak",
             "config-opts": [
                 "--disable-documentation",
@@ -70,56 +104,6 @@
                         "versions": {"<": "1.15.0"},
                         "url-template": "https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
                     }
-                }
-            ],
-            "modules": [
-                {
-                    "name": "appstream",
-                    "buildsystem": "meson",
-                    "config-opts": [
-                        "-Dapidocs=false",
-                        "-Dgir=false",
-                        "-Dcompose=true",
-                        "-Dtests=false",
-                        "-Dinstalled_tests=false"
-                    ],
-                    "sources": [
-                        {
-                            "type": "archive",
-                            "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.4.tar.gz",
-                            "sha256": "dff6efa67d9ea4797870d70e3370b9e3fa66ce3c749aba68e6b10222473463cf",
-                            "x-checker-data": {
-                                "type": "anitya",
-                                "project-id": 10385,
-                                "stable-only": true,
-                                "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
-                            }
-                        },
-                        {
-                            "type": "patch",
-                            "paths": [
-                                "patches/appstream-demotion-allowlist.patch",
-                                "patches/appstream-compose-default-propagate-custom.patch",
-                                "patches/asc-hint-tags-silence-some-vague-validation-errors.patch",
-                                "patches/compose-seperate-file-read-error.patch",
-                                "patches/appstream-no-tests.patch"
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "flat-manager-client",
-            "buildsystem": "simple",
-            "build-commands": [
-                "install -Dm755 flat-manager-client /app/bin/flat-manager-client"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/flat-manager",
-                    "commit": "aab9e754e8da2f06ae341f715407068a58da137c"
                 }
             ]
         },
@@ -161,6 +145,20 @@
             ]
         },
         {
+            "name": "flat-manager-client",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 flat-manager-client /app/bin/flat-manager-client"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flat-manager",
+                    "commit": "aab9e754e8da2f06ae341f715407068a58da137c"
+                }
+            ]
+        },
+        {
             "name": "wrapper",
             "buildsystem": "simple",
             "build-commands": [
@@ -174,15 +172,6 @@
                         "FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)\nexport FLATPAK_BINARY\nexport FLATPAK_USER_DIR=$HOME/.local/share/flatpak\nexec flatpak-builder \"$@\"\n"
                     ]
                 }
-            ]
-        },
-        {
-            "name": "cleanup-baseapp",
-            "buildsystem": "simple",
-            "build-commands": [
-                "rm -rvf /app/include",
-                "rm -rvf /app/etc",
-                "rm -rvf /app/lib/pkgconfig"
             ]
         },
         "flatpak-builder-lint-deps.json",
@@ -200,6 +189,15 @@
                     "commit": "af6ee899b88659fce5927aab3dc8ff0cf2e44f65",
                     "disable-shallow-clone": true
                 }
+            ]
+        },
+        {
+            "name": "cleanup-baseapp",
+            "buildsystem": "simple",
+            "build-commands": [
+                "rm -rvf /app/include",
+                "rm -rvf /app/etc",
+                "rm -rvf /app/lib/pkgconfig"
             ]
         }
     ]
