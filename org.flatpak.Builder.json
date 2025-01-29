@@ -32,6 +32,41 @@
     ],
     "modules": [
         {
+            "name": "just",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm755 just /app/bin/just"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/casey/just/releases/download/1.39.0/just-1.39.0-x86_64-unknown-linux-musl.tar.gz",
+                    "only-arches": ["x86_64"],
+                    "strip-components": 0,
+                    "sha256": "1c53fa85a8c021ce7b19814e1a5e1dc0aa10c04bddca75196f7ab6db6130d2cd",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/casey/just/releases",
+                        "version-key": ".tag_name",
+                        "url-query": ".assets[] | select(.name==\"just-\" + $version + \"-x86_64-unknown-linux-musl.tar.gz\") | .browser_download_url"
+                    }
+                },
+                {
+                    "type": "archive",
+                    "url": "https://github.com/casey/just/releases/download/1.39.0/just-1.39.0-aarch64-unknown-linux-musl.tar.gz",
+                    "only-arches": ["aarch64"],
+                    "strip-components": 0,
+                    "sha256": "f1b9acdb4374983539c765d60374350932527df807b25975e05abb152c9021e7",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/casey/just/releases",
+                        "version-key": ".tag_name",
+                        "url-query": ".assets[] | select(.name==\"just-\" + $version + \"-aarch64-unknown-linux-musl.tar.gz\") | .browser_download_url"
+                    }
+                }
+            ]
+        },
+        {
             "name": "appstream",
             "buildsystem": "meson",
             "config-opts": [
