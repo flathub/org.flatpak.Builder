@@ -56,11 +56,11 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "patches/appstream-demotion-allowlist.patch",
-                        "patches/appstream-compose-default-propagate-custom.patch",
-                        "patches/asc-hint-tags-silence-some-vague-validation-errors.patch",
-                        "patches/compose-seperate-file-read-error.patch",
-                        "patches/appstream-no-tests.patch"
+                        "patches/appstream-0001-demotion-allowlist.patch",
+                        "patches/appstream-0002-compose-default-propagate-custom.patch",
+                        "patches/appstream-0003-asc-hint-tags-silence-some-vague-validation-errors.patch",
+                        "patches/appstream-0004-compose-seperate-file-read-error.patch",
+                        "patches/appstream-0005-no-tests.patch"
                     ]
                 }
             ]
