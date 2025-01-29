@@ -50,6 +50,10 @@ jobs:
       run: |
         flatpak run --command=appstreamcli org.flatpak.Builder//localtest vercmp 1 2
 
+    - name: Check if just launches
+      run: |
+        flatpak run --command=just org.flatpak.Builder//localtest --version
+
     - name: Check if desktop-file-validate launches
       run: |
         flatpak run --command=desktop-file-validate org.flatpak.Builder//localtest --version
