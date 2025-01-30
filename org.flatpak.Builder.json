@@ -36,7 +36,7 @@
             "buildsystem": "meson",
             "config-opts": [
                 "-Dapidocs=false",
-                "-Dgir=false",
+                "-Dgir=true",
                 "-Dcompose=true",
                 "-Dtests=false",
                 "-Dinstalled_tests=false"
