@@ -35,6 +35,7 @@
             "name": "appstream",
             "buildsystem": "meson",
             "config-opts": [
+                "-Ddocs=false",
                 "-Dapidocs=false",
                 "-Dgir=true",
                 "-Dcompose=true",
@@ -60,7 +61,8 @@
                         "patches/appstream-0002-compose-default-propagate-custom.patch",
                         "patches/appstream-0003-asc-hint-tags-silence-some-vague-validation-errors.patch",
                         "patches/appstream-0004-compose-seperate-file-read-error.patch",
-                        "patches/appstream-0005-no-tests.patch"
+                        "patches/appstream-0005-no-tests.patch",
+                        "patches/appstream-0006-no-docs.patch"
                     ]
                 }
             ]
