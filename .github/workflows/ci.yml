@@ -13,11 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - uses: actions/cache@v4
-      with:
-        path: ${{ github.workspace }}/.flatpak-builder
-        key: ${{ runner.os }}-flatpak-builder
-
     - name: Install flatpak and flatpak-builder
       run: |
         sudo add-apt-repository ppa:flatpak/stable
@@ -32,6 +27,16 @@ jobs:
     - name: Allow file:// clones with git>=2.38.1
       run: |
         git config --global protocol.file.allow always
+
+    - name: Prepare for hashing
+      run: |
+        flatpak-builder --show-manifest org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
+
+    - uses: actions/cache@v4
+      with:
+        path: ${{ github.workspace }}/.flatpak-builder
+        key: ${{ runner.os }}-flatpak-builder-${{ hashFiles('org.flatpak.Builder-cache.json') }}
+        restore-keys: ${{ runner.os }}-flatpak-builder-
 
     - name: Build org.flatpak.Builder
       run: |
