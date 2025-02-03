@@ -100,7 +100,9 @@
                         "type": "anitya",
                         "project-id": 6377,
                         "stable-only": true,
-                        "versions": {"<": "1.15.0"},
+                        "versions": {
+                            "<": "1.15.0"
+                        },
                         "url-template": "https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
                     }
                 }
@@ -185,7 +187,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "c5898c7f3fadbb4874a8be2e74b3b8b50830c151",
+                    "commit": "d0eefc5876fbbab917fef5de88d1941a39c617de",
                     "disable-shallow-clone": true
                 }
             ]
