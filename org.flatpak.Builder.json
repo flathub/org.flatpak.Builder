@@ -14,8 +14,7 @@
         "--filesystem=host",
         "--share=network",
         "--filesystem=xdg-data/flatpak",
-        "--filesystem=/var/lib/flatpak",
-        "--filesystem=/tmp"
+        "--filesystem=/var/lib/flatpak"
     ],
     "cleanup": [
         "/include",
