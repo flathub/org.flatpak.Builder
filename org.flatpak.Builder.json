@@ -25,7 +25,6 @@
         "/share/zsh",
         "/share/fish",
         "/share/installed-tests",
-        "/share/metainfo",
         "*.la",
         "*.a"
     ],
@@ -192,12 +191,20 @@
             ]
         },
         {
-            "name": "cleanup-baseapp",
+            "name": "post-build",
             "buildsystem": "simple",
             "build-commands": [
                 "rm -rvf /app/include",
                 "rm -rvf /app/etc",
-                "rm -rvf /app/lib/pkgconfig"
+                "rm -rvf /app/lib/pkgconfig",
+                "rm -rvf \"${FLATPAK_DEST}/share/metainfo/\"*.xml \"${FLATPAK_DEST}/share/appdata/\"*.xml",
+                "install -Dm0644 \"${FLATPAK_ID}.metainfo.xml\" \"${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml\""
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "org.flatpak.Builder.metainfo.xml"
+                }
             ]
         }
     ]

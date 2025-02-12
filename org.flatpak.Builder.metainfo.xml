@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>org.flatpak.Builder</id>
+  <name>Flatpak Builder Flatpak</name>
+  <summary>Flatpak package for Flatpak Builder</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LGPL-2.1-only AND MIT</project_license>
+  <developer id="org.flatpak">
+    <name>Flatpak and Flathub contributors</name>
+  </developer>
+  <url type="homepage">https://github.com/flathub/org.flatpak.Builder</url>
+  <url type="bugtracker">https://github.com/flathub/org.flatpak.Builder/issues</url>
+  <url type="contribute">https://github.com/flathub/org.flatpak.Builder</url>
+  <url type="vcs-browser">https://github.com/flathub/org.flatpak.Builder</url>
+  <provides>
+    <binary>flatpak</binary>
+    <binary>flatpak-builder</binary>
+    <binary>flat-manager-client</binary>
+    <binary>flatpak-builder-lint</binary>
+  </provides>
+  <content_rating type="oars-1.1" />
+  <description>
+    <p>
+      This package provides a Flatpak copy of Flatpak Builder. This is primarily meant to be used for Flathub
+      submissions and infrastructure and as such will follow the requirements of Flathub, but it can be used in
+      general as well.
+
+      It also includes several other extra tools such as jq, gh, flat-manager-client, xmlstarlet and flatpak-builder-lint.
+
+      The package is continuously updated and deployed from the master branch of the manifest repository. Please
+      refer to the manfiest to check the latest versions of the included components.
+
+      Please refer to the Flathub submission docs on how to use this to build Flatpaks for Flathub.
+
+      https://docs.flathub.org/docs/for-app-authors/submission#build-and-install
+
+      Please refer to the repository of the individual components for details about their respective licenses.
+    </p>
+  </description>
+  <releases>
+    <release version="v0-Flathub" date="2024-01-18" />
+  </releases>
+</component>
