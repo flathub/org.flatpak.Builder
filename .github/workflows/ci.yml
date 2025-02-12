@@ -115,6 +115,10 @@ jobs:
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions builddir builddir
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions repo repo
 
+    - name: Validate the metainfo file
+      run: |
+        flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest appstream org.flatpak.Builder.metainfo.xml
+
     - name: Build org.freedesktop.appstream.cli with org.flatpak.Builder
       run: |
         git clone --depth=1 --branch master --single-branch --recursive https://github.com/flathub/org.freedesktop.appstream.cli.git
