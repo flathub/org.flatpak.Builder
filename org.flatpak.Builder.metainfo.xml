@@ -18,7 +18,7 @@
     <binary>flat-manager-client</binary>
     <binary>flatpak-builder-lint</binary>
   </provides>
-  <content_rating type="oars-1.1" />
+  <content_rating type="oars-1.1"/>
   <description>
     <p>
       This package provides a Flatpak copy of Flatpak Builder. This is
@@ -36,7 +36,7 @@
     </p>
     <p>
       The package is continuously updated and deployed from the master
-      branch of the manifest repository. Refer to the manfiest to check
+      branch of the manifest repository. Refer to the manifest to check
       the latest versions of the included components.
     </p>
     <p>
