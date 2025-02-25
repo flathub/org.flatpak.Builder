@@ -4,7 +4,7 @@
   <name>Flatpak Builder Flatpak</name>
   <summary>Flatpak Builder Flatpak (org.flatpak.Builder)</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>LGPL-2.1-only AND MIT</project_license>
+  <project_license>LGPL-2.1-only</project_license>
   <developer id="org.flatpak">
     <name>Flatpak and Flathub contributors</name>
   </developer>
