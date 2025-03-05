@@ -158,6 +158,40 @@
             ]
         },
         {
+            "name": "python3-poetry-core",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"poetry-core>=1.0.0\" --no-build-isolation"
+            ],
+            "cleanup": ["*"],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/a1/8d/85fcf9bcbfefcc53a1402450f28e5acf39dcfde3aabb996a1d98481ac829/poetry_core-1.9.0-py3-none-any.whl",
+                    "sha256": "4e0c9c6ad8cf89956f03b308736d84ea6ddb44089d16f2adc94050108ec1f5a1"
+                }
+            ]
+        },
+        {
+            "name": "flatpak-builder-tools",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -Dm0755 cargo/flatpak-cargo-generator.py ${FLATPAK_DEST}/bin/flatpak-cargo-generator",
+                "install -Dm0755 gradle/flatpak-gradle-generator.py ${FLATPAK_DEST}/bin/flatpak-gradle-generator",
+                "install -Dm0755 opam/flatpak-opam-generator.py ${FLATPAK_DEST}/bin/flatpak-opam-generator",
+                "install -Dm0755 pip/flatpak-pip-generator ${FLATPAK_DEST}/bin/flatpak-pip-generator",
+                "install -Dm0755 flatpak-json2yaml.py ${FLATPAK_DEST}/bin/flatpak-json2yaml",
+                "cd node && pip3 install --prefix=/app . --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flatpak-builder-tools.git",
+                    "commit": "aac65cf44cd4e008594a9d9ac1db08e2025067a6"
+                }
+            ]
+        },
+        {
             "name": "wrapper",
             "buildsystem": "simple",
             "build-commands": [
