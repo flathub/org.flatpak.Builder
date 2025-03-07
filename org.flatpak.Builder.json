@@ -163,7 +163,9 @@
             "build-commands": [
                 "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"poetry-core>=1.0.0\" --no-build-isolation"
             ],
-            "cleanup": ["*"],
+            "cleanup": [
+                "*"
+            ],
             "sources": [
                 {
                     "type": "file",
@@ -219,7 +221,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "77cb9a2702fad223ababdd3334244de88fd93594",
+                    "commit": "d2891ed5da1b80f984a4f960f2201d066b5373cf",
                     "disable-shallow-clone": true
                 }
             ]
