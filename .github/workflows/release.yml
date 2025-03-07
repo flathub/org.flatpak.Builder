@@ -23,6 +23,7 @@ jobs:
 
       - name: Create pull request
         if: ${{ success() }}
+        id: create-pr
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.FP_BUILDER_FLATHUBBOT_TOKEN }}
@@ -37,3 +38,14 @@ jobs:
           delete-branch: true
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+
+      - name: Pause for a while
+        if: ${{ steps.create-pr.outputs.pull-request-number }}
+        run: sleep 200
+
+      - name: Set auto-merge
+        if: ${{ steps.create-pr.outputs.pull-request-number }}
+        run: gh pr merge --merge --auto ${{ steps.create-pr.outputs.pull-request-number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
