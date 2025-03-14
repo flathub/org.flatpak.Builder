@@ -104,6 +104,10 @@
                         "stable-only": true,
                         "url-template": "https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
                     }
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/flatpak-build-unpriv-container.patch"
                 }
             ]
         },
