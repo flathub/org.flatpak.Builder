@@ -13,12 +13,15 @@ jobs:
       pull-requests: write
     if: github.repository == 'flathub/org.flatpak.Builder'
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+        # 4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-          python-version: "3.12"
+          persist-credentials: false
+
+        # 5.4.0
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        with:
+          python-version: "3.13"
 
       - name: Run update script
         run: |
@@ -28,7 +31,8 @@ jobs:
       - name: Create pull request
         if: ${{ success() }}
         id: create-pr
-        uses: peter-evans/create-pull-request@v7
+        # 7.0.8
+        uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e
         with:
           token: ${{ secrets.FP_BUILDER_FLATHUBBOT_TOKEN }}
           branch-suffix: "random"

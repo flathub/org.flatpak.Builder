@@ -14,7 +14,10 @@ jobs:
     permissions:
       contents: read
     steps:
-    - uses: actions/checkout@v4
+      # 4.2.2
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      with:
+        persist-credentials: false
 
     - name: Install flatpak and flatpak-builder
       run: |
@@ -35,7 +38,8 @@ jobs:
       run: |
         flatpak-builder --show-manifest org.flatpak.Builder.json >> org.flatpak.Builder-cache.json
 
-    - uses: actions/cache@v4
+      # 4.2.2
+    - uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf
       with:
         path: ${{ github.workspace }}/.flatpak-builder
         key: ${{ runner.os }}-flatpak-builder-${{ hashFiles('org.flatpak.Builder-cache.json') }}
