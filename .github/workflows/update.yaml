@@ -18,7 +18,6 @@ jobs:
         # 4.2.2
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
-        with:
           ref: ${{ matrix.branch }}
       - uses: docker://ghcr.io/flathub-infra/flatpak-external-data-checker:latest@sha256:9e64f59dc8b92b4e7cf325a3f2ef98a64beaf721b58803801d3bf66269203221
         env:
