@@ -219,7 +219,7 @@
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
             "build-commands": [
-                "ver=$(dunamai from git --style pep440) && sed -i \"s/^version = \\\"3.0.0\\\"$/version = \\\"$ver\\\"/g\" pyproject.toml",
+                "ver=$(dunamai from git --style pep440) && sed -i -E 's/^version\\s*=\\s*\".*\"/version = \"'$ver'\"/' pyproject.toml",
                 "uv build -v --no-index --wheel --python /usr/bin/python3 --no-managed-python --no-python-downloads --no-build-isolation --offline --out-dir dist --find-links=\"file://${PWD}\"",
                 "pip3 install --prefix=/app dist/flatpak_builder_lint-*-none-any.whl --no-build-isolation"
             ],
@@ -227,7 +227,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "afa49e9ff0b7c6c7a378a72b4880472491aaf7fd",
+                    "commit": "086f80a5cc08147e35c4dc5150c3542e19a456a5",
                     "disable-shallow-clone": true
                 }
             ]
