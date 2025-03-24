@@ -219,7 +219,7 @@
             "name": "flatpak-builder-lint",
             "buildsystem": "simple",
             "build-commands": [
-                "poetry-dynamic-versioning",
+                "ver=$(dunamai from git --style pep440) && sed -i \"s/^version = \\\"3.0.0\\\"$/version = \\\"$ver\\\"/g\" pyproject.toml",
                 "pip3 install --prefix=/app . --no-build-isolation"
             ],
             "sources": [
