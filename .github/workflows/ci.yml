@@ -116,6 +116,10 @@ jobs:
       run: |
         flatpak run --command=xmlstarlet org.flatpak.Builder//localtest --version
 
+    - name: Check if uv works
+      run: |
+        flatpak run --command=uv org.flatpak.Builder//localtest --version
+
     - name: Sanity check the linter
       run: |
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
