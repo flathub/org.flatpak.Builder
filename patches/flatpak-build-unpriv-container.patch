@@ -112,7 +112,7 @@ index 8c92924f..896e464b 100644
 +    gsize len;
 +
 +    if (g_file_get_contents("/proc/self/status", &contents, &len, NULL)) {
-+        const gchar *caps[] = {"CapInh:", "CapPrm:", "CapEff:", "CapBnd:", "CapAmb:"};
++        const gchar *caps[] = {"CapInh:", "CapPrm:", "CapEff:", "CapAmb:"};
 +        gboolean cap_zero = TRUE;
 +        gchar **lines = g_strsplit(contents, "\n", -1);
 +
