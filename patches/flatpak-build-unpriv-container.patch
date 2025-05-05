@@ -1,73 +1,35 @@
-From d64459a2917c80aa938d5a9c7d19231b60820781 Mon Sep 17 00:00:00 2001
+From 90ad2ee4c227bef7cf1d1cfe9faaa57df4a5be20 Mon Sep 17 00:00:00 2001
 From: bbhtt <bbhtt.zn0i8@slmail.me>
 Date: Fri, 14 Mar 2025 21:04:16 +0530
 Subject: [PATCH] run: Skip disabling userns when in a container and called by
  build
 
-Please send issues caused by this patch to the commit mail or
-bbhtt@bbhtt.space
 ---
- app/flatpak-builtins-build.c |   2 +-
- common/flatpak-dir.c         |   2 +-
- common/flatpak-run-private.h |   3 +
- common/flatpak-run.c         | 107 +++++++++++++++++++++++++++++------
- 4 files changed, 94 insertions(+), 20 deletions(-)
+ common/flatpak-run-private.h |   2 +
+ common/flatpak-run.c         | 104 +++++++++++++++++++++++++++++------
+ 2 files changed, 89 insertions(+), 17 deletions(-)
 
-diff --git a/app/flatpak-builtins-build.c b/app/flatpak-builtins-build.c
-index 585f8f43..8698b290 100644
---- a/app/flatpak-builtins-build.c
-+++ b/app/flatpak-builtins-build.c
-@@ -459,7 +459,7 @@ flatpak_builtin_build (int argc, char **argv, GCancellable *cancellable, GError
-   run_flags |= FLATPAK_RUN_FLAG_NO_A11Y_BUS_PROXY;
-
-   if (!flatpak_run_setup_base_argv (bwrap, runtime_files, app_id_dir, arch,
--                                    run_flags, error))
-+                                    run_flags, TRUE, error))
-     return FALSE;
-
-   flatpak_bwrap_add_args (bwrap,
-diff --git a/common/flatpak-dir.c b/common/flatpak-dir.c
-index 6936d45f..582341f0 100644
---- a/common/flatpak-dir.c
-+++ b/common/flatpak-dir.c
-@@ -8469,7 +8469,7 @@ apply_extra_data (FlatpakDir   *self,
-   run_flags |= FLATPAK_RUN_FLAG_NO_PROC;
-
-   if (!flatpak_run_setup_base_argv (bwrap, runtime_files, NULL, runtime_arch,
--                                    run_flags, error))
-+                                    run_flags, FALSE, error))
-     return FALSE;
-
-   app_context = flatpak_context_new ();
 diff --git a/common/flatpak-run-private.h b/common/flatpak-run-private.h
-index 40899e29..b13ee53a 100644
+index 40899e29..0bd70dc7 100644
 --- a/common/flatpak-run-private.h
 +++ b/common/flatpak-run-private.h
 @@ -30,6 +30,8 @@
  #include "flatpak-utils-private.h"
  #include "flatpak-exports-private.h"
-
+ 
 +gboolean likely_unpriv_container(void);
 +
  gboolean flatpak_run_in_transient_unit (const char *app_id,
                                          GError    **error);
-
-@@ -75,6 +77,7 @@ gboolean flatpak_run_setup_base_argv (FlatpakBwrap   *bwrap,
-                                       GFile          *app_id_dir,
-                                       const char     *arch,
-                                       FlatpakRunFlags flags,
-+                                      gboolean        is_caller_build,
-                                       GError        **error);
- gboolean flatpak_run_add_app_info_args (FlatpakBwrap       *bwrap,
-                                         GFile              *app_files,
+ 
 diff --git a/common/flatpak-run.c b/common/flatpak-run.c
-index 8c92924f..896e464b 100644
+index 8c92924f..a35f4afa 100644
 --- a/common/flatpak-run.c
 +++ b/common/flatpak-run.c
 @@ -86,6 +86,73 @@ flatpak_extension_compare_by_path (gconstpointer _a,
    return g_strcmp0 (a->directory, b->directory);
  }
-
+ 
 +gboolean
 +likely_unpriv_container(void) {
 +    gboolean map_unpriv = FALSE;
@@ -138,15 +100,7 @@ index 8c92924f..896e464b 100644
  void
  flatpak_run_extend_ld_path (FlatpakBwrap *bwrap,
                              const char *prepend,
-@@ -2193,6 +2260,7 @@ flatpak_run_setup_base_argv (FlatpakBwrap   *bwrap,
-                              GFile          *app_id_dir,
-                              const char     *arch,
-                              FlatpakRunFlags flags,
-+                             gboolean        is_caller_build,
-                              GError        **error)
- {
-   g_autofree char *run_dir = NULL;
-@@ -2219,23 +2287,26 @@ flatpak_run_setup_base_argv (FlatpakBwrap   *bwrap,
+@@ -2219,23 +2286,26 @@ flatpak_run_setup_base_argv (FlatpakBwrap   *bwrap,
     * If bwrap is setuid, then --disable-userns will not work, which
     * makes the seccomp filter security-critical.
     */
@@ -167,7 +121,7 @@ index 8c92924f..896e464b 100644
 -          flatpak_bwrap_add_arg (bwrap, "--disable-userns");
 -        }
 -    }
-+  if (!(is_caller_build && likely_unpriv_container()))
++  if (!likely_unpriv_container())
 +  {
 +      if (bwrap_unprivileged)
 +      {
@@ -187,18 +141,9 @@ index 8c92924f..896e464b 100644
 +          }
 +      }
 +  }
-
+ 
    run_dir = g_strdup_printf ("/run/user/%d", getuid ());
-
-@@ -3342,7 +3413,7 @@ flatpak_run_app (FlatpakDecomposed   *app_ref,
-
-   flags |= flatpak_context_get_run_flags (app_context);
-
--  if (!flatpak_run_setup_base_argv (bwrap, runtime_files, app_id_dir, app_arch, flags, error))
-+  if (!flatpak_run_setup_base_argv (bwrap, runtime_files, app_id_dir, app_arch, flags, FALSE, error))
-     return FALSE;
-
-   if (generate_ld_so_conf)
---
-2.48.1
+ 
+-- 
+2.49.0
 
