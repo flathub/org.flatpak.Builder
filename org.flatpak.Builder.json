@@ -44,13 +44,7 @@
                 {
                     "type": "archive",
                     "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.4.tar.gz",
-                    "sha256": "dff6efa67d9ea4797870d70e3370b9e3fa66ce3c749aba68e6b10222473463cf",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 10385,
-                        "stable-only": true,
-                        "url-template": "https://github.com/ximion/appstream/archive/refs/tags/v$version.tar.gz"
-                    }
+                    "sha256": "dff6efa67d9ea4797870d70e3370b9e3fa66ce3c749aba68e6b10222473463cf"
                 },
                 {
                     "type": "patch",
