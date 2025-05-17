@@ -137,7 +137,8 @@
                     "paths": [
                         "patches/flatpak-builder-lfs.patch",
                         "patches/flatpak-builder-appstream-cli-urls.patch",
-                        "patches/flatpak-builder-disable-compressed-downloads.patch"
+                        "patches/flatpak-builder-disable-compressed-downloads.patch",
+                        "patches/flatpak-builder-branch-key-noop.patch"
                     ]
                 }
             ]

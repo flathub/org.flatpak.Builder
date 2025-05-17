@@ -1,0 +1,74 @@
+diff --git a/src/builder-manifest.c b/src/builder-manifest.c
+index 74d1074f..bbde3fe2 100644
+--- a/src/builder-manifest.c
++++ b/src/builder-manifest.c
+@@ -62,7 +62,6 @@ struct BuilderManifest
+ 
+   char           *id;
+   char           *id_platform;
+-  char           *branch;
+   char           *default_branch;
+   char           *collection_id;
+   gint32          token_type;
+@@ -129,7 +128,6 @@ enum {
+   PROP_APP_ID, /* Backwards compat with early version, use id */
+   PROP_ID,
+   PROP_ID_PLATFORM,
+-  PROP_BRANCH,
+   PROP_DEFAULT_BRANCH,
+   PROP_RUNTIME,
+   PROP_RUNTIME_VERSION,
+@@ -186,7 +184,6 @@ builder_manifest_finalize (GObject *object)
+   BuilderManifest *self = (BuilderManifest *) object;
+ 
+   g_free (self->id);
+-  g_free (self->branch);
+   g_free (self->default_branch);
+   g_free (self->collection_id);
+   g_free (self->extension_tag);
+@@ -306,10 +303,6 @@ builder_manifest_get_property (GObject    *object,
+       g_value_set_string (value, self->id_platform);
+       break;
+ 
+-    case PROP_BRANCH:
+-      g_value_set_string (value, self->branch);
+-      break;
+-
+     case PROP_DEFAULT_BRANCH:
+       g_value_set_string (value, self->default_branch);
+       break;
+@@ -529,11 +522,6 @@ builder_manifest_set_property (GObject      *object,
+       self->id_platform = g_value_dup_string (value);
+       break;
+ 
+-    case PROP_BRANCH:
+-      g_free (self->branch);
+-      self->branch = g_value_dup_string (value);
+-      break;
+-
+     case PROP_DEFAULT_BRANCH:
+       g_free (self->default_branch);
+       self->default_branch = g_value_dup_string (value);
+@@ -811,13 +799,6 @@ builder_manifest_class_init (BuilderManifestClass *klass)
+                                                         "",
+                                                         NULL,
+                                                         G_PARAM_READWRITE));
+-  g_object_class_install_property (object_class,
+-                                   PROP_BRANCH,
+-                                   g_param_spec_string ("branch",
+-                                                        "",
+-                                                        "",
+-                                                        NULL,
+-                                                        G_PARAM_READWRITE));
+   g_object_class_install_property (object_class,
+                                    PROP_DEFAULT_BRANCH,
+                                    g_param_spec_string ("default-branch",
+@@ -1481,8 +1462,6 @@ const char *
+ builder_manifest_get_branch (BuilderManifest *self,
+                              BuilderContext  *context)
+ {
+-  if (self->branch)
+-    return self->branch;
+ 
+   if (context &&
+       builder_context_get_default_branch (context))
