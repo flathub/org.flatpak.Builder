@@ -219,7 +219,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://gitlab.com/projects261/summary-files.git",
+                    "url": "https://github.com/flathub-infra/summary-files.git",
                     "branch": "main"
                 }
             ]
