@@ -215,7 +215,9 @@
                 "install -Dm0644 summary/beta.summary ${FLATPAK_DEST}/share/flathub/flathub-beta.summary",
                 "install -Dm0644 summary/stable.summary ${FLATPAK_DEST}/share/flathub/flathub-stable.summary"
             ],
-            "cleanup": ["*"],
+            "cleanup": [
+                "*"
+            ],
             "sources": [
                 {
                     "type": "git",
@@ -239,7 +241,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "3e72a16168217a7aae33d06b10ae94b5247daa58",
+                    "commit": "52d173de9d173b85acf6697a2305ee2b2ff9e88f",
                     "disable-shallow-clone": true
                 }
             ]
