@@ -181,6 +181,7 @@
                 "install -Dm0755 gradle/flatpak-gradle-generator.py ${FLATPAK_DEST}/bin/flatpak-gradle-generator",
                 "install -Dm0755 opam/flatpak-opam-generator.py ${FLATPAK_DEST}/bin/flatpak-opam-generator",
                 "install -Dm0755 pip/flatpak-pip-generator.py ${FLATPAK_DEST}/bin/flatpak-pip-generator",
+                "install -Dm0755 poetry/flatpak-poetry-generator.py ${FLATPAK_DEST}/bin/flatpak-poetry-generator",
                 "install -Dm0755 flatpak-json2yaml.py ${FLATPAK_DEST}/bin/flatpak-json2yaml",
                 "cd node && pip3 install --prefix=/app . --no-build-isolation"
             ],
