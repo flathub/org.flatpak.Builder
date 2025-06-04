@@ -235,7 +235,7 @@
                 "cp -vf ${FLATPAK_DEST}/share/flathub/flathub-beta.summary flatpak_builder_lint/staticfiles/flathub-beta.summary",
                 "cp -vf ${FLATPAK_DEST}/share/flathub/flathub-stable.summary flatpak_builder_lint/staticfiles/flathub-stable.summary",
                 "ver=$(dunamai from git --style pep440) && sed -i -E 's/^version\\s*=\\s*\".*\"/version = \"'$ver'\"/' pyproject.toml",
-                "uv pip install -v --prefix=/app --no-index --offline --no-build-isolation ."
+                "uv pip install -v --prefix=/app --no-index --offline --no-build-isolation --python /usr/bin/python ."
             ],
             "sources": [
                 {
