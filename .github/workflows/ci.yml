@@ -97,6 +97,10 @@ jobs:
       run: |
         flatpak run --command=xvfb-run org.flatpak.Builder//localtest -a flatpak-builder --version
 
+    - name: Check if xwfb-run works
+      run: |
+        flatpak run --command=xwfb-run org.flatpak.Builder//localtest --help
+
     # Needed by flatpak-github-actions
     - name: Check if dbus-daemon works
       run: |
