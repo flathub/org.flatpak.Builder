@@ -242,7 +242,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub/flatpak-builder-lint",
-                    "commit": "8680b70e8264504c694b941341744cd3e478fefd",
+                    "commit": "230a2e81e2f59d945e604812d4060b006c3cf8a6",
                     "disable-shallow-clone": true
                 }
             ]
