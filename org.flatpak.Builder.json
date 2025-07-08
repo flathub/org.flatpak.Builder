@@ -138,7 +138,8 @@
                         "patches/flatpak-builder-lfs.patch",
                         "patches/flatpak-builder-appstream-cli-urls.patch",
                         "patches/flatpak-builder-disable-compressed-downloads.patch",
-                        "patches/flatpak-builder-run-rofiles-fuse-arg.patch"
+                        "patches/flatpak-builder-run-rofiles-fuse-arg.patch",
+                        "patches/flatpak-builder-ship-svg-icon-in-mediadir.patch"
                     ]
                 }
             ]
