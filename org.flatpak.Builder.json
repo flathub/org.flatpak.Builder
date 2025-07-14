@@ -42,20 +42,9 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/ximion/appstream/archive/refs/tags/v1.0.4.tar.gz",
-                    "sha256": "dff6efa67d9ea4797870d70e3370b9e3fa66ce3c749aba68e6b10222473463cf"
-                },
-                {
-                    "type": "patch",
-                    "paths": [
-                        "patches/appstream-0001-demotion-allowlist.patch",
-                        "patches/appstream-0002-compose-default-propagate-custom.patch",
-                        "patches/appstream-0003-asc-hint-tags-silence-some-vague-validation-errors.patch",
-                        "patches/appstream-0004-compose-seperate-file-read-error.patch",
-                        "patches/appstream-0005-no-tests.patch",
-                        "patches/appstream-0006-no-docs.patch"
-                    ]
+                    "type": "git",
+                    "url": "https://github.com/flathub-infra/appstream.git",
+                    "commit": "d3a7a5508fcf8dda86fc1d57237a1974e1a50989"
                 }
             ]
         },
@@ -117,30 +106,15 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "https://github.com/flatpak/flatpak-builder",
-                    "tag": "1.4.4",
-                    "commit": "f996a7949076ef1dc85c602da85b981b0a173a23",
-                    "disable-submodules": true,
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^([\\d.]+)$"
-                    }
+                    "url": "https://github.com/flathub-infra/flatpak-builder.git",
+                    "commit": "d29710b7221270f3d55b52feb14aecbb50cb6dab",
+                    "disable-submodules": true
                 },
                 {
                     "type": "git",
                     "url": "https://github.com/GNOME/libglnx.git",
                     "commit": "202b294e6079e23242e65e0426f8639841d1210b",
                     "dest": "subprojects/libglnx"
-                },
-                {
-                    "type": "patch",
-                    "paths": [
-                        "patches/flatpak-builder-lfs.patch",
-                        "patches/flatpak-builder-appstream-cli-urls.patch",
-                        "patches/flatpak-builder-disable-compressed-downloads.patch",
-                        "patches/flatpak-builder-run-rofiles-fuse-arg.patch",
-                        "patches/flatpak-builder-ship-svg-icon-in-mediadir.patch"
-                    ]
                 }
             ]
         },
