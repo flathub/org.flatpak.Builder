@@ -173,7 +173,8 @@
             "name": "wrapper",
             "buildsystem": "simple",
             "build-commands": [
-                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper"
+                "install -m a+rx flatpak-builder-wrapper.sh /app/bin/flatpak-builder-wrapper",
+                "install -m a+rx flathub-builder.sh /app/bin/flathub-build"
             ],
             "sources": [
                 {
@@ -182,6 +183,10 @@
                     "commands": [
                         "FLATPAK_BINARY=$(flatpak-spawn --host which flatpak 2> /dev/null)\nexport FLATPAK_BINARY\nexport FLATPAK_USER_DIR=$HOME/.local/share/flatpak\nexec flatpak-builder \"$@\"\n"
                     ]
+                },
+                {
+                    "type": "file",
+                    "path": "flathub-builder.sh"
                 }
             ]
         },
