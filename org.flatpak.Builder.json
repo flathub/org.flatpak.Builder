@@ -78,19 +78,9 @@
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/flatpak/flatpak/releases/download/1.16.1/flatpak-1.16.1.tar.xz",
-                    "sha256": "2b47e8f2d90d35d29339ed78e1a6eabb36eefa9cfa5a5ca3b0d1f27502c43675",
-                    "x-checker-data": {
-                        "type": "anitya",
-                        "project-id": 6377,
-                        "stable-only": true,
-                        "url-template": "https://github.com/flatpak/flatpak/releases/download/$version/flatpak-$version.tar.xz"
-                    }
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/flatpak-build-unpriv-container.patch"
+                    "type": "git",
+                    "url": "https://github.com/flathub-infra/flatpak.git",
+                    "commit": "9f97699ee12edc89ef1c6143a3ee8166c455a67c"
                 }
             ]
         },
