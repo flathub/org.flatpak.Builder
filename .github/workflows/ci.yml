@@ -124,6 +124,30 @@ jobs:
       run: |
         flatpak run --command=uv org.flatpak.Builder//localtest --version
 
+    - name: Check if diffoscope works
+      run: |
+        flatpak run --command=diffoscope org.flatpak.Builder//localtest --version
+
+    - name: Check if binwalk works
+      run: |
+        flatpak run --command=binwalk org.flatpak.Builder//localtest --version
+
+    - name: Check if fontforge works
+      run: |
+        flatpak run --command=fontforge org.flatpak.Builder//localtest --version
+
+    - name: Check if xxd works
+      run: |
+        flatpak run --command=xxd org.flatpak.Builder//localtest --version
+
+    - name: Check if asar works
+      run: |
+        flatpak run --command=asar org.flatpak.Builder//localtest help
+
+    - name: Check if img2txt works
+      run: |
+        flatpak run --command=img2txt org.flatpak.Builder//localtest --version
+
     - name: Sanity check the linter
       run: |
         flatpak run --command=flatpak-builder-lint org.flatpak.Builder//localtest --exceptions manifest org.flatpak.Builder.json
