@@ -198,6 +198,25 @@
                 }
             ]
         },
+        {
+            "name": "flathub-repro-checker",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} --no-build-isolation ."
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flathub-infra/flathub-repro-checker.git",
+                    "tag": "v0.1.8",
+                    "commit": "03cf88615cde57db71b4bfe2d8d41ca9fa1ef6a1",
+                    "x-checker-data": {
+                        "type": "git",
+                        "tag-pattern": "^v([\\d.]+)$"
+                    }
+                }
+            ]
+        },
         "flatpak-builder-lint-deps.json",
         {
             "name": "flatpak-builder-lint",
