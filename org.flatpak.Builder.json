@@ -145,7 +145,6 @@
             "build-commands": [
                 "install -Dm0755 cargo/flatpak-cargo-generator.py ${FLATPAK_DEST}/bin/flatpak-cargo-generator",
                 "install -Dm0755 gradle/flatpak-gradle-generator.py ${FLATPAK_DEST}/bin/flatpak-gradle-generator",
-                "install -Dm0755 opam/flatpak-opam-generator.py ${FLATPAK_DEST}/bin/flatpak-opam-generator",
                 "install -Dm0755 pip/flatpak-pip-generator.py ${FLATPAK_DEST}/bin/flatpak-pip-generator",
                 "install -Dm0755 poetry/flatpak-poetry-generator.py ${FLATPAK_DEST}/bin/flatpak-poetry-generator",
                 "install -Dm0755 flatpak-json2yaml.py ${FLATPAK_DEST}/bin/flatpak-json2yaml",
@@ -155,7 +154,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder-tools.git",
-                    "commit": "9ee35261997bc1d58e7695ab6d6bffb202c9d05d"
+                    "commit": "9ad6f3c4d58889d041bfc2a052719bea172664e3"
                 }
             ]
         },
