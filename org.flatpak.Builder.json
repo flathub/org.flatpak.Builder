@@ -98,7 +98,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/flatpak-builder.git",
-                    "commit": "30fe551792d5bf259c9297b765548a2f073c8e54",
+                    "commit": "4db2579a2e413480f9b0bd4791975279ec7ef30e",
                     "disable-submodules": true
                 },
                 {
