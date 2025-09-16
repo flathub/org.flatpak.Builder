@@ -14,7 +14,8 @@
         "--filesystem=host",
         "--share=network",
         "--filesystem=xdg-data/flatpak",
-        "--filesystem=/var/lib/flatpak"
+        "--filesystem=/var/lib/flatpak",
+        "--env=GIT_CONFIG_NOSYSTEM=1"
     ],
     "cleanup": [
         "/include",
