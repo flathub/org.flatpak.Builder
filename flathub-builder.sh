@@ -16,6 +16,7 @@ ARGS=(
   --install-deps-from=flathub
   --ccache
   --mirror-screenshots-url=https://dl.flathub.org/media
+  --compose-url-policy=full
   --repo=repo
   builddir
   "$@"
