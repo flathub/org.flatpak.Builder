@@ -81,7 +81,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/flatpak.git",
-                    "commit": "9f97699ee12edc89ef1c6143a3ee8166c455a67c"
+                    "commit": "cc87184340cbb31875fe88996a521bd903732b94"
                 }
             ]
         },
