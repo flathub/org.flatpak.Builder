@@ -208,12 +208,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/flathub-repro-checker.git",
-                    "tag": "v0.1.10",
-                    "commit": "2b26d60bb9cfb07bc8bb1e486c55891ef160261b",
-                    "x-checker-data": {
-                        "type": "git",
-                        "tag-pattern": "^v([\\d.]+)$"
-                    }
+                    "commit": "3ae0d98bef2b3e3661165e2e07c22e9e61d18c57"
                 }
             ]
         },
