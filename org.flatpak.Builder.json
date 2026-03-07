@@ -39,13 +39,14 @@
                 "-Dgir=true",
                 "-Dcompose=true",
                 "-Dtests=false",
-                "-Dinstalled_tests=false"
+                "-Dinstalled_tests=false",
+                "-Dbash-completion=false"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/appstream.git",
-                    "commit": "795b5ad8f6f59d54ef6971a8bb953d52a9ea28d2"
+                    "commit": "90a51ebd3ab6da8e4c823ef36f15758a79a7e3c9"
                 }
             ]
         },
