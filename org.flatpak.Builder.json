@@ -3,6 +3,9 @@
     "runtime": "org.freedesktop.Sdk",
     "runtime-version": "25.08",
     "sdk": "org.freedesktop.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
     "base": "org.flatpak.Builder.BaseApp",
     "base-version": "25.08",
     "command": "flatpak-builder-wrapper",
@@ -122,6 +125,30 @@
                     "url": "https://github.com/flatpak/flat-manager",
                     "commit": "590fa7359149535d3f181fc01858b38bce8b96ce"
                 }
+            ]
+        },
+        {
+            "name": "flat-manager-client-rust",
+            "buildsystem": "simple",
+            "build-options": {
+                "append-path": "/usr/lib/sdk/rust-stable/bin",
+                "env": {
+                    "CARGO_HOME": "/run/build/flat-manager-client-rust/cargo",
+                    "CARGO_NET_OFFLINE": "true"
+                }
+            },
+            "build-commands": [
+                "cargo --offline fetch --manifest-path Cargo.toml --verbose",
+                "cargo build --offline --release --bin flat-manager-client",
+                "install -Dm0755 target/release/flat-manager-client ${FLATPAK_DEST}/bin/flat-manager-client-rust"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/flatpak/flat-manager",
+                    "commit": "528ffef8157fc93b2f724b6ea562214a2025d8e2"
+                },
+                "flat-manager-client-rust-deps.json"
             ]
         },
         {
