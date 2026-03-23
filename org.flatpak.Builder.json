@@ -116,20 +116,6 @@
         {
             "name": "flat-manager-client",
             "buildsystem": "simple",
-            "build-commands": [
-                "install -Dm755 flat-manager-client /app/bin/flat-manager-client"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/flatpak/flat-manager",
-                    "commit": "590fa7359149535d3f181fc01858b38bce8b96ce"
-                }
-            ]
-        },
-        {
-            "name": "flat-manager-client-rust",
-            "buildsystem": "simple",
             "build-options": {
                 "append-path": "/usr/lib/sdk/rust-stable/bin",
                 "env": {
@@ -140,13 +126,13 @@
             "build-commands": [
                 "cargo --offline fetch --manifest-path Cargo.toml --verbose",
                 "cargo build --offline --release --bin flat-manager-client",
-                "install -Dm0755 target/release/flat-manager-client ${FLATPAK_DEST}/bin/flat-manager-client-rust"
+                "install -Dm0755 target/release/flat-manager-client ${FLATPAK_DEST}/bin/flat-manager-client"
             ],
             "sources": [
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flat-manager",
-                    "commit": "528ffef8157fc93b2f724b6ea562214a2025d8e2"
+                    "commit": "b64174ae86c4c78d56d66be3cd58ab3fa5f00ba3"
                 },
                 "flat-manager-client-rust-deps.json"
             ]
