@@ -28,6 +28,16 @@ jobs:
           echo ${{ github.event.client_payload.sha }}
           LINTER_SHA=${{ github.event.client_payload.sha }} python3 .github/scripts/rewrite-manfiest.py
 
+      - name: Sync linter deps file
+        run: |
+          LINTER_SHA=${{ github.event.client_payload.sha }}
+          TARGET_FILE="flatpak-builder-lint-deps.json"
+          TMP_FILE="$(mktemp)"
+          curl -fL \
+            "https://raw.githubusercontent.com/flathub-infra/flatpak-builder-lint/${LINTER_SHA}/docker/flatpak-builder-lint-deps.json" \
+            -o "$TMP_FILE"
+          mv -vf "$TMP_FILE" "$TARGET_FILE"
+
       - name: Create pull request
         if: ${{ success() }}
         id: create-pr
