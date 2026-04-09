@@ -108,7 +108,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/GNOME/libglnx.git",
-                    "commit": "202b294e6079e23242e65e0426f8639841d1210b",
+                    "commit": "ccea836b799256420788c463a638ded0636b1632",
                     "dest": "subprojects/libglnx"
                 }
             ]
