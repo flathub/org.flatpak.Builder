@@ -132,7 +132,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flat-manager",
-                    "commit": "c9af5531ec4dcbf9c38ae1c3b74a2e6259ae0469"
+                    "commit": "a2844c3014b9633a833dcb3c7c149446e17561a3"
                 },
                 "flat-manager-client-rust-deps.json",
                 {
