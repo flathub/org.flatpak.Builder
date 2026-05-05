@@ -37,6 +37,8 @@
             "name": "appstream",
             "buildsystem": "meson",
             "config-opts": [
+                "--prefix=/app",
+                "--libdir=lib",
                 "-Ddocs=false",
                 "-Dapidocs=false",
                 "-Dgir=true",
@@ -57,6 +59,8 @@
             "name": "flatpak",
             "buildsystem": "meson",
             "config-opts": [
+                "--prefix=/app",
+                "--libdir=lib",
                 "-Ddocbook_docs=disabled",
                 "-Dgtkdoc=disabled",
                 "-Dman=disabled",
@@ -93,6 +97,8 @@
             "name": "flatpak-builder",
             "buildsystem": "meson",
             "config-opts": [
+                "--prefix=/app",
+                "--libdir=lib",
                 "-Ddocs=disabled",
                 "-Dtests=false",
                 "-Dinstalled_tests=false",
