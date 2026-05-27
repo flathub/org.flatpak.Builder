@@ -181,7 +181,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flatpak/flatpak-builder-tools.git",
-                    "commit": "caca92bc6898ea40d6521b581fef2402ba3b3aae"
+                    "commit": "96e2fe8bf7d2e5791ca1bdce2dba373f1e27c425"
                 }
             ]
         },
