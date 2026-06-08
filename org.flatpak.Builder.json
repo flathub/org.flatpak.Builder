@@ -70,6 +70,7 @@
                 "-Dsandboxed_triggers=false",
                 "-Dsystem_helper=disabled",
                 "-Dselinux_module=disabled",
+                "-Dwayland_security_context=disabled",
                 "-Dsystem_bubblewrap=bwrap",
                 "-Dsystem_dbus_proxy=xdg-dbus-proxy",
                 "-Dsystem_install_dir=/var/lib/flatpak"
@@ -89,7 +90,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/flatpak.git",
-                    "commit": "b24823d3157e273850a2a90e8565b9cc0bd32c2b"
+                    "commit": "a750ddc815ed8cc1725ef7b8be16a1a734bd4fec"
                 }
             ]
         },
