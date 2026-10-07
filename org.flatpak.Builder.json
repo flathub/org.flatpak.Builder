@@ -51,7 +51,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/appstream.git",
-                    "commit": "6c796ba8e624cc4a1aee4599fb06019adc21fc47"
+                    "commit": "ebfa700b16b3806dbc9750bd2740ac4d7535810c"
                 }
             ]
         },
