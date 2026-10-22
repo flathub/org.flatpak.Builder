@@ -51,7 +51,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/appstream.git",
-                    "commit": "ebfa700b16b3806dbc9750bd2740ac4d7535810c"
+                    "commit": "f5f02ed28b80ad13310065481a2f192d59658f37"
                 }
             ]
         },
@@ -109,7 +109,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/flathub-infra/flatpak-builder.git",
-                    "commit": "f4b28cc1b0d120d07bf32208b320bd004e10cc7c",
+                    "commit": "39e20fc97035d629966f58089afbedbc478deeaf",
                     "disable-submodules": true
                 },
                 {
